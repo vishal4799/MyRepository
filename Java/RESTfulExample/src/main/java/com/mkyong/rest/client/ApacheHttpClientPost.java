@@ -15,7 +15,17 @@ public class ApacheHttpClientPost {
 	public static void main(String[] args) {
 
 		try {
-
+			//GET
+			// DefaultHttpClient httpClient = new DefaultHttpClient();
+			// HttpGet getRequest = new HttpGet(
+			// 	"http://clm-pun-022429.bmc.com:9797/olaengine/rest/olaapi/v1.0/license/consumption/collector?start=0&end=1496137828000");
+			// //getRequest.addHeader("accept", "application/json");
+			// getRequest.addHeader("Authorization","_4ff9193a-31c4-4e1e-b5fe-97485faf67ff");
+			// getRequest.addHeader("Content-Type","application/json");
+			// getRequest.addHeader("Accept","application/json");
+			// //getRequest.addHeader("Accept","application/x-java-serialized-object");
+			// HttpResponse response = httpClient.execute(getRequest);
+			//POST
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			HttpPost postRequest = new HttpPost(
 					"http://localhost:8080/RESTfulExample/json/product/post");
