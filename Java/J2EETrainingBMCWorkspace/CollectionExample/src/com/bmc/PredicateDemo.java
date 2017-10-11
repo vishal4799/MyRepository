@@ -1,0 +1,33 @@
+package com.bmc;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+public class PredicateDemo {
+	
+	public static void determineListContent(List<Integer> li, Predicate<Integer> pi){
+		System.out.println(pi.toString());
+		for (Integer i : li) {
+			if(pi.test(i)){
+				System.out.println(i);
+			}
+		}
+	}
+	
+	public static void main(String args[]){
+		List<Integer> li =new ArrayList<>();
+		li.add(10);
+		li.add(20);
+		li.add(30);
+		li.add(40);
+		li.add(50);
+		determineListContent(li, (n)->n>15);
+		determineListContent(li, (n)->n%2==0);
+		determineListContent(li, (n)->n>15 && n+2<40);
+		System.out.println("=========");
+		List<Integer> list = li.stream().filter(n->n>10).collect(Collectors.toList());
+		list.forEach(System.out::println);
+	}
+}

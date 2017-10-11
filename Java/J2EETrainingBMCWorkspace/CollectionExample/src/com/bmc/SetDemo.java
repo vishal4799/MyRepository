@@ -1,0 +1,25 @@
+package com.bmc;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class SetDemo {
+
+	public static void main(String[] args) {
+		Set<String> ss = new HashSet<>();
+		System.out.println(ss.add("vishal"));
+		System.out.println(ss.add("vishal"));
+		
+		Employee e1 = new Employee(1,"1vishal",1000,"dev1");
+		Employee e2 = new Employee(1,"1vishal",1000,"dev1");
+		Set<Employee> se = new HashSet<>();
+		System.out.println(se.add(e1));
+		System.out.println(se.add(e2));
+		System.out.println(e1.hashCode());
+		System.out.println(e2.hashCode());
+		if(e1.equals(e2)){
+			System.out.println("not equal");
+		}
+	}
+
+}

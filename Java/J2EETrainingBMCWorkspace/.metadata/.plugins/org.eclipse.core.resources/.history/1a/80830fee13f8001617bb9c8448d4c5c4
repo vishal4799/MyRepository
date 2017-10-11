@@ -1,0 +1,10 @@
+package com.bmc.helper;
+
+public class ResourceReader {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

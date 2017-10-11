@@ -1,0 +1,10 @@
+package com.bmc.multithearding;
+
+public class Person implements Runnable {
+
+	@Override
+	public void run() {
+		
+	}
+
+}

@@ -1,0 +1,52 @@
+package com.bmc.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.hibernate.Query;
+
+import org.hibernate.Session;
+
+import com.bmc.entities.Employee;
+import com.bmc.utility.HibernateUtils;
+
+public class EmployeeDAOImpl implements EmployeeDAO {
+
+	@Override
+	public List<Employee> getAllEmployees() {
+		Session session = HibernateUtils.createSession();
+		Query query = session.createQuery("SELECT E.designation FROM Employee E");
+		return query.list();
+	}
+
+	@Override
+	public Employee getEmployee(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean persistEmployee(Employee employee) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateEmployeeSalaryById(int id, int newSalary) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteEmployee(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int computeTax(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

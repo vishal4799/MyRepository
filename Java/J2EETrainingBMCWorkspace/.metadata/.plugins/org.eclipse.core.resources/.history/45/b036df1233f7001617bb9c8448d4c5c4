@@ -1,0 +1,26 @@
+package com.bmc.demo;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+public class DynamicInitializationDemo {
+	public static void main(String[] args){
+		//static initialization
+		MyClass mc1= new MyClass();
+		//static method invocation
+		mc1.x(10, "staticPrint:");
+		
+		//Dynamic initialization
+		//points to ClassLoader in JRE
+		ClassLoader cl = ClassLoader.getSystemClassLoader();
+		try{
+			Class c = cl.loadClass("com.bmc.demo.MyClass");
+			MyClass mc2 = (MyClass) c.newInstance();
+			Method xMethod = c.getMethod("x", new Class[]{Integer.class,String.class});
+			xMethod.invoke(mc2, new Object[]{10, "staticPrint:"});
+		} catch(ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | SecurityException | IllegalArgumentException | InvocationTargetException e){
+			e.printStackTrace();
+		}
+		
+	}
+}

@@ -1,0 +1,13 @@
+package com.bmc.multithearding;
+
+public class Queue {
+	
+	public int n = 0;
+	public void put(int n){
+		this.n = n;
+		System.out.println("Producer put:"+n);
+	}
+	public int get(){
+		return n;
+	}
+}

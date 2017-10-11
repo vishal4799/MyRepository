@@ -1,0 +1,12 @@
+package com.bmc.multithearding;
+
+import java.util.concurrent.RecursiveTask;
+
+public class FindMaxTask extends RecursiveTask<V> {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,28 @@
+package com.bmc.test;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.xml.parsers.FactoryConfigurationError;
+
+import com.bmc.dao.EmployeeDAO;
+import com.bmc.entities.Employee;
+import com.bmc.helper.FactoryEmployeeDAO;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+
+public class TestAllEmployee {
+
+	public static void main(String[] args) {
+		EmployeeDAO employeeDAO = FactoryEmployeeDAO.createEmployeeDAO();
+		try {
+			List<Employee> employees = employeeDAO.getAllEmployees();
+			employees.forEach(e -> System.out.println(e));
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

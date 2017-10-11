@@ -1,0 +1,21 @@
+package com.bmc.demo;
+
+import java.util.Scanner;
+
+public class ScannerDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String data = "2.5,3.6,7.8,9.1";
+		Scanner scanner = new Scanner(data);
+		scanner.useDelimiter(",");
+		double sum = 0.0;
+		while(scanner.hasNext()){
+			sum += scanner.nextDouble();
+		}
+		System.out.println("Sum:"+sum);
+		scanner.close();
+	}
+	
+
+}

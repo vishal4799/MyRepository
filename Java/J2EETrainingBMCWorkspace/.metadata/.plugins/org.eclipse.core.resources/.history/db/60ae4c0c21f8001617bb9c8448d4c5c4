@@ -1,0 +1,60 @@
+package com.bmc.dao;
+//Declaration of CRUD operation for Domain Class-Employee
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.bmc.entities.Employee;
+import com.bmc.helper.ConnectionManager;
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
+
+public class EmployeeDAOImpl implements EmployeeDAO {
+	
+	private ConnectionManager manager = new ConnectionManager();
+	
+	public List<Employee> getAllEmployees() throws ClassNotFoundException, SQLException{
+		Connection connection = manager.openConnection();
+		Statement stmt = (Statement) connection.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT * FROM EMPLOYEE");
+		List<Employee> empList = new ArrayList<>();
+		while(rs.next()){
+			Employee employee = new Employee();
+			employee.setId(rs.getInt("id"));
+			employee.setName(rs.getString("name"));
+			employee.setSalary(rs.getInt("salary"));
+			employee.setDesignation(rs.getString("designation"));
+			empList.add(employee);
+		}
+		ConnectionManager.closeConnection();
+		return empList;
+	}
+	public Employee getEmployee(int id) throws ClassNotFoundException, SQLException{
+		Connection connection = manager.openConnection();
+		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("SELECT * FROM EMPLOYEE WHERE ID =?");
+		stmt.setInt(1, id);
+		ResultSet rs = stmt.executeQuery();
+		rs.next();
+		Employee employee = new Employee();
+		employee.setId(rs.getInt("id"));
+		employee.setName(rs.getString("name"));
+		employee.setSalary(rs.getInt("salary"));
+		employee.setDesignation(rs.getString("designation"));
+		return employee;
+	}
+	public boolean persistEmployee(Employee employee) throws ClassNotFoundException{
+		return false;
+	}
+	public boolean updateEmployeeSalaryById(int id, int newSalary) throws ClassNotFoundException{
+		return false;
+	}
+	public boolean deleteEmployee(int id) throws ClassNotFoundException{
+		return false;
+	}
+	public boolean computeTax(int id) throws ClassNotFoundException{
+		return false;
+	}
+}

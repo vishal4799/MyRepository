@@ -1,0 +1,15 @@
+import java.io.File;
+import java.util.List;
+
+public class FetchWindowsDirectory2 {
+
+	public static void main(String[] args) {
+		File root = new File("c://");
+		String list[] = root.list();
+		for (String string : list) {
+			System.out.println(string);
+		}
+		
+	}
+
+}

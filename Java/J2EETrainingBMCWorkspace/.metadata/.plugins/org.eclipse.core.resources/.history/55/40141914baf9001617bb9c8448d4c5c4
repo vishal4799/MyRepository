@@ -1,0 +1,32 @@
+package com.bmc;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class MapDemo {
+
+	public static void main(String[] args) {
+		Map<Integer, String> map = new HashMap<>();
+		System.out.println(map.put(null, "vishal"));
+		System.out.println(map.put(1, "sabbir"));
+		System.out.println(map.put(2, "amit"));
+		System.out.println(map.put(1, "rakesh"));
+		
+		System.out.println(map.get(null));
+		map.forEach((k,v)->{
+			System.out.println(k+":"+v);
+		});
+		
+		Set<Map.Entry<Integer, String>> set = map.entrySet();
+		for (Iterator<Map.Entry<Integer, String>> iterator = set.iterator(); iterator.hasNext();) {
+			Map.Entry<Integer, String> entry = iterator.next();
+			System.out.println("key:"+entry.getKey()+" value:"+entry.getValue());
+		}
+		
+		
+		
+	}
+
+}

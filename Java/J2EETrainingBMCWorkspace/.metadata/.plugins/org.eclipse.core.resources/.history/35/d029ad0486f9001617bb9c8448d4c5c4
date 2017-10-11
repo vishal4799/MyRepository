@@ -1,0 +1,14 @@
+package com.bmc;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class MyStringComparator implements Comparator<String>{
+
+	public static void main(String[] args) {
+		String names[]=new String[]{"sachin", "sabbir", "sumeet"};
+		Arrays.sort(names);
+		System.out.println(Arrays.toString(names));//names.toString doesnt return elements, will print oject details
+		
+	}
+}

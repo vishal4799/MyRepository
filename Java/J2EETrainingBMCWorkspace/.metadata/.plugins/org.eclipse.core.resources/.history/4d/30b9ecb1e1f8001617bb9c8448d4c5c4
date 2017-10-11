@@ -1,0 +1,23 @@
+package com.bmc.multithearding;
+
+public class SynchronizationDemo {
+
+	public static void main(String[] args) {
+		ATM atm = new ATM("ICICI", "yerwada");
+		Person person1= new Person("Vishal", atm);
+		Person person2= new Person("Vishal2", atm);
+		Person person3= new Person("Vishal3", atm);
+		Person person4= new Person("Vishal4", atm);
+		
+		Thread worker1 = new Thread(person1);
+		Thread worker2 = new Thread(person2);
+		Thread worker3 = new Thread(person3);
+		Thread worker4 = new Thread(person4);
+		
+		worker1.start();
+		worker2.start();
+		worker3.start();
+		worker4.start();
+	}
+
+}

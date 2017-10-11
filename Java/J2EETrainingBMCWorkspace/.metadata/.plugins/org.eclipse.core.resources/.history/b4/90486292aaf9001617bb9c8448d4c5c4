@@ -1,0 +1,23 @@
+package com.bmc;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CacheDemo {
+	
+	public static void main(String[] args){
+		CacheString cacheString=new CacheString();
+		cacheString.add("sabbir");
+		List<String> list = cacheString.getData();
+		
+		CacheAny<Integer> ci = new CacheAny<>();
+		ci.add(10);
+		List<Integer> listi = ci.get();
+		
+		CacheAny<Float> cf = new CacheAny<>();
+		cf.add(12.5f);
+		List<Float> listf = cf.get();
+		
+		
+	}
+}

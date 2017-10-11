@@ -1,0 +1,16 @@
+Jul 06, 2017 15:36:55 PM com.bmc.sms.wscommon.util.MessageUtil getMessage():45 
+WARN: Failed to load resource bundle -BuilderMessages by default locale exception:Can't find bundle for base name BuilderMessages, locale en_IN Default Locale settings :Language:en,Country():IN,Variant():,DisplayName():English (India)
+Jul 06, 2017 15:36:55 PM com.bmc.sms.wscommon.util.MessageUtil getMessage():58 
+ERROR: Failed to load resource bundle-BuilderMessages
+Jul 06, 2017 15:37:47 PM com.bmc.sms.wscommon.util.MessageUtil getMessage():45 
+WARN: Failed to load resource bundle -BuilderMessages by default locale exception:Can't find bundle for base name BuilderMessages, locale en_IN Default Locale settings :Language:en,Country():IN,Variant():,DisplayName():English (India)
+Jul 06, 2017 15:37:47 PM com.bmc.sms.wscommon.util.MessageUtil getMessage():58 
+ERROR: Failed to load resource bundle-BuilderMessages
+Jul 06, 2017 15:38:53 PM com.bmc.sms.wscommon.util.MessageUtil getMessage():45 
+WARN: Failed to load resource bundle -BuilderMessages by default locale exception:Can't find bundle for base name BuilderMessages, locale en_IN Default Locale settings :Language:en,Country():IN,Variant():,DisplayName():English (India)
+Jul 06, 2017 15:38:53 PM com.bmc.sms.wscommon.util.MessageUtil getMessage():58 
+ERROR: Failed to load resource bundle-BuilderMessages
+Jul 06, 2017 15:39:31 PM com.bmc.sms.wscommon.util.MessageUtil getMessage():45 
+WARN: Failed to load resource bundle -BuilderMessages by default locale exception:Can't find bundle for base name BuilderMessages, locale en_IN Default Locale settings :Language:en,Country():IN,Variant():,DisplayName():English (India)
+Jul 06, 2017 15:39:31 PM com.bmc.sms.wscommon.util.MessageUtil getMessage():58 
+ERROR: Failed to load resource bundle-BuilderMessages

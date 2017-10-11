@@ -1,0 +1,14 @@
+package com.bmc;
+
+import java.util.Arrays;
+
+public class ArraySortDemo {
+
+	public static void main(String[] args) {
+		String names[]=new String[]{"sachin", "shabbir", "summeett"};
+		Arrays.sort(names);
+		System.out.println(Arrays.toString(names));//names.toString doesnt return elements, will print oject details
+		Arrays.sort(names, new MyStringComparator());
+		System.out.println(Arrays.toString(names));
+	}
+}

@@ -1,0 +1,18 @@
+package com.bmc;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class SortList {
+
+	public static void main(String[] args) {
+		List<String> l = new ArrayList<>();
+		l.add("vishal");l.add("rakesh");l.add("sabbir");l.add("amit");l.add("sachin");
+		
+		Collections.sort(l);
+		Collections.sort(l, (s1,s2)->{return s1.compareTo(s2);});
+		System.out.println(l);
+	}
+
+}

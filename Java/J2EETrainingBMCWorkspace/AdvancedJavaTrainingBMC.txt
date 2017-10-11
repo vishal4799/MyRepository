@@ -1,0 +1,21 @@
+Advanced Java Training
+
+Oracle ADF
+Spring works on singleton and factory design patterns
+
+
+
+pending
+@Transactional
+
+ArrayList
+- growable array, by default size is 10 if not given. on insert 11th element it will create new object array with size 15(current 10+ 10/2), copy all 10 element in to new array and add 11th one in new array.
+
+
+private static final long serialVersionUID = -2479143000061671589L; 
+not mandatory but we must put it. why?
+While doing serialization we are on JDK1.5 so class version is x but while deserialization v r on JDK 1.7 then class version will be different then x. at that time it will check the "serialVersionUID".
+
+
+
+

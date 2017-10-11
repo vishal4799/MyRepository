@@ -1,0 +1,59 @@
+package com.bmc.test;
+
+import static org.junit.Assert.*;
+
+import java.sql.SQLException;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.bmc.dao.EmployeeDAOImpl;
+import com.bmc.entities.Employee;
+
+public class TestEmployeeDAOImpl {
+
+	private EmployeeDAOImpl daoimpl = null;
+	@Before
+	public void setUp() throws Exception {
+		daoimpl = new EmployeeDAOImpl();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		daoimpl = null;
+	}
+
+	@Test
+	public void testPersistEmployeePositive() {
+		System.out.println("\n<==== add emp =====>");
+		Employee employee = new Employee();
+		employee.setId(4);
+		employee.setName("vishal4");
+		employee.setSalary(40000);
+		employee.setDesignation("DEVELOPER5");
+		try {
+			assertTrue(daoimpl.persistEmployee(employee));
+			assertEquals(5, daoimpl.getEmployee(4).getId());
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			fail("Shouldn't throw error");
+		}
+	}
+
+	@Test
+	public void testUpdateEmployeeSalaryById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDeleteEmployee() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testComputeTax() {
+		fail("Not yet implemented");
+	}
+
+}

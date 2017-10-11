@@ -1,0 +1,40 @@
+package com.bmc;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+public class MapDemo {
+
+	public static void main(String[] args) {
+		Map<Integer, String> map = new HashMap<>();
+		System.out.println(map.put(null, "vishal"));
+		System.out.println(map.put(1, "sabbir"));
+		System.out.println(map.put(2, "amit"));
+		System.out.println(map.put(1, "rakesh"));
+		
+		System.out.println(map.get(null));
+		map.forEach((k,v)->{
+			System.out.println(k+":"+v);
+		});
+		
+		Set<Map.Entry<Integer, String>> set = map.entrySet();
+		for (Iterator<Map.Entry<Integer, String>> iterator = set.iterator(); iterator.hasNext();) {
+			Map.Entry<Integer, String> entry = iterator.next();
+			System.out.println("key:"+entry.getKey()+" value:"+entry.getValue());
+		}
+		//Stream is interface introduced in java 8
+		//Stream is wrapper around datasources like collections, fileIO, database
+		//It dont change underlying data
+		//internally it creates pipelin for every operation to be performed
+		
+		Map<Integer, String> m2 = map.entrySet().stream()
+									.filter((m)->m.getKey() ==2)
+									.collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
+		System.out.println(m2);
+	}
+
+}

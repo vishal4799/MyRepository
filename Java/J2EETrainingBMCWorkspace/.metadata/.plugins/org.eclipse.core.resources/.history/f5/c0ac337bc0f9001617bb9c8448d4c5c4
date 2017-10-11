@@ -1,0 +1,14 @@
+package com.bmc;
+
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+public class SortedSetDemo {
+
+	public static void main(String[] args) {
+		SortedSet<String> ss = new TreeSet<>();
+		ss.add("mahesh");ss.add("zibran");ss.add("amit");ss.add("vishal");
+		ss.forEach(System.out::println);
+	}
+
+}

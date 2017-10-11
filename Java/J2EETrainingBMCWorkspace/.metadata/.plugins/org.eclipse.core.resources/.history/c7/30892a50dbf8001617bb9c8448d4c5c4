@@ -1,0 +1,151 @@
+package com.bmc.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.bmc.entities.Employee;
+import com.bmc.utility.HibernateUtils;
+import com.sun.management.jmx.Trace;
+
+public class EmployeeDAOImpl implements EmployeeDAO {
+
+	@Override
+	public List<Employee> getAllEmployees() {
+		SessionFactory sessionFactory = HibernateUtils.createSessionFactory();
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("SELECT E FROM Employee E");
+		//for partial object
+		//Query query = session.createQuery("SELECT E.designation FROM Employee E");
+		List<Employee> list = query.list();
+		HibernateUtils.closeSessionFactory();
+		return list;
+	}
+
+	@Override
+	public Employee getEmployee(int id) throws ClassNotFoundException, SQLException {
+		SessionFactory sessionFactory = HibernateUtils.createSessionFactory();
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("SELECT E FROM Employee E WHERE E.id = :arg1");
+		query.setParameter("arg1", id);
+		Employee emp = (Employee) query.uniqueResult();//if multiple raws return, it will throw error
+		HibernateUtils.closeSessionFactory();
+		return emp;
+	}
+
+	@Override
+	public boolean persistEmployee(Employee employee) throws ClassNotFoundException, SQLException {
+		SessionFactory sessionFactory = HibernateUtils.createSessionFactory();
+		Session session = sessionFactory.openSession();
+		Transaction t = session.getTransaction();
+		t.begin();
+		session.save(employee);
+		t.commit();
+		HibernateUtils.closeSessionFactory();
+		return false;
+	}
+
+	@Override
+	public boolean updateEmployeeSalaryById(int id, int newSalary) throws ClassNotFoundException, SQLException {
+		SessionFactory sessionFactory = HibernateUtils.createSessionFactory();
+		Session session = sessionFactory.openSession();
+		Transaction t = session.getTransaction();
+		t.begin();
+		Query query = session.createQuery("UPDATE Employee E SET E.salary = :newSal WHERE E.id = :id");
+		query.setParameter("newSal", newSalary);
+		query.setParameter("id", id);
+		boolean r = query.executeUpdate() > 0;
+		t.commit();
+		HibernateUtils.closeSessionFactory();
+		return r;
+	}
+	
+	@Override
+	public boolean updateEmployeeSalaryByIdUsingMerge(int id, int newSalary) throws ClassNotFoundException, SQLException {
+		SessionFactory sessionFactory = HibernateUtils.createSessionFactory();
+		Session session = sessionFactory.openSession();
+		Transaction t = session.getTransaction();
+		t.begin();
+		Employee employee = new Employee();
+		employee.setId(id);
+		employee.setName("vishal7");
+		employee.setSalary(newSalary);
+		employee.setDesignation("DEVELOPER7");
+		session.merge(employee);
+		t.commit();
+		HibernateUtils.closeSessionFactory();
+		return true;
+	}
+	@Override
+	public void getEmployeeUsingRefresh(int id) throws ClassNotFoundException, SQLException {
+		SessionFactory sessionFactory = HibernateUtils.createSessionFactory();
+		Session session = sessionFactory.openSession();
+		Employee employee = new Employee();
+		employee.setId(id);
+		employee.setName("vishal7");
+		employee.setSalary(7000000);
+		employee.setDesignation("DEVELOPER7");
+		while(true){
+			session.refresh(employee);
+			System.out.println("====Refreshed salary:"+getEmployee(id).getSalary()+"====");
+		}
+		//HibernateUtils.closeSessionFactory();
+		
+	}
+	@Override
+	public void usingCriteriaBuilder(){
+		SessionFactory sessionFactory = HibernateUtils.createSessionFactory();
+		Session session = sessionFactory.openSession();
+		
+        Criteria criteria1 = session.createCriteria(Employee.class);
+        Criteria criteria2 = session.createCriteria(Employee.class);
+        
+        criteria1.add(Restrictions.disjunction()
+                     .add(Restrictions.lt("salary", 20000))
+                     .add(Restrictions.like("name", "V%"))
+                     .add(Restrictions.eq("designation", "DEVELOPER2"))
+                     );
+        
+        criteria2.add(Restrictions.conjunction()
+                     .add(Restrictions.lt("salary", 500000))
+                     .add(Restrictions.like("name", "M%"))
+                     .add(Restrictions.eq("designation", "DEVELOPER5"))
+                     );
+        List<Employee> list1 = criteria1.list();
+        System.out.println("List 1:");
+        for (Employee emp:list1)
+        {
+               System.out.println(emp);
+        }
+        
+        List<Employee> list2 = criteria2.list();
+        System.out.println("List 2:");
+        for (Employee emp:list2)
+        {
+               System.out.println(emp);
+        }             
+        
+        session.close();
+        HibernateUtils.closeSessionFactory();
+	}
+
+	@Override
+	public boolean deleteEmployee(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int computeTax(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

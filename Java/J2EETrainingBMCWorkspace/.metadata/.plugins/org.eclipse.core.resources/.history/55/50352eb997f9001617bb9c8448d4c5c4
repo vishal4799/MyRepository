@@ -1,0 +1,53 @@
+package com.bmc;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
+public class ListDemo {
+
+	public static void main(String[] args) {
+		List list = new ArrayList();
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.add(40);
+		//list.add("Vishal");
+		for (int i = 0; i < list.size(); i++) {
+			int k = (Integer)list.get(i);
+			System.out.println(k);
+		}
+		for (Object o : list) {
+			int k = (Integer)o;
+			System.out.println(k);
+			//list.remove();//throws concurrentModificationException
+		}
+		Iterator iterator = list.iterator();//iterator object will stay in memory until GC run
+		while(iterator.hasNext()){
+			int o = (Integer)iterator.next();
+			System.out.println(o);
+			iterator.remove();//no error
+		}
+		////iterator1 object will discarded immediatly after in for. that's y for is better against while
+		for (Iterator iterator1 = list.iterator(); iterator.hasNext();) {
+			Object object = (Object) iterator.next();
+			iterator.remove();
+		}
+		List list1 = new ArrayList();
+		list1.add(10);
+		list1.add(20);
+		list1.add(30);
+		list1.add(40);
+		ListIterator listIterator = list1.listIterator();
+		while(listIterator.hasNext()){
+			listIterator.next();
+		}
+		while(listIterator.hasPrevious()){
+			System.out.println(listIterator.previous());
+		}
+		
+	}
+}

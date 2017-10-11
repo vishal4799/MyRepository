@@ -1,0 +1,61 @@
+package com.bmc.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.hibernate.Query;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.bmc.entities.Employee;
+import com.bmc.utility.HibernateUtils;
+
+public class EmployeeDAOImpl implements EmployeeDAO {
+
+	@Override
+	public List<Employee> getAllEmployees() {
+		SessionFactory sessionFactory = HibernateUtils.createSessionFactory();
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("SELECT E FROM Employee E");
+		//for partial object
+		//Query query = session.createQuery("SELECT E.designation FROM Employee E");
+		List<Employee> list = query.list();
+		session.close();
+		sessionFactory.close();
+		return list;
+	}
+
+	@Override
+	public Employee getEmployee(int id) throws ClassNotFoundException, SQLException {
+		SessionFactory sessionFactory = HibernateUtils.createSessionFactory();
+		Query query = sessionFactory.createQuery("SELECT E FROM Employee E WHERE E.id = :arg1");
+		query.setParameter("arg1", id);
+		return (Employee) query.uniqueResult();//if multiple raws return, it will throw error
+	}
+
+	@Override
+	public boolean persistEmployee(Employee employee) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateEmployeeSalaryById(int id, int newSalary) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteEmployee(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int computeTax(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}
