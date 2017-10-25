@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Startup Genius</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("form").on("submit",function(e){
+          e.preventDefault();
+          console.log("form has been submited");
+        });
+      });  
+    </script>
+</head>
+  <body class='layout'>
+    <!-- If the action attribute is omitted, the action is set to the current page.
+    Target Attribute Values:
+    _blank : The response is displayed in a new window or tab
+    _self : The response is displayed in the same frame (this is default)
+    _parent : The response is displayed in the parent frame
+    _top : The response is displayed in the full body of the window
+    framename : The response is displayed in a named iframe -->
+    <!--form  action="https://jsonmock.hackerrank.com/api/movies/search" method="get" target="iframeTest"-->
+    <form  action="https://jsonmock.hackerrank.com/api/movies/search" method="get" target="iframeTest">
+    First name:<br>
+        <input type="text" name="firstname" value="Mickey"><br>
+        Last name:<br>
+        <input type="text" name="lastname" value="Mouse"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <iframe name="iframeTest" style="color:red"></iframe>
+  </body>
+</html>
