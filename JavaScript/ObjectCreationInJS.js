@@ -53,6 +53,7 @@
         var temp = {p: { value : "vishal" }, q : {value:2}};
         //when you pass temp as propertiesObject, it will map temp's p,q as key and p.value,q.value as values in newly created object. in new object structure will be {p:"vishal",q:2}
         // you cant declare temp as temp = {p:1} or temp = {p : {anyWordOtherthanValue : "vishal"}}
+        // it's property descriptor, for more details visit https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty 
     // By below statement, object employee(memory address xyz) will become createObj4's prototype
     // in technical word it  employee === createObj4.__proto__  (both will refer same memory address xyz, any change in this memory reflect in both)
     // but any change in propertiesObject (means temp) will not reflect in newly created object.
@@ -68,7 +69,7 @@
     // remember Object, String, Number are not prototype of any object. Their prototype are prototype of any custom object(except the primitives)
     Object.isPrototypeOf(createObj4) 
 
-// Object.assign(target, ...sources)
+// Object.assign(target, ...sources) =============================================================================
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign 
     // used for merge. (o1,o2,o3,..) it will return o1 reference with merge of all.
     // used for clone. ({},o1,o2,..) it will return new object with merge of all object starting from 2nd arugment.   
