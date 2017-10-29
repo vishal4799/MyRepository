@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+      //https://javascript.info/bubbling-and-capturing
+      document.addEventListener("DOMContentLoaded", function(event) {
+        console.log("DOM fully loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading.");
+        var elem = document.querySelector('p');
+        var divElem = document.querySelector('div');
+        var formElem = document.querySelector('form');
+        elem.addEventListener("click", (e) => console.log("Capturing: "+elem.tagName), true);
+        elem.addEventListener("click", (e) => console.log("Bubbling: "+elem.tagName));//3rd argument is by-default false so it's bubbling
+        formElem.addEventListener("click", (e) => console.log("Bubbling: "+formElem.tagName));//3rd argument is by-default false so it's bubbling
+        divElem.addEventListener("click", (e) => console.log("Capturing: "+divElem.tagName), true);
+        divElem.addEventListener("click", (e) => console.log("Bubbling: "+divElem.tagName));//3rd argument is by-default false so it's bubbling
+      });
+    </script>
+    <style>
+      body * {
+        margin: 10px;
+        border: 1px solid blue;
+      }
+    </style>
+</head>
+  <body class='layout'>
+    <form>FORM
+      <div>DIV
+        <p>P</p>
+      </div>
+    </form>
+  </body>
+</html>

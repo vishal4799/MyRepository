@@ -1,6 +1,12 @@
 {
     "version": "0.2.0",
     "configurations": [
+    {
+        "type": "node",
+        "request": "launch",
+        "name": "ObjectCreationInJS.js",
+        "program": "${workspaceFolder}/JavaScript/ObjectCreationInJS.js"
+    },
         {
             "type": "chrome",
             "request": "launch",

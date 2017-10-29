@@ -11,9 +11,11 @@ import org.jgroups.View;
 public class JgroupTask extends ReceiverAdapter {
     JChannel channel;
     String userName;
+    boolean b;
 
     public void start() throws Exception {
     	userName = InetAddress.getLocalHost().getHostName();
+    	b = userName.contains("25777");
     	System.out.println("JgroupTask : start....");
     	ClassLoader classLoader = getClass().getClassLoader();
 		channel=new JChannel(classLoader.getResource("leaderselect.conf").getFile());
@@ -27,35 +29,40 @@ public class JgroupTask extends ReceiverAdapter {
     }
 
     public void receive(Message msg) {
-        System.out.println(msg.getSrc() + ": " + msg.getObject());
+    	if(!msg.getSrc().toString().contains(userName)){
+    		System.out.println(msg.getObject());
+    		if(!b){
+    			Message msgSendBack=new Message(null, null, "RECEIVED::"+msg.getObject());
+                try {
+					channel.send(msgSendBack);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+    		}
+    	}
     }
 
     private void eventLoop() {
-        long seconds = 1;
-        boolean b = userName.contains("25777");
+        long seconds = 0;
         while(true) {
             try {
-            	Message msg=new Message(null, null, userName+ (b ? " : I am still runing..." : " : waiting for my turn..."));
-            	channel.send(msg);
-            	if (seconds == 60){
-                	System.out.println(userName+" : 60 seconds...");
-                	msg=new Message(null, null, userName+" : I m done.");
-                	channel.send(msg);
-                	break;
-                } else if(seconds % 10 == 0) {
-                	msg=new Message(null, null, userName+(b ? " : Still runing, but not my turn..." : " : I am also runing..."));
-                	channel.send(msg);
-                	Thread.sleep(1000);
-                	seconds++;
-                    continue;
-                } 
-                Thread.sleep(1000);
-                seconds++;
+            	if(b){
+	            	Message msg=new Message(null, null, "sent by "+userName+" @ "+seconds+" seconds");
+	                channel.send(msg);
+	            }
+            	Thread.sleep(10000);
+                seconds+=10;
             }
             catch(Exception e) {
             }
         }
     }
-    
-   
 }
+//if (seconds == 60){
+//System.out.println(userName+" : 60 seconds...");
+//msg=new Message(null, null, userName+" : I m done.");
+//channel.send(msg);
+//break;
+//} else 
+//if(seconds % 10 == 0) {
+//}

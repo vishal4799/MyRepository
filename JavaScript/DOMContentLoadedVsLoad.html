@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+      //The DOMContentLoaded event is fired when the initial HTML document(.js scripts  and .html) has been completely loaded and parsed, 
+      //without waiting for stylesheets, images, and subframes to finish loading. 
+      //A very different event load should be used only to detect a fully-loaded page. 
+      //It is an incredibly popular mistake to use load where DOMContentLoaded would be much more appropriate, so be cautious.
+      //DOMContentLoaded==window.onDomReady()
+      //Load==window.onLoad()
+      document.addEventListener("DOMContentLoaded", function(event) {
+        console.log("DOM fully loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading.");
+      });
+
+      //below line doesnt works as https://html.spec.whatwg.org/multipage/indices.html#events-2 says 
+      //it's fired at the Window when the document has finished loading; 
+      //it's fired at an element containing a resource (e.g. img, embed) when its resource has finished loading
+      //So use window. instead of document.
+      //document.addEventListener("load", function(event) {
+      window.addEventListener("load", function(event) {
+        console.log("DOM fully loaded and parsed including all resources like stylesheets, images, and subframes");
+      });
+    </script>
+    <style>
+      body * {
+        margin: 10px;
+        border: 1px solid blue;
+      }
+    </style>
+</head>
+  <body class='layout'>
+    <form>FORM
+      <div>DIV
+        <p>P</p>
+      </div>
+    </form>
+  </body>
+</html>
