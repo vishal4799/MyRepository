@@ -7,19 +7,25 @@
         "name": "ObjectCreationInJS.js",
         "program": "${workspaceFolder}/JavaScript/ObjectCreationInJS.js"
     },
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:3020",
-            "webRoot": "${workspaceFolder}\\JavaScript\\my-react-app"
-        },
-        {
-            "type": "chrome",
-            "request": "attach",
-            "name": "Attach to Chrome",
-            "port": 9222,
-            "webRoot": "${workspaceFolder}\\JavaScript\\my-react-app"
-        }
+    {
+        "type": "node",
+        "request": "launch",
+        "name": "MongoDBCloudConnectivityTest.js",
+        "program": "${workspaceFolder}/JavaScript/MongoDBCloudConnectivityTest.js"
+    },
+    {
+        "type": "chrome",
+        "request": "launch",
+        "name": "Launch Chrome against localhost",
+        "url": "http://localhost:3020",
+        "webRoot": "${workspaceFolder}\\JavaScript\\my-react-app"
+    },
+    {
+        "type": "chrome",
+        "request": "attach",
+        "name": "Attach to Chrome",
+        "port": 9222,
+        "webRoot": "${workspaceFolder}\\JavaScript\\my-react-app"
+    }
     ]
 }
