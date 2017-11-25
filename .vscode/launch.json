@@ -10,6 +10,12 @@
     {
         "type": "node",
         "request": "launch",
+        "name": "BadooHackerRankTest.js",
+        "program": "${workspaceFolder}/JavaScript/BadooHackerRankTest.js"
+    },
+    {
+        "type": "node",
+        "request": "launch",
         "name": "MongoDBCloudConnectivityTest.js",
         "program": "${workspaceFolder}/JavaScript/MongoDBCloudConnectivityTest.js"
     },
