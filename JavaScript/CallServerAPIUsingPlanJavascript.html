@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script>
+      window.addEventListener('load',function(){
+        document. querySelector('form').addEventListener('submit', function(e){
+          e.preventDefault();
+          console.log("form has been submited by native javascript");
+          callAPI();
+        });
+      });
+      function callAPI() {
+          // 1. Instantiate XHR - Start 
+          var xhr; 
+          if (window.XMLHttpRequest) 
+              xhr = new XMLHttpRequest(); 
+          else if (window.ActiveXObject) 
+              xhr = new ActiveXObject("Msxml2.XMLHTTP");
+          else 
+              throw new Error("Ajax is not supported by your browser");
+          
+          // 2. Handle Response from Server - Start
+          xhr.onreadystatechange = function () {
+              if (xhr.readyState < 4)
+                  console.log("Loading...");
+              else if (xhr.readyState === 4) {
+                  if (xhr.status == 200 && xhr.status < 300){
+                    console.log(xhr.responseText);
+                    document. querySelector('#result').value = xhr.responseText;
+                  }
+              }
+          }
+          
+          // 3. Specify your action, location and Send to the server - Start   
+          //xhr.open('GET', 'https://www.ajax-tutor.com/demo/data1.html');
+          //xhr.open("POST", '/server', true);
+          xhr.open('GET', 'https://jsonmock.hackerrank.com/api/movies/search');
+          xhr.send(null); //in case of get it mostly have null
+          //xhr.send("foo=bar&lorem=ipsum"); 
+          // xhr.send(new Blob()); 
+          // xhr.send(new Int8Array()); 
+          // xhr.send({ foo: 'bar',loren: 'ipsum' }); 
+          // xhr.send(document);
+      }
+    </script>
+    <style>
+      body * {
+        margin: 10px;
+        border: 1px solid blue;
+      }
+    </style>
+</head>
+  <body class='layout'>
+      <form  action="https://jsonmock.hackerrank.com/api/movies/search" method="get" target="iframeTest">
+          First name:<br>
+          <input type="text" name="firstname" value="Mickey"><br>
+          Last name:<br>
+          <input type="text" name="lastname" value="Mouse"><br>
+          <input type="submit" value="Submit"> <!--onclick="callAPI();"-->
+      </form>
+      <br>
+      <input type="text" id="result" style="height: 200px;width:400px">
+  </body>
+</html>
