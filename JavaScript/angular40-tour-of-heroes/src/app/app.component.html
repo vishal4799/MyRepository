@@ -1,0 +1,10 @@
+<h1>{{title}}</h1>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/heroes">Heroes</a>
+</nav>
+<router-outlet></router-outlet>
+<app-messages></app-messages>
+<button (click)="getHTTP()">Test Angular HTTP Module</button><br>
+<textarea ngModel="{{response}}" style="width: 500px;height:200px"></textarea>
+<textarea ngModel="{{totalMovies}}" style="width: 500px;height:200px"></textarea>
