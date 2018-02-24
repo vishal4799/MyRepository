@@ -27,15 +27,11 @@ public class hasCodeAndEquals {
 		A a2= new A("vishal");
 		System.out.println("\n#code of a1:"+a1.hashCode());
 		System.out.println("#code of a2:"+a2.hashCode());
-		//System.out.println("#code of str3:"+str3.hashCode());
 		System.out.println("a1.equals(a2):"+a1.equals(a2));
 		System.out.println("a1 == a2:"+ (a1 == a2));
-		//System.out.println("str3.equals(str2):"+str3.equals(str2));
-		//System.out.println("str3 == str2:"+ (str3 == str2));
 		HashMap<A, Integer> hm2 = new HashMap<A, Integer>();
 		hm2.put(a2, 2);
 		hm2.put(a1, 1);
-		//hm2.put(str3, 3);
 		System.out.println(hm2.get(a2));
 		System.out.println(hm2.toString());
 	}

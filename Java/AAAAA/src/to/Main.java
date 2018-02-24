@@ -1,13 +1,15 @@
 package com.bmc.truesight.wscommon.itda.to;
 
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.bmc.truesight.wscommon.tsws.ValidationException;
 import com.bmc.truesight.wscommon.util.Messages;
 
-public class Main {
+public class Main extends Observable{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -17,7 +19,8 @@ public class Main {
 	        throws IllegalArgumentException
 	    {
 	        if (jsonString != null)
-	        {
+	        {	notifyObservers();
+	        	addObserver(null);
 	    		ObjectMapper jsonObjectMapper = new ObjectMapper();
 
 	    		ItdaConsumptionResponseTO data = null;
@@ -40,4 +43,12 @@ public class Main {
 	        }
 	        throw new IllegalArgumentException("Formatting of Null JSON String is not supported");
 	    }
+}
+class Student implements Observer 
+{
+    @Override
+    public void update(Observable o, Object arg) 
+    {
+        System.out.println("Message board changed: " + arg);
+    }
 }

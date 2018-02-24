@@ -18,7 +18,9 @@ public class SetDemo {
 		System.out.println(e1.hashCode());
 		System.out.println(e2.hashCode());
 		if(e1.equals(e2)){
-			System.out.println("not equal");
+			System.out.println("e1.equals(e2) : true");
+		} else if (e1 == e2){
+			System.out.println("e1 == e2 : true");
 		}
 	}
 

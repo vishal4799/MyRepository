@@ -1,4 +1,3 @@
-import com.bmc.ola.utils.Utils;
 import org.apache.commons.lang3.StringUtils;
 
 public class InetAddressTest {

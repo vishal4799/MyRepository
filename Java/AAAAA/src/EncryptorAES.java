@@ -1,4 +1,4 @@
-import com.bmc.ola.utils.AESEncryptor;
+//import com.bmc.ola.utils.AESEncryptor;
 //import org.apache.shiro.crypto.hash.Sha256Hash;
 public class EncryptorAES {
 
@@ -18,7 +18,7 @@ public class EncryptorAES {
 		//String passwordToDecrypt = "FAAJrPjNYv1rrBePFFozfg=="; //2;
 		String passwordToDecrypt = "J7bv62zWVQJ+FgPrm8+dBQ=="; //1;
 		
-		System.out.println("password:"+AESEncryptor.decrypt(passwordToDecrypt)+"::");
+		//System.out.println("password:"+AESEncryptor.decrypt(passwordToDecrypt)+"::");
 	}
 
 }

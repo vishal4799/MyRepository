@@ -51,7 +51,7 @@
         // }
     // creating object to pass on propertiesObject optional argument,Obj structure of it is really important
         var temp = {p: { value : "vishal" }, q : {value:2}};
-        //when you pass temp as propertiesObject, it will map temp's p,q as key and p.value,q.value as values in newly created object. in new object structure will be {p:"vishal",q:2}
+        // when you pass temp as propertiesObject, it will map temp's p,q as key and p.value,q.value as values in newly created object. in new object structure will be {p:"vishal",q:2}
         // you cant declare temp as temp = {p:1} or temp = {p : {anyWordOtherthanValue : "vishal"}}
         // it's property descriptor, for more details visit https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty 
     // By below statement, object employee(memory address xyz) will become createObj4's prototype

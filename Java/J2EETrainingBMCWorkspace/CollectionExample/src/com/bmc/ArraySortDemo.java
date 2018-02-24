@@ -10,7 +10,7 @@ public class ArraySortDemo {
 		Arrays.sort(names);
 		System.out.println(Arrays.toString(names));//names.toString doesnt return elements, will print oject details
 		Arrays.sort(names, new MyStringComparator());//by length
-		System.out.println(Arrays.toString(names));
+		System.out.println("by len:"+Arrays.toString(names));
 		Arrays.sort(names, new Comparator<String>() {
 			@Override
 			public int compare(String s1, String s2){

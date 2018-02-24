@@ -17,6 +17,7 @@ var SAMPLE_OBJECT = (function(){
 
 
 
+console.log("PrivateProp : "+SAMPLE_OBJECT.privateProp1);
 console.log("PrivateProp1 : "+SAMPLE_OBJECT.getPrivateProp1());
 console.log("PublicProp1 : "+SAMPLE_OBJECT.publicProp1);
 
