@@ -1,7 +1,7 @@
 import java.lang.annotation.Documented;
 
 @Documented
-public @interface ClassPreamble {
+public @interface ClassPreamble { test
    String author();
    String date();
    int currentRevision() default 1;
