@@ -1,0 +1,7 @@
+package com.bmc.entities;
+//Entity Class also called Domain Class
+//Represents database table EMPLOYEEBMCTABLE
+
+public class Employee {
+
+}

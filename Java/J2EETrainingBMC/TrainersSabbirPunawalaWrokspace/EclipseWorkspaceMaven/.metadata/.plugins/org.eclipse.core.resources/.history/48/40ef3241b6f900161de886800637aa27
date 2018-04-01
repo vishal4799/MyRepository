@@ -1,0 +1,45 @@
+package com.bmc.collections;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class MapDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Map<Integer,String> map=new HashMap<>();
+
+		System.out.println(map.put(1, "sabbir"));
+		System.out.println(map.put(2, "Amit"));
+		System.out.println(map.put(1, "Rakesh"));
+		
+		Set<Map.Entry<Integer,String>> set=map.entrySet();
+		
+		Iterator<Map.Entry<Integer,String>> iterator=set.iterator();
+		while(iterator.hasNext()){
+			
+			Map.Entry<Integer,String> me=iterator.next();
+			System.out.println("Key:"+me.getKey());
+			System.out.println("Value:"+me.getValue());
+		}
+		
+		
+		Set<Integer> setKeys=map.keySet();
+		Iterator<Integer> iteratorInteger=setKeys.iterator();
+		while(iteratorInteger.hasNext()){
+			System.out.println(map.get(iteratorInteger.next()));
+		}
+		map.forEach((k,v)->{
+			System.out.println(k);
+			System.out.println(v);
+		
+		});
+		
+		long count=map.entrySet().stream().filter(map -> map.getKey() == 1).count();
+		
+	}
+
+}

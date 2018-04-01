@@ -1,0 +1,67 @@
+package com.bmc.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.bmc.entities.Employee;
+import com.bmc.helper.ConnectionManager;
+
+public class JDBCEmployeeDAOImpl implements EmployeeDAO {
+	
+
+	public List<Employee> getAllEmployees() throws ClassNotFoundException,
+			SQLException {
+		// TODO Auto-generated method stub
+		
+		Connection connection=ConnectionManager.openConnection();
+		Statement statement=connection.createStatement();
+		ResultSet resultSet=statement.executeQuery("select * from EMPLOYEEBMCTABLE");
+		List<Employee> empList=new ArrayList<>();
+		while(resultSet.next()){
+			Employee employee=new Employee();
+			employee.setEmpId(resultSet.getInt("emp_id"));
+			employee.setEmpName(resultSet.getString("emp_name"));
+			employee.setEmpSalary(resultSet.getDouble("emp_salary"));
+			employee.setEmpDesignation(resultSet.getString("emp_designation"));
+			empList.add(employee);
+		}
+		
+		
+		return empList;
+	}
+
+	public Employee getEmployee(int empId) throws ClassNotFoundException,
+			SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean persistEmployee(Employee employee)
+			throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean updateEmployeeSalaryById(int empId, double newSalary)
+			throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean deleteEmployee(int empId) throws ClassNotFoundException,
+			SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public double computeTax(int empId) throws ClassNotFoundException,
+			SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

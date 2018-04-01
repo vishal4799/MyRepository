@@ -1,0 +1,20 @@
+package com.bmc.helper;
+
+import java.sql.Connection;
+
+public class ConnectionManager {
+	
+	private Connection connection;
+	
+	private static ResourceReader resource=new ResourceReader("DBConnection");
+	
+	
+	public static Connection openConnection(){
+		Class.forName(resource.)
+		
+	}
+
+	public static void closeConnection(){
+		
+	}
+}

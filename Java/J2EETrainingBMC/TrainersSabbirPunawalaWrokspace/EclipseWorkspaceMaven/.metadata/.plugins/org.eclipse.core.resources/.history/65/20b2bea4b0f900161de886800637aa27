@@ -1,0 +1,19 @@
+package com.bmc.collections;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class SetDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Set<String> setString=new HashSet<>();
+		System.out.println(setString.add("sabbir"));
+		System.out.println(setString.add("sabbir"));
+
+		
+
+	}
+
+}

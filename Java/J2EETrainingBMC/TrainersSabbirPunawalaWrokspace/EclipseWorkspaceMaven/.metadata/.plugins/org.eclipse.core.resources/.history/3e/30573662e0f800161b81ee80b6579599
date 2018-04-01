@@ -1,0 +1,11 @@
+package com.bmc.multithreading;
+
+public class Person implements Runnable{
+	
+	@Override
+	public void run(){
+		
+		
+	}
+
+}

@@ -1,0 +1,21 @@
+package com.bmc.test;
+
+import java.util.List;
+
+import org.springframework.web.context.WebApplicationContext;
+
+import com.bmc.entities.Employee;
+import com.bmc.spring.dao.JPAEmployeeDAOImpl;
+
+public class TestAllEmployee {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		//List<Employee> empList=employeeDAO.getAllEmployees();
+		//System.out.println(empList);
+		
+	}
+
+}

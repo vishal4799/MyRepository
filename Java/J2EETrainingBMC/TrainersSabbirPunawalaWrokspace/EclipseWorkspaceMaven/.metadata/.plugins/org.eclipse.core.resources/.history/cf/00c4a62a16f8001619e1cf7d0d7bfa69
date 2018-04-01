@@ -1,0 +1,26 @@
+package com.bmc.helper;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConnectionManager {
+	
+	private static Connection connection;
+	
+	private static ResourceReader resource=new ResourceReader("DBConnection");
+	
+	
+	public static Connection openConnection() throws ClassNotFoundException, SQLException{
+		Class.forName(resource.getDriver());
+		connection=DriverManager.getConnection(resource.getUrl(),resource.getUser(),resource.getPassword());
+		return connection;
+		
+	}
+
+	public static void closeConnection(){
+		
+		connection.close();
+		
+	}
+}

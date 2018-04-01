@@ -1,0 +1,21 @@
+package com.bmc.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+//Declaration of CRUD operation for Domain Class-Employee
+
+
+import com.bmc.entities.Employee;
+
+public interface EmployeeDAO {
+	
+	public List<Employee> getAllEmployees() throws ClassNotFoundException,SQLException;
+	public Employee getEmployee(int empId) throws ClassNotFoundException,SQLException;
+	public boolean persistEmployee(Employee employee) throws ClassNotFoundException,SQLException;
+	public boolean updateEmployeeSalaryById(int empId,double newSalary)throws ClassNotFoundException,SQLException;
+	public boolean deleteEmployee(int empId)throws ClassNotFoundException,SQLException;
+	public double computeTax(int empId)throws ClassNotFoundException,SQLException;
+	
+	
+
+}

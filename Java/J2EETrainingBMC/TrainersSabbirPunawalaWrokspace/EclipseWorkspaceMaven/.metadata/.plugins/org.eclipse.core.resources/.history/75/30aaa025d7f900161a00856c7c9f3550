@@ -1,0 +1,17 @@
+package com.bmc.helper;
+
+import com.bmc.dao.EmployeeDAO;
+import com.bmc.dao.HibernateEmployeeDAOImpl;
+import com.bmc.dao.JDBCEmployeeDAOImpl;
+import com.bmc.dao.SpringJDBCEmployeeDAOImpl;
+
+public class FactoryEmployeeDAO {
+	
+	public static EmployeeDAO createEmployeeDAO(){
+		
+		EmployeeDAO employeeDAO=new SpringJDBCEmployeeDAOImpl();
+		return employeeDAO;
+		
+	}
+
+}

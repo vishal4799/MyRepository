@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ctx="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd ">
+	
+	<!-- implies annotation based configuration -->
+	<ctx:annotation-config></ctx:annotation-config>
+	<!-- package Spring needs to scan to identify Components i.e Spring bean -->
+	<ctx:component-scan base-package="com.bmc.*"></ctx:component-scan>
+	
+	<bean id="jdbctemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+<constructor-arg index="0" ref="drivermanagerdatasource"></constructor-arg>
+
+</bean>
+
+<bean id="drivermanagerdatasource" 
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+      <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+      <property name="username" value="sabbir"/>
+      <property name="password" value="sabbir"/>
+      </bean>
+	
+	
+	
+	<bean id="query" class="com.bmc.helper.Query">
+	<property name="selectQuery" value="select * from EMPLOYEEBMCTABLE"></property>
+	<property name="insertQuery" value="insert into EMPLOYEEBMCTABLE values(?,?,?,?)"/>
+	</bean>
+	
+</beans>

@@ -1,0 +1,10 @@
+package com.bmc.nio;
+
+public class Visitor extends User{
+	
+	private int visitorId;
+	private String VisitorLocation;
+	
+	
+
+}

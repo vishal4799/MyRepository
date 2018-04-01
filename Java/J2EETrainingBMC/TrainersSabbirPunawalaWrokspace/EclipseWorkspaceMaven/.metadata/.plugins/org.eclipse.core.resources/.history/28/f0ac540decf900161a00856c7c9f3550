@@ -1,0 +1,84 @@
+package com.sony.aspect;
+
+import java.util.Date;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.web.servlet.ModelAndView;
+
+@Aspect
+
+public class LoggingAspect {
+	
+	Logger logger=Logger.getLogger(LoggingAspect.class);
+	
+	
+	@Before("execution(* com.sony.*.*.*(..))")
+	public void before(JoinPoint method){
+		logger.info("Before advice applied on: "+method.getSignature().getName()+" at "+new Date());
+		
+	}
+
+	@After("execution(* com.sony.*.*.*(..))")
+	public void after(JoinPoint method){
+		
+		logger.info("After advice applied on: "+method.getSignature().getName()+" at "+new Date());
+
+	}
+
+@AfterReturning(pointcut ="execution(* com.sony.controller.*.*(..))",
+		      returning= "result")
+	public void afterReturning(JoinPoint method,Object result){
+	
+	if(result instanceof ModelAndView){
+		
+		ModelAndView mv=(ModelAndView)result;
+		logger.info("After returning advice applied on: "+method.getSignature().getName()+" view set is: "+mv.getViewName());
+	}
+		
+	}
+@AfterThrowing(
+	      pointcut = "execution(* com.sony.*.*.*(..))",
+	      throwing= "error")
+public void afterThrowing(JoinPoint method,Throwable error){
+	
+	logger.warn("After throwing advice applied on: "+method.getSignature().getName()+" threw an exception "+error.getCause());;
+}
+
+@Pointcut("execution(* com.sony.controller.EmployeeController.locationList(..))")
+public void getPointCut(){
+		
+}
+@Around("getPointCut()")
+public Object around(ProceedingJoinPoint method){
+	
+	logger.info("Around advice applied on :"+ method.getSignature().getName());
+	Object result=null;
+	try {
+		 result=method.proceed();
+	} catch (Throwable e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	if(result instanceof List){
+		List list=(List)result;
+		list.add("Delhi");
+		result=list;
+		
+	}
+	logger.info("Around advice return value: "+result);
+	return result;
+	
+}
+
+}

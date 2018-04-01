@@ -1,0 +1,14 @@
+package com.bmc.multithreading;
+
+public class Queue {
+	
+	private int n;
+	
+	public void put(int n){
+		
+		this.n=n;
+		System.out.println("Producer put:"+n);
+		
+	}
+
+}

@@ -1,0 +1,48 @@
+package com.bmc.collections;
+
+import java.util.Optional;
+
+public class OptionalDemo {
+	
+	
+	
+	public Integer sum(Optional<Integer> a,Optional<Integer> b){
+		//implictly a,b will be unboxed and then
+		//arithmetic operation + will be performed
+		
+		//Determine if  a and b has actual values
+		System.out.println("param a is present ?:"+a.isPresent());
+		System.out.println("param b is present ?:"+b.isPresent());
+		
+		//since a is not present
+		//we can assign default value to a
+	
+		if(!a.isPresent()){
+			return a.orElse(new Integer(0))+b.get();
+		}
+		else if(!b.isPresent()){
+			return a.get()+b.orElse(new Integer(0));
+
+		}else{
+			return a.get()+b.get();
+		}
+		
+		
+		
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Integer o1=null;
+		Integer o2=20;
+		Optional<Integer> op1=Optional.ofNullable(o1);
+		Optional<Integer> op2=Optional.ofNullable(o2);
+		OptionalDemo od=new OptionalDemo();
+		System.out.println(od.sum(op1,op2));
+		
+
+	}
+
+}

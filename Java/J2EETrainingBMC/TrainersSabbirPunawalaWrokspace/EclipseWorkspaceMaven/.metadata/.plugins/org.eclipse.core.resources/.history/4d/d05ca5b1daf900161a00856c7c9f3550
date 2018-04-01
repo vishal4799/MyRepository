@@ -1,0 +1,88 @@
+package com.sony.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.sony.entities.Employee;
+import com.sony.helper.ConnectionManager;
+import com.sony.helper.Query;
+@Repository
+public class JDBCEmployeeDAOImpl implements EmployeeDAO {
+	@Autowired
+	private ConnectionManager manager;
+    @Autowired
+	private Query query;
+	@Override
+	public List<Employee> getAllEmployees() throws ClassNotFoundException,
+			SQLException {
+		// TODO Auto-generated method stub
+		Connection connection=manager.openConnection();
+		Statement statement=connection.createStatement();
+		ResultSet resultSet=statement.executeQuery(query.getSelectQuery());
+		List<Employee> empList=new ArrayList<Employee>();
+		while(resultSet.next()){
+			Employee employee=new Employee();
+			employee.setEmpId(resultSet.getInt("employee_id"));
+			employee.setEmpName(resultSet.getString("employee_name"));
+			employee.setEmpSalary(resultSet.getDouble("employee_salary"));
+			employee.setEmpDesignation(resultSet.getString("employee_designation"));
+			empList.add(employee);		
+		}
+		manager.closeConnection();
+		return empList;
+	}
+	@Override
+	public boolean persistEmployee(Employee employee)
+			throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		
+		Connection connection=manager.openConnection();
+		PreparedStatement statement=connection.prepareStatement(query.getInsertQuery());
+		statement.setInt(1, employee.getEmpId());
+		statement.setString(2, employee.getEmpName());
+		statement.setDouble(3, employee.getEmpSalary());
+		statement.setString(4, employee.getEmpDesignation());
+		statement.setString(5, employee.getLocationName());
+		int rows=statement.executeUpdate();
+		if(rows>0)
+			return true;
+		else
+		return false;
+	}
+	@Override
+	public List<String> getLocationNames() throws ClassNotFoundException,
+			SQLException {
+		// TODO Auto-generated method stub
+		
+		Connection connection=manager.openConnection();
+		Statement statement=connection.createStatement();
+		ResultSet resultSet=statement.executeQuery(query.getSelectLocationName());
+		List<String> locationList=new ArrayList<String>();
+		while(resultSet.next()){
+			locationList.add(resultSet.getString(1));
+		}
+		return locationList;
+	}
+	@Override
+	public int generateEmpId() throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		Connection connection=manager.openConnection();
+		Statement statement=connection.createStatement();
+		ResultSet resultSet=statement.executeQuery(query.getGenerateEmpIdQuery());
+		int empId=0;
+		while(resultSet.next()){
+			empId=resultSet.getInt(1);
+		}
+		
+		return empId;
+	}
+
+}

@@ -1,0 +1,23 @@
+package com.bmc.helper;
+
+public class Query {
+	
+	private String selectQuery;
+	
+	
+	
+	
+
+	
+	public String getSelectQuery() {
+		return selectQuery;
+	}
+
+	public void setSelectQuery(String selectQuery) {
+		this.selectQuery = selectQuery;
+	}
+
+	
+	
+
+}

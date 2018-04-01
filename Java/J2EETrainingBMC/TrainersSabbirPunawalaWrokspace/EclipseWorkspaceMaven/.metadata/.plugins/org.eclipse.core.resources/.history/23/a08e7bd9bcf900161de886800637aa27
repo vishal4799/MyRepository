@@ -1,0 +1,13 @@
+package com.bmc.collections;
+
+public class SortList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		List<String> names=new ArrayList<>();
+		
+
+	}
+
+}

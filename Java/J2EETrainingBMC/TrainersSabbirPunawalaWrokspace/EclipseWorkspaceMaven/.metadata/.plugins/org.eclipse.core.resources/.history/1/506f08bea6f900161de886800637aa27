@@ -1,0 +1,9 @@
+package com.bmc.collections;
+
+public class CacheString {
+	
+	private String data;
+	
+	
+
+}

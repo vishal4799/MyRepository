@@ -1,0 +1,64 @@
+package com.bmc.multithreading;
+
+import java.util.concurrent.CyclicBarrier;
+
+public class CyclicBarrierDemo {
+
+	class BarrierRunnable1 implements Runnable{
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			System.out.println("Barrier 1 executed");
+		}
+		
+		
+	}
+	
+	class BarrierRunnable2 implements Runnable{
+		
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			System.out.println("Barrier 2 executed");
+		}
+	}
+	
+	class MyRunnable implements Runnable{
+		
+		private CyclicBarrier barrier1;
+		private CyclicBarrier barrier2;
+		
+		public MyRunnable(CyclicBarrier barrier1,CyclicBarrier barrier2){
+			this.barrier1=barrier1;
+			this.barrier2=barrier2;
+		}
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		CyclicBarrierDemo outer=new CyclicBarrierDemo();
+		
+		CyclicBarrier barrier1=new CyclicBarrier(2,outer.new BarrierRunnable1());
+		CyclicBarrier barrier2=new CyclicBarrier(2,outer.new BarrierRunnable2());
+		
+
+		
+
+	}
+
+}

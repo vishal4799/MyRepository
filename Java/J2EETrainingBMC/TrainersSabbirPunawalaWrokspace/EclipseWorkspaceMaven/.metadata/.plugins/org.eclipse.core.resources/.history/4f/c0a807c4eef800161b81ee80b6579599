@@ -1,0 +1,22 @@
+package com.bmc.multithreading;
+
+public class CyclicBarrierDemo {
+
+	class BarrierRunnable1 implements Runnable{
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			System.out.println("Barrier 1 executed");
+		}
+		
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+
+	}
+
+}

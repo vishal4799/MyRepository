@@ -1,0 +1,136 @@
+package com.bmc.spring.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+//Employee is Entity Class which represents employee_table in database
+//Every entity class whose life cycle is to be managed by ORM tool must be annotated by @Entity or
+//information must be given in XML File i.e hbm.xml in hibernate
+//instance of entity class represents rows in employee_table in database
+@Entity
+@Table(name="employee_table")
+//All queries relevant to Employee Entity should be placed
+//in Employee class itself
+//If there are any changes in Employee class only Employee class
+//needs to be changed
+//for ex if attribute names or attribute data type changes
+//we have to make changes in queries mentioned in Employee class only
+
+@NamedQueries(
+		
+		{
+		@NamedQuery(name="FindAllEmployees",query="select o from Employee o"),
+		@NamedQuery(name="FindEmployeeById",query="select o from Employee o where o.empId=?1"),
+		@NamedQuery(name="UpdateSalaryById",query="update Employee e set e.empSalary=:newSal where e.empId=:id")
+		}
+		
+		)
+
+
+
+public class Employee {
+	
+	//Every Entity class should have no-arg constructor
+	public Employee(){}
+	
+	
+   //Every Entity class should have primary key attribute
+	//must be annotated by @Id
+	@Id
+	@Column(name="employee_id")
+	private int empId;
+	@Column(name="employee_name",nullable=false)
+	private String empName;
+	@Column(name="employee_salary")
+	private double empSalary;
+	@Column(name="employee_designation")
+	private String empDesignation;
+	@Column(name="location_name")
+	private String locationName;
+	
+	
+	
+	
+	
+	public String getLocationName() {
+		return locationName;
+	}
+
+	public void setLocationName(String locationName) {
+		this.locationName = locationName;
+	}
+
+	public int getEmpId(){
+		return empId;
+	}
+
+	public void setEmpId(int empId){
+		
+		
+		this.empId=empId;
+	}
+
+	public String getEmpName() {
+		return empName;
+	}
+
+	public void setEmpName(String empName) {
+		this.empName = empName;
+	}
+
+	public double getEmpSalary() {
+		return empSalary;
+	}
+
+	public void setEmpSalary(double empSalary) {
+		this.empSalary = empSalary;
+	}
+
+	public String getEmpDesignation() {
+		return empDesignation;
+	}
+
+	public void setEmpDesignation(String empDesignation) {
+		this.empDesignation = empDesignation;
+	}
+	
+	
+
+	@Override
+	public boolean equals(Object object){
+		boolean result=false;
+		if(object instanceof Employee && object!=null){
+			Employee employee=(Employee)object;
+			if(this.empId==employee.empId &&
+					this.empName.equals(employee.empName) && 
+					this.empSalary==employee.empSalary && 
+					this.empDesignation.equals(employee.empDesignation)){
+				result= true;
+			}
+			
+		}
+		return result;
+	}
+
+	
+	
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", empName=" + empName
+				+ ", empSalary=" + empSalary + ", empDesignation="
+				+ empDesignation + "]";
+	}
+	@Override
+	public int hashCode(){
+		return empId^empName.hashCode()^(int)empSalary^
+				empDesignation.hashCode();
+		
+		
+	}
+	
+	
+}

@@ -1,0 +1,20 @@
+package com.bmc.collections;
+
+import java.util.Arrays;
+
+public class ArraySortDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String names[]=new String[]{"sachin","sabbir","sumeet"};
+		
+		Arrays.sort(names);
+		
+		System.out.println(Arrays.toString(names));
+		
+		Arrays.sort(names,new MyStringComparator());
+
+	}
+
+}

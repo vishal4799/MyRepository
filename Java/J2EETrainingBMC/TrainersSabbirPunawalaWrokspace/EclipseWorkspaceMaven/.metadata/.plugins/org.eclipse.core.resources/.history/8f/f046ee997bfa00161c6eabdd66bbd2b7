@@ -1,0 +1,64 @@
+package com.bmc.nio;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+
+public class SerializeDemo {
+
+	public static void main(String[] args)  {
+		// TODO Auto-generated method stub
+		
+		Logger logger=Logger.getLogger("SerializeDemo");
+		
+		
+		
+		
+		OutputStream os=null;
+		logger.log(Level.INFO, "Serialization started:");
+		try{
+			
+			FileHandler handler=new FileHandler("D:\\IO\\log.txt");
+			LogRecord records=new LogRecord(Level.INFO, "Serialization started:");
+			handler.publish(records);
+			
+			
+
+		File file=new File("D:\\IO\\visitor.ser");
+		 os=new FileOutputStream(file);
+		
+		Visitor visitor=new Visitor("sabbirp","sabbir123",1001,"Pune");
+		logger.log(Level.INFO,"Visitor object created successfully");
+		
+		ObjectOutputStream oos=new ObjectOutputStream(os);
+		oos.writeObject(visitor);
+		
+		}catch(IOException e){
+			
+			logger.log(Level.SEVERE,"Exception occurred:"+e.getMessage());
+		}
+		
+		finally{
+			
+			try {
+				os.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				logger.log(Level.SEVERE,"Exception occurred :"+e.getMessage());
+			}
+			
+			
+		}
+		
+		
+
+	}
+
+}

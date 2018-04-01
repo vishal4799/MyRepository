@@ -1,0 +1,18 @@
+package com.bmc.multithreading;
+
+public class ExecutorDemo1 {
+	
+	class SumTask implements Runnable{
+		
+		@Override
+		public void run(){
+			
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

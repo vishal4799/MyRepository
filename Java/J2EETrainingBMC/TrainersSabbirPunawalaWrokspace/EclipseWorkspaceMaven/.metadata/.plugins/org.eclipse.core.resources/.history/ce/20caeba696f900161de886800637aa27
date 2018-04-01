@@ -1,0 +1,46 @@
+package com.bmc.collections;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class ListDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		List<Integer> list=new ArrayList<>();
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.add(40);
+	
+		
+		for(int i=0;i<list.size();i++){
+			int k=(Integer)list.get(i);
+			System.out.println(k++);
+		}
+		
+		for(Integer o:list){
+			int k=(Integer)o;
+			System.out.println(k--);
+			//list.remove(o); //throws ConcurrentModicationException
+		}
+		
+		list.forEach((n)->{System.out.println(n);});
+		
+		Iterator iterator=list.iterator();
+		
+		while(iterator.hasNext()){
+			
+			int o=(Integer)iterator.next();
+			System.out.println(o--);
+			iterator.remove();
+			
+		}
+		System.out.println(list);
+		
+
+	}
+
+}

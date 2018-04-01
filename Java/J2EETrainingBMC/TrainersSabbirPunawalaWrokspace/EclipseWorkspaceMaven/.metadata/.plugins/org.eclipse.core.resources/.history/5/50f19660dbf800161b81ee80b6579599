@@ -1,0 +1,8 @@
+package com.bmc.multithreading;
+
+public class Queue {
+	
+	private int n;
+	
+
+}

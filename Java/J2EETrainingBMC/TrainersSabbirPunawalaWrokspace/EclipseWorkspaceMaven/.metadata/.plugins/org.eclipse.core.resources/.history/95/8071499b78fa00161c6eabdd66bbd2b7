@@ -1,0 +1,73 @@
+package com.bmc.nio;
+
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.io.Serializable;
+
+public class Visitor extends User implements Externalizable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int visitorId;
+	private String visitorLocation;
+	
+	
+	public Visitor(String userName,String password,int visitorId,String visitorLocation){
+		super(userName,password);
+		this.visitorId=visitorId;
+		this.visitorLocation=visitorLocation;
+	}
+
+
+	public int getVisitorId() {
+		return visitorId;
+	}
+
+
+	public void setVisitorId(int visitorId) {
+		this.visitorId = visitorId;
+	}
+
+
+	public String getVisitorLocation() {
+		return visitorLocation;
+	}
+
+
+	public void setVisitorLocation(String visitorLocation) {
+		this.visitorLocation = visitorLocation;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Visitor [visitorId=" + visitorId + ", visitorLocation="
+				+ visitorLocation + "]";
+	}
+
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		// TODO Auto-generated method stub
+		
+		out.writeInt(visitorId);
+		out.writeBytes(visitorLocation);
+		out.writeChars(getUserName());
+		
+	}
+
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException,
+			ClassNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+}

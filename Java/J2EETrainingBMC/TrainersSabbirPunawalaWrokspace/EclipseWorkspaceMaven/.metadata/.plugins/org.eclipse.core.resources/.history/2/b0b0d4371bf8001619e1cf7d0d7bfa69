@@ -1,0 +1,13 @@
+package com.bmc.helper;
+
+import com.bmc.dao.EmployeeDAO;
+
+public class FactoryEmployeeDAO {
+	
+	public static EmployeeDAO createEmployeeDAO(){
+		
+		
+		
+	}
+
+}

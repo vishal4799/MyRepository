@@ -1,0 +1,32 @@
+package com.bmc.collections;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class SortList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		List<String> names=new ArrayList<>();
+		names.add("sabbir");
+		names.add("amit");
+		names.add("sumeet");
+		names.add("sachin");
+		
+		Collections.sort(names);
+		Collections.sort(names,
+				(s1,s2)->{
+					
+					return s1.compareTo(s2);
+				}
+				
+				);
+		
+		
+		
+
+	}
+
+}

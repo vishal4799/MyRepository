@@ -1,0 +1,53 @@
+package com.bmc.helper;
+
+public class Query {
+	
+	public Query(){}
+	
+	private String selectQuery;
+	
+	private String insertQuery;
+	
+	private String selectLocationName;
+	
+	private String generateEmpIdQuery;
+	
+	
+	
+	
+
+	public String getGenerateEmpIdQuery() {
+		return generateEmpIdQuery;
+	}
+
+	public void setGenerateEmpIdQuery(String generateEmpIdQuery) {
+		this.generateEmpIdQuery = generateEmpIdQuery;
+	}
+
+	public String getSelectLocationName() {
+		return selectLocationName;
+	}
+
+	public void setSelectLocationName(String selectLocationName) {
+		this.selectLocationName = selectLocationName;
+	}
+
+	public String getSelectQuery() {
+		return selectQuery;
+	}
+
+	public void setSelectQuery(String selectQuery) {
+		this.selectQuery = selectQuery;
+	}
+
+	public String getInsertQuery() {
+		return insertQuery;
+	}
+
+	public void setInsertQuery(String insertQuery) {
+		this.insertQuery = insertQuery;
+	}
+	
+	
+
+}

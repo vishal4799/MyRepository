@@ -1,0 +1,67 @@
+package com.bmc.collections;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class SortList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		List<String> names=new ArrayList<>();
+		names.add("sabbir");
+		names.add("amit");
+		names.add("sumeet");
+		names.add("sachin");
+		
+		Collections.sort(names);
+		System.out.println(names);
+		Collections.sort(names,
+				(s1,s2)->{
+					
+					return s1.compareTo(s2);
+				}
+				
+				);
+		
+		
+	
+		System.out.println(names);
+		
+		Employee e1=new Employee(101,"sabbir",65000,"Trainer");
+		Employee e2=new Employee(102,"amit",95000,"Trainer");
+		Employee e3=new Employee(103,"chirag",55000,"Trainer");
+		Employee e4=new Employee(104,"rohit",35000,"Trainer");
+		
+		List<Employee> empList=new ArrayList<>();
+		empList.add(e1);
+		empList.add(e2);
+		empList.add(e3);
+		empList.add(e4);
+		
+		Collections.sort(empList,
+				(emp1,emp2)->{
+					
+					if(emp1.getEmpId()<emp2.getEmpId()){
+						return -1;
+					}
+					if(emp1.getEmpId()>emp2.getEmpId()){
+						return 1;
+					}
+					return 0;	
+				}
+				);
+	
+		empList.forEach(System.out::println);
+		
+		Collections.sort(empList,Employee::compareByName);
+		
+		
+		
+		
+		
+
+	}
+
+}

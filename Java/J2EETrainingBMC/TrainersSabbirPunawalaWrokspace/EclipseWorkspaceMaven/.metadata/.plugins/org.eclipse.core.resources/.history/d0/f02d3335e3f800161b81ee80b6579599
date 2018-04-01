@@ -1,0 +1,32 @@
+package com.bmc.multithreading;
+
+public class ExecutorDemo1 {
+	
+	class SumTask implements Runnable{
+		
+		private int count;
+		
+		public SumTask(int count){
+			this.count=count;
+		}
+		
+		public int sum(){
+			int sum=0;
+			for(int i=1;i<=count;i++){
+				sum+=i;
+			}
+			return sum;
+		}
+		
+		@Override
+		public void run(){
+			
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

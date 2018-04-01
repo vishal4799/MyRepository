@@ -1,0 +1,16 @@
+package com.bmc.multithreading;
+
+public class MultithreadedApplication {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//1.Thread does not exist
+		
+		//2.Thread is born
+		
+		Thread worker1=new Thread();
+
+	}
+
+}

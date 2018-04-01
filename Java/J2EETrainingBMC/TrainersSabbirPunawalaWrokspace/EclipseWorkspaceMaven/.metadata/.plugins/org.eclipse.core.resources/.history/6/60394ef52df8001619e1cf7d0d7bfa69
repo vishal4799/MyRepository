@@ -1,0 +1,19 @@
+package com.bmc.utility;
+
+import org.hibernate.Session;
+import org.hibernate.cfg.AnnotationConfiguration;
+
+public class HibernateUtils {
+	
+	private static Session session;
+	
+	public static Session createSession(){
+		
+		AnnotationConfiguration configuration=new AnnotationConfiguration();
+		configuration.configure();
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,17 @@
+package com.bmc.nio;
+
+public class Visitor extends User{
+	
+	private int visitorId;
+	private String visitorLocation;
+	
+	
+	public Visitor(String userName,String password,int visitorId,String visitorLocation){
+		super(userName,password);
+		this.visitorId=visitorId;
+		this.visitorLocation=visitorLocation;
+	}
+
+	
+	
+}

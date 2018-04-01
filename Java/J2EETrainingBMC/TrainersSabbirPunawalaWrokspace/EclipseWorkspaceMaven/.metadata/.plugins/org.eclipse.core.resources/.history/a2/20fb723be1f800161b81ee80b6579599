@@ -1,0 +1,14 @@
+package com.bmc.multithreading;
+
+public class SynchronizationDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		ATM atm=new ATM("ICICI Bank","Yerwada");
+		
+		Thread worker1=new Thread(new Person("Sabbir"),atm);
+
+	}
+
+}

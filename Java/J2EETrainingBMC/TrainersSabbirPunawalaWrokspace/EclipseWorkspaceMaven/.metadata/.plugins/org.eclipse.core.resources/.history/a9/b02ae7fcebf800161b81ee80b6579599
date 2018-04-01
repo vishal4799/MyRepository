@@ -1,0 +1,59 @@
+package com.bmc.multithreading;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+public class ExecutorDemo2 {
+	
+	class SumTask implements Callable<Integer>
+	{
+		private int count;
+		public SumTask(int count){
+			this.count=count;
+		}
+		
+		public int sum(){
+			int sum=0;
+			for(int i=1;i<=count;i++){
+				sum+=i;
+				
+			}
+			return sum;
+			
+		}
+		
+
+		@Override
+		public Integer call() throws Exception {
+			// TODO Auto-generated method stub
+			int sum=sum();
+			System.out.println("Sum is:"+sum+" Thread id: "+Thread.currentThread().getId());
+			return sum;
+		}
+		
+		
+	}
+
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
+		// TODO Auto-generated method stub
+		
+		ExecutorService service=Executors.newFixedThreadPool(10);
+		Set<Future<Integer>> set=new HashSet<>();
+		for(int i=1;i<=20;i++){
+			Future<Integer> future=service.submit(new ExecutorDemo2().new SumTask(i*i));
+			set.add(future);
+		}
+		
+		for(Future future:set){
+			System.out.println("Computed value:"+future.get());
+		}
+		
+
+	}
+
+}

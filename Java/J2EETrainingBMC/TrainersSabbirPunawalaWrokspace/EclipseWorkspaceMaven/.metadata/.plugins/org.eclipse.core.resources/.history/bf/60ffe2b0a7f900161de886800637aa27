@@ -1,0 +1,9 @@
+package com.bmc.collections;
+
+public class CacheAny<T> {
+	
+	private T data;
+	
+	
+
+}

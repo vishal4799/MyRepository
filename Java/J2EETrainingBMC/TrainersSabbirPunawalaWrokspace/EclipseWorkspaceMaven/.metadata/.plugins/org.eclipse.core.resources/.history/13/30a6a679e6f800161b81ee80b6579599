@@ -1,0 +1,46 @@
+package com.bmc.multithreading;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ExecutorDemo2 {
+	
+	class SumTask implements Callable
+	{
+		private int count;
+		public SumTask(int count){
+			this.count=count;
+		}
+		
+		public int sum(){
+			int sum=0;
+			for(int i=1;i<=count;i++){
+				sum+=i;
+				
+			}
+			return sum;
+			
+		}
+		
+
+		@Override
+		public Object call() throws Exception {
+			// TODO Auto-generated method stub
+			int sum=sum();
+			System.out.println("Sum is:"+sum+" Thread id: "+Thread.currentThread().getId());
+			return sum;
+		}
+		
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		ExecutorService service=Executors.newFixedThreadPool(10);
+		
+
+	}
+
+}

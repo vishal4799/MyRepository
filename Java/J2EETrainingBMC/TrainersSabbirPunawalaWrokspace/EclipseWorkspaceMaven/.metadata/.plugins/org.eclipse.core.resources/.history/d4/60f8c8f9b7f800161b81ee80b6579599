@@ -1,0 +1,35 @@
+package com.bmc.test;
+
+import org.hibernate.Session;
+
+import com.bmc.utility.HibernateUtils;
+
+public class TestCriteraQuery {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Session session=HibernateUtils.createSession();
+		Criteria criteria1=session.createCriteria(Employee.class);
+		Criteria criteria2=session.createCriteria(Employee.class);
+
+		
+		criteria1.add(Restrictions.disjunction()
+				
+				.add(Restrictions.lt("empSalary", 500000d))
+				.add((Restrictions.like("empName", "R%")))
+				.add(Restrictions.eq("empDesignation", "Trainer"))
+				
+				);
+
+		criteria2.add(Restrictions.conjunction()
+				
+				.add(Restrictions.lt("empSalary", 500000d))
+				.add((Restrictions.like("empName", "R%")))
+				.add(Restrictions.eq("empDesignation", "Trainer"))
+				
+				);
+
+	}
+
+}

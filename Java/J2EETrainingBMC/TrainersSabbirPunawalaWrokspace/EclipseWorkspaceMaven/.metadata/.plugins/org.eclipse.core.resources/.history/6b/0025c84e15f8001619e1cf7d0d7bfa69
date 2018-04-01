@@ -1,0 +1,13 @@
+package com.bmc.helper;
+
+public class ConnectionManager {
+	
+	
+	public Connection openConnection(){
+		
+	}
+
+	public void closeConnection(){
+		
+	}
+}

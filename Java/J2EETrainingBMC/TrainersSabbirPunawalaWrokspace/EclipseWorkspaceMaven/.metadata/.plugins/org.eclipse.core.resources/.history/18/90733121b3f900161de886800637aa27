@@ -1,0 +1,20 @@
+package com.bmc.collections;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Map<Integer,String> map=new HashMap<>();
+
+		System.out.println(map.put(1, "sabbir"));
+		System.out.println(map.put(2, "Amit"));
+		System.out.println(map.put(1, "Rakesh"));
+		
+		
+	}
+
+}

@@ -1,0 +1,17 @@
+package com.bmc.test;
+
+import com.bmc.dao.EmployeeDAO;
+import com.bmc.helper.FactoryEmployeeDAO;
+
+public class TestUpdate {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		EmployeeDAO employeeDAO=FactoryEmployeeDAO.createEmployeeDAO();
+		employeeDAO.updateEmployeeSalaryById(1001, 63000);
+		
+
+	}
+
+}

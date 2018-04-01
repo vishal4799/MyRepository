@@ -1,0 +1,13 @@
+package com.bmc.works.HibernateExample;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        Configuration configuration=new Configuration();
+    }
+}

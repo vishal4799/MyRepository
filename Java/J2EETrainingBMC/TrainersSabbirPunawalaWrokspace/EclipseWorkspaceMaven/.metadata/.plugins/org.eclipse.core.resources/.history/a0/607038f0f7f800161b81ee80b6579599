@@ -1,0 +1,19 @@
+package com.bmc.fork;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.bmc.multithreading.Employee;
+
+public class StreamDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		List<Employee> list=new ArrayList<>();
+		
+		
+		
+	}
+
+}

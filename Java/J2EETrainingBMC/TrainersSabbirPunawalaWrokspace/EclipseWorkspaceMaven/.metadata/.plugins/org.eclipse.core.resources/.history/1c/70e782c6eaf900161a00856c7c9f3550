@@ -1,0 +1,2 @@
+error.employee.empSalary=Salary cannot be negative
+error.employee.empDesignation=Designation that you have entered is not valid. Must be GET,SE,SSE

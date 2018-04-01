@@ -1,0 +1,14 @@
+package com.bmc.works.domain;
+
+import org.hibernate.annotations.Entity;
+
+@Entity
+public class Employee {
+	
+private int empId;
+private String empName;
+private double empSalary;
+private String empDesignation;
+	
+
+}

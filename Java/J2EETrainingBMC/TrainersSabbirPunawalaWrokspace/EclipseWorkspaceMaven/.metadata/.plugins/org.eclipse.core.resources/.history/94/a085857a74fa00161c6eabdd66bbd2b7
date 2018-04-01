@@ -1,0 +1,15 @@
+package com.bmc.nio;
+
+import java.io.File;
+
+public class SerializeDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		File file=new File("D:\\IO\\visitor.ser");
+		OutputStream os=new FileOutputStream(file);
+
+	}
+
+}

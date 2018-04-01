@@ -1,0 +1,53 @@
+package com.bmc.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.bmc.entities.Employee;
+import com.bmc.helper.ConnectionManager;
+
+public class JDBCEmployeeDAOImpl implements EmployeeDAO {
+	
+	private ConnectionManager manager=new ConnectionManager();
+
+	public List<Employee> getAllEmployees() throws ClassNotFoundException,
+			SQLException {
+		// TODO Auto-generated method stub
+		
+		Connection connection=manager.openConnection();
+		
+		
+		return null;
+	}
+
+	public Employee getEmployee(int empId) throws ClassNotFoundException,
+			SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean persistEmployee(Employee employee)
+			throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean updateEmployeeSalaryById(int empId, double newSalary)
+			throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean deleteEmployee(int empId) throws ClassNotFoundException,
+			SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public double computeTax(int empId) throws ClassNotFoundException,
+			SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

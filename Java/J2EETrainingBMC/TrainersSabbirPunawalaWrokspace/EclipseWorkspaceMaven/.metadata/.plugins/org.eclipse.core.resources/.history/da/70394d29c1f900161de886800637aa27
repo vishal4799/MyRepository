@@ -1,0 +1,15 @@
+package com.bmc.collections;
+
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+public class SortedMapDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		SortedMap<Integer,String> map=new TreeMap<Integer,String>();
+
+	}
+
+}

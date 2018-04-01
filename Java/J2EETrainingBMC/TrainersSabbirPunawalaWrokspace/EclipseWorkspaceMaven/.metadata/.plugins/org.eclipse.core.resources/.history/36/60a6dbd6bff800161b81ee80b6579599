@@ -1,0 +1,17 @@
+package com.bmc.test;
+
+import org.hibernate.SessionFactory;
+
+import com.bmc.utility.HibernateUtils;
+
+public class TestRefresh {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		SessionFactory sessionFactory=HibernateUtils.createSessionFactory();
+		
+
+	}
+
+}

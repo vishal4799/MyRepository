@@ -1,0 +1,50 @@
+package com.bmc.nio;
+
+import java.io.Serializable;
+
+public class Visitor extends User implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int visitorId;
+	private String visitorLocation;
+	
+	
+	public Visitor(String userName,String password,int visitorId,String visitorLocation){
+		super(userName,password);
+		this.visitorId=visitorId;
+		this.visitorLocation=visitorLocation;
+	}
+
+
+	public int getVisitorId() {
+		return visitorId;
+	}
+
+
+	public void setVisitorId(int visitorId) {
+		this.visitorId = visitorId;
+	}
+
+
+	public String getVisitorLocation() {
+		return visitorLocation;
+	}
+
+
+	public void setVisitorLocation(String visitorLocation) {
+		this.visitorLocation = visitorLocation;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Visitor [visitorId=" + visitorId + ", visitorLocation="
+				+ visitorLocation + "]";
+	}
+
+	
+	
+}

@@ -1,0 +1,13 @@
+package com.bmc.helper;
+
+import java.util.ResourceBundle;
+
+public class ResourceReader {
+	
+	public ResourceReader(String baseName){
+		
+		ResourceBundle.getBundle(baseName);
+		
+	}
+
+}

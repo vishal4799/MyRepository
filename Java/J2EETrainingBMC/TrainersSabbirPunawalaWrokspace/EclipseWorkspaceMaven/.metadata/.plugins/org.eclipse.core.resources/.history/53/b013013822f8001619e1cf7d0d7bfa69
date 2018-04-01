@@ -1,0 +1,30 @@
+package com.bmc.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.bmc.dao.JDBCEmployeeDAOImpl;
+
+public class TestJDBCEmployeeDAOImpl {
+	
+	private JDBCEmployeeDAOImpl jdbcemployeedao=null;
+
+	@Before
+	public void setUp() throws Exception {
+		jdbcemployeedao=new JDBCEmployeeDAOImpl();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		jdbcemployeedao=null;
+	}
+
+	@Test
+	public void testPersistEmployee_positive() {
+		
+	}
+
+}

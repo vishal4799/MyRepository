@@ -1,0 +1,33 @@
+package com.bmc.collections;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class GenericList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer> list=new ArrayList<>();
+		
+		Integer o1=new Integer(10);
+		Integer o2=new Integer(20);
+		list.add(10);
+		list.add(20);
+		//list.add("str");
+		
+		for(Integer o: list){
+			int k=o;
+			System.out.println(k++);
+		}
+		
+		for(Iterator<Integer> iterator=list.iterator();iterator.hasNext();){
+			Integer iObjt=iterator.next();
+			iObjt+=3;
+			
+		}
+		System.out.println(list);
+
+	}
+
+}

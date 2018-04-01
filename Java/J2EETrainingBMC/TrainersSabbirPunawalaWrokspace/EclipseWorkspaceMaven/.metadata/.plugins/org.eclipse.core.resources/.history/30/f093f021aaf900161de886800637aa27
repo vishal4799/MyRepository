@@ -1,0 +1,26 @@
+package com.bmc.collections;
+
+import java.util.List;
+
+public class CacheDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		CacheString cacheString=new CacheString();
+		cacheString.add("sabbir");
+		
+		List<String> list=cacheString.getData();
+
+		CacheAny<Integer> cacheInteger=new CacheAny<>();
+		cacheInteger.add(10);
+		
+		List<Integer> listInteger=cacheInteger.get();
+		
+		CacheAny<Float> cacheFloat=new CacheAny<>();
+		cacheFloat.add(12.5f);
+		
+		List<Float> listFloat=cacheFloat.get();
+	}
+
+}

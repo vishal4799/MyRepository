@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Employee.java&apos; to &apos;CollectionPRO/src/com.bmc.collections&apos;&#x0D;&#x0A;- Original project: &apos;MultithreadingPRO&apos;&#x0D;&#x0A;- Destination element: &apos;CollectionPRO/src/com.bmc.collections&apos;&#x0D;&#x0A;- Original element: &apos;com.bmc.multithreading.Employee.java&apos;" description="Copy compilation unit" destination="=CollectionPRO/src&lt;com.bmc.collections" element1="/src&lt;com.bmc.multithreading{Employee.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1487835986041" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,150 @@
+package com.bmc.multithreading;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class MultithreadedApplication {
+	
+	class SumTask extends Thread{
+		
+		public int sum(){
+			int sum=0;
+			for(int i=1;i<=10;i++){
+				sum+=i;
+				System.out.println("Sum done so far:"+sum);
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			return sum;
+		}
+		
+		@Override
+		
+		public void run(){
+			System.out.println("Final sum is:"+sum());
+			
+		}
+	}
+	
+	class ProductTask implements Runnable{
+		
+		public double product(){
+			
+			double product=1;
+			for(int i=1;i<=10;i++){
+				product*=i;
+				System.out.println("Product done so far:"+product);
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return product;
+		}
+		
+		@Override
+		public void run(){
+			System.out.println("Final product is:"+product());
+			
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//1.Thread does not exist
+		
+		//2.Thread is born
+		
+		MultithreadedApplication application=new MultithreadedApplication();
+		//3. register runnable target
+		Thread worker1=new Thread(application.new SumTask());
+		
+		//4.Runnable state
+		
+		worker1.start();
+		
+		try {
+			worker1.join();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		//5.Thread is running
+		
+		Thread worker2=new Thread(application.new ProductTask());
+		worker2.start();
+		
+		try {
+			worker2.join();
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		//Annoymous class
+		
+		Thread worker3=new Thread(){
+			
+			public double div(){
+				double div=1;
+				for(int i=1;i<=10;i++){
+					div/=i;
+					System.out.println("Div done so far:"+div);
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				return div;
+				
+			}
+			
+			@Override
+			public void run(){
+				System.out.println("Final div:"+div());
+				
+			}
+			
+			
+		};
+		worker3.start();
+		worker3.join();
+		
+		Runnable worker4=()->{
+			
+			for(int i=1;i<=10;i++){
+				
+				System.out.println("Square done so far:"+i*i);
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		};
+		worker4.run();
+	
+		
+				
+			
+		
+		
+
+	}
+
+}

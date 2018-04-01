@@ -1,0 +1,17 @@
+package com.bmc.collections;
+
+import java.util.List;
+
+public class CacheDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		CacheString cacheString=new CacheString();
+		cacheString.add("sabbir");
+		
+		List<String> list=cacheString.getData();
+
+	}
+
+}

@@ -1,0 +1,12 @@
+package com.bmc.dao;
+
+import java.util.List;
+//Declaration of CRUD operation for Domain Class-Employee
+
+import com.bmc.entities.Employee;
+
+public interface EmployeeDAO {
+	
+	public List<Employee> getAllEmployees();
+
+}

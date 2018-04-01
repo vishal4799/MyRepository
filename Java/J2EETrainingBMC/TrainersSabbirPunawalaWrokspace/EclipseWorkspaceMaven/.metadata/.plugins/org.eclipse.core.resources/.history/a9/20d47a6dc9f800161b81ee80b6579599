@@ -1,0 +1,54 @@
+package com.bmc.multithreading;
+
+public class MultithreadedApplication {
+	
+	class SumTask extends Thread{
+		
+		public int sum(){
+			int sum=0;
+			for(int i=1;i<=10;i++){
+				sum+=i;
+				System.out.println("Sum done so far:"+sum);
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			return sum;
+		}
+		
+		@Override
+		
+		public void run(){
+			System.out.println("Final sum is:"+sum());
+			
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//1.Thread does not exist
+		
+		//2.Thread is born
+		
+		MultithreadedApplication application=new MultithreadedApplication();
+		//3. register runnable target
+		Thread worker1=new Thread(application.new SumTask());
+		
+		//4.Runnable state
+		
+		worker1.start();
+		
+		
+		//5.Thread is running
+		
+		
+		
+
+	}
+
+}

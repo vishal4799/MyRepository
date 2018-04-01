@@ -1,0 +1,37 @@
+package com.bmc.collections;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+
+public class PredicateDemo {
+	
+	public static void determineListContent(List<Integer> list,Predicate<Integer> p){
+		
+		for(Integer o: list){
+			
+			if(p.test(o)){
+				
+				System.out.println(o);
+			}
+			
+		}
+		
+		
+	}
+
+
+	public static void main(String args[]){
+		
+		List<Integer> integerList=new ArrayList<>();
+		integerList.add(10);
+		integerList.add(10);
+		integerList.add(10);
+		integerList.add(10);
+		integerList.add(10);
+		integerList.add(10);
+		
+		
+		
+	}
+}

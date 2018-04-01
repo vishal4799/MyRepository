@@ -1,0 +1,16 @@
+package com.bmc.multithreading;
+
+public class Person implements Runnable{
+	
+	private String personName;
+	private ATM atm;
+	
+	
+	
+	@Override
+	public void run(){
+		
+		
+	}
+
+}

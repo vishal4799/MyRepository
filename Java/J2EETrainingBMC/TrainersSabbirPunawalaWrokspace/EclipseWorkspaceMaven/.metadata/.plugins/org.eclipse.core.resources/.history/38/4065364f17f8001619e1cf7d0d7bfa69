@@ -1,0 +1,8 @@
+package com.bmc.dao;
+//Declaration of CRUD operation for Domain Class-Employee
+
+public interface EmployeeDAO {
+	
+	
+
+}

@@ -1,0 +1,39 @@
+package com.bmc.collections;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class CacheAny<T> {
+	
+	private T data;
+	
+	private List<T> list=new ArrayList<>();
+	
+	public void add(T data){
+		list.add(data);
+		
+	}
+	
+	public List<T> get(){
+		
+		return list;
+	}
+	
+	public static void print(List<? super Number> list){
+		
+		Iterator<?> iterator=list.iterator();
+		
+		while(iterator.hasNext()){
+			
+			System.out.println(iterator.next());
+			
+		}
+		
+		
+		
+	}
+	
+
+}

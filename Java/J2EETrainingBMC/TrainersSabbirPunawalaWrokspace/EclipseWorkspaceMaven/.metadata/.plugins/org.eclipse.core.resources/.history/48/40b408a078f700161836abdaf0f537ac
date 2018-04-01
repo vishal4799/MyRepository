@@ -1,0 +1,20 @@
+package com.bmc.works.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.Entity;
+
+@Entity
+public class Employee {
+@Id	
+private int empId;
+@Column(name="emp_name")
+private String empName;
+@Column(name="emp_salary")
+private double empSalary;
+@Column(name=emp_designation)
+private String empDesignation;
+	
+
+}

@@ -1,0 +1,12 @@
+package com.bmc.multithreading;
+
+public class Employee {
+	
+	private int empId;
+	private String empName;
+	private double empSalary;
+	private String empDesignation;
+	
+	
+
+}

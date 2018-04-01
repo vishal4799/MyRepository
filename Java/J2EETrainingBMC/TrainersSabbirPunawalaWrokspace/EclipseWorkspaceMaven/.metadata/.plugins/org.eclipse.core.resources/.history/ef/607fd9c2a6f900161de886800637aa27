@@ -1,0 +1,11 @@
+package com.bmc.collections;
+
+public class CacheString {
+	
+	private String data;
+	
+	private List<String> list=new ArrayList<>();
+	
+	
+
+}

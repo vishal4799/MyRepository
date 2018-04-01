@@ -1,0 +1,16 @@
+package com.bmc.utility;
+
+import org.hibernate.Session;
+
+public class HibernateUtils {
+	
+	private static Session session;
+	
+	public static Session createSession(){
+		
+		
+		
+		
+	}
+
+}

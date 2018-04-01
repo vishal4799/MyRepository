@@ -1,0 +1,10 @@
+package com.bmc.multithreading;
+
+public class ATM {
+	
+	private String bankName;
+	private String location;
+	
+	
+
+}

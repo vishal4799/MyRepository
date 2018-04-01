@@ -1,0 +1,58 @@
+package com.bmc.collections;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class ArraySortDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String names[]=new String[]{"sachin","shabbir","sumeet"};
+		
+		Arrays.sort(names);
+		
+		System.out.println(Arrays.toString(names));
+		
+		Arrays.sort(names,new MyStringComparator());
+		
+		System.out.println(Arrays.toString(names));
+		
+		//Annonymous class
+		Arrays.sort(names,new Comparator<String>(){
+			
+			@Override
+			public int compare(String s1,String s2){
+				return s1.compareTo(s2);
+			}
+			
+		});
+		
+		//Lambda Expression
+		
+		
+		Comparator<Object> c=(s1,s2)->{
+			
+           if(s1 instanceof String && s2 instanceof String){
+        	   String sObj1=(String)s1;
+        	   String sObj1=(String)s2;
+			if(sObj1.length()<sObj1.length()){
+				return -1;
+			}
+			if(s1.length()>s2.length()){
+				return 1;
+			}
+			return 0;
+			
+			}
+		}
+		Arrays.sort(names,c
+				
+				
+				
+				);
+		
+
+	}
+
+}
