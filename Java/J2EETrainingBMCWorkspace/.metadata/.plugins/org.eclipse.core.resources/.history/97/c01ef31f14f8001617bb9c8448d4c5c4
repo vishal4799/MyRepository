@@ -1,5 +1,0 @@
-#db connection information
-driver=oracle.jdbc.oracleDriver
-url=jdbc:oracle:thin:@localhost:1521:orcl
-user=vmakwana
-password=password
