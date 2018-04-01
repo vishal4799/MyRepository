@@ -1,0 +1,18 @@
+package com.bmc.io;
+
+public class RandomAccesssFileDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String data="Java is object oriented";
+		
+		RandomAccessFile randomAccess=new RandomAccessFile("d:\\io\\Random.txt","rw");
+		
+
+	}
+
+}

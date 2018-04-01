@@ -1,0 +1,10 @@
+package com.bmc.entities;
+
+public class Programmer extends Employee{
+	
+	private int programmerId;
+	private int projId;
+
+	
+
+}

@@ -1,0 +1,5 @@
+package com.bmc.entities;
+
+public class Square {
+
+}

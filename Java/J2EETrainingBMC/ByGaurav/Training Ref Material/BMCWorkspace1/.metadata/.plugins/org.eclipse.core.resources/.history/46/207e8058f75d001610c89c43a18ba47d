@@ -1,0 +1,15 @@
+package com.bmc.helper;
+
+public class BMCFactory {
+	
+	//create instance of class based on class name passed
+	
+	//Dynamic initialization
+	//Object will be created during runtime based on class name
+	public static Object createInstance(String className){
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,21 @@
+package com.bmc.demo;
+
+public class XAdapter implements X {
+
+	public void x1() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int x2() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void xn() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

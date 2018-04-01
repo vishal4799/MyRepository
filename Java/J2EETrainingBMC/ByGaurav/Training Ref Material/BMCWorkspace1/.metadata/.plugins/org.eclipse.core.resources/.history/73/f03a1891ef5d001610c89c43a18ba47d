@@ -1,0 +1,17 @@
+package com.bmc.helper;
+//facilitates connection with database
+//Only one instance is required throughout life cycle of application
+
+public class ConnectionManager {
+	//not accessible outside ConnectionManager
+	//to restrict creation of object outside class
+	private ConnectionManager(){}
+	
+	public static ConnectionManager createInstance(){
+		
+		
+		
+	}
+	
+
+}

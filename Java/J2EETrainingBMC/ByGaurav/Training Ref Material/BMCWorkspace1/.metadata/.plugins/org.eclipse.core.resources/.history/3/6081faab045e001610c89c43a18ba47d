@@ -1,0 +1,12 @@
+package com.bmc.entities;
+//Domain class representing real world entity-end user
+public class User {
+	
+	private String username;
+	private String password;
+	private String firstname;
+	private String lastname;
+	private String email;
+	
+
+}

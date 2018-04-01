@@ -1,0 +1,8 @@
+package com.bmc.dao;
+//Rules for performing CRUD operations for domain class-Employee
+//C-create,R-Retrieve,U-Update,D-Delete
+//Design to interface not to implementation
+
+public interface EmployeeDAO {
+
+}

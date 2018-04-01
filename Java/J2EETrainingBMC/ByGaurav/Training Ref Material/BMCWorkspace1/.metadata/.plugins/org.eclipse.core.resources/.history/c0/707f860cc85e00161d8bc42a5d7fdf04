@@ -1,0 +1,12 @@
+package com.bmc.service;
+
+public class AccountantService extends AbstractEmployeeService {
+
+	@Override
+	public String empCode() {
+		// TODO Auto-generated method stub
+		return "AC"+9011;
+	}
+	
+
+}

@@ -1,0 +1,38 @@
+package com.bmc.demo;
+
+public class TryCatchDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("--Application starts--");
+		//Assuming no1 and no2 entered by end user
+		try{
+        int no1=10,no2=20; 
+        //if at all no2 is zero, abnormal condition will arise
+		int c=no1/no2;//Throws an exception of type ArithmeticException
+		int array[]={10,20};
+		System.out.println(array[1]);
+		//Application gets terminated abruptly
+		
+		String str=null;
+		str.toUpperCase();
+		}catch(ArithmeticException e){
+			//Handling
+			System.out.println("no2 value cannot be zero");
+		}
+		catch(ArrayIndexOutOfBoundsException e){
+			System.out.println("index position does not exist")
+		}
+		catch(Exception e){
+			
+		}
+		//will not get executed
+		System.out.println("--Application terminates--");
+
+	}
+
+}

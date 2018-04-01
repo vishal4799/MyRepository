@@ -1,0 +1,13 @@
+package com.bmc.helper;
+
+import com.bmc.service.AbstractEmployeeService;
+
+public class UtilityAbstractEmployeeService extends AbstractEmployeeService {
+
+	@Override
+	public String empCode() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

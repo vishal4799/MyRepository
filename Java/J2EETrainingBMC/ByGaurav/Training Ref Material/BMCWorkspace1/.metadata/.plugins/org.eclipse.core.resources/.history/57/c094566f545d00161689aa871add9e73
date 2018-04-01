@@ -1,0 +1,9 @@
+package com.bmc.entities;
+
+public class Box {
+	
+	double height;
+	double width;
+	double doubreadth;
+
+}

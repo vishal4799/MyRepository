@@ -1,0 +1,31 @@
+package com.bmc.demo;
+
+public class TryCatchDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("--Application starts--");
+		//Assuming no1 and no2 entered by end user
+		try{
+        int no1=10,no2=20; 
+        //if at all no2 is zero, abnormal condition will arise
+		int c=no1/no2;//Throws an exception of type ArithmeticException
+		int array[]={10,20};
+		System.out.println(array[3]);
+		//Application gets terminated abruptly
+		}catch(ArithmeticException e){
+			//Handling
+		}
+		catch(ArrayIndexOutOfBoundsException e){
+			
+		}
+		//will not get executed
+		System.out.println("--Application terminates--");
+
+	}
+
+}

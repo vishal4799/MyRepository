@@ -1,0 +1,9 @@
+package com.bmc.entities;
+
+public class Accountant extends Employee {
+	
+	private int accountId;
+	
+	
+
+}

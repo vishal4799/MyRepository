@@ -1,0 +1,16 @@
+package com.bmc.entities;
+
+public class Square extends Figure{
+	private double length;
+	
+	
+	
+	@Override
+	public double area(){
+		
+		return 0;
+	}
+	
+	
+
+}

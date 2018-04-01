@@ -1,0 +1,46 @@
+package com.bmc.multithreaded;
+
+public class MultithreadedApplication {
+
+	/**
+	 * @param args
+	 */
+	
+	//Named Inner class
+	
+	class SumTask extends Thread{
+		
+		public double sum(){
+			double sum=0;
+			
+			for(int i=1;i<=10;i++){
+				sum+=i;
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println("Sum done so far:"+sum);
+			}
+			
+			return sum;
+		}
+		
+		@Override
+		public void run(){
+			System.out.println("Total sum:"+sum());
+			
+		}
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Thread worker1=new Thread(new SumTask());
+
+	}
+
+}

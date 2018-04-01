@@ -1,0 +1,17 @@
+package com.bmc.demo;
+
+public class Client {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//During runtime following properties will be passed
+		//One property will have name-value pair
+		//Based on name , we can fetch value
+
+	}
+
+}

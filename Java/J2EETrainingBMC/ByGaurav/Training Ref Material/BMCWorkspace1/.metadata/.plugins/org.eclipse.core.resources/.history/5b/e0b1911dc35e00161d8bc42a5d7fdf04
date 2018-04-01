@@ -1,0 +1,16 @@
+package com.bmc.helper;
+
+import com.bmc.service.AbstractEmployeeService;
+import com.bmc.service.ProgrammerService;
+
+public class FactoryAbstractEmployeeService {
+	
+	public static AbstractEmployeeService createAbstractEmployeeService(char type){
+		AbstractEmployeeService service=null;
+		if(type=='p'){
+		=new ProgrammerService();
+		}
+		return service;
+	}
+
+}

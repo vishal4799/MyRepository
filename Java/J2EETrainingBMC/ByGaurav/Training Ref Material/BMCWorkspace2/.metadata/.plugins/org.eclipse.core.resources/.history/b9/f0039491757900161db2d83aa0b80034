@@ -1,0 +1,27 @@
+package com.bmc.date;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+public class LocaleDateDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// Get the current date and time
+	      LocalDateTime currentTime = LocalDateTime.now();
+	      System.out.println("Current DateTime: " + currentTime);
+	      
+	      LocalDate date1 = currentTime.toLocalDate();
+	      System.out.println("date1: " + date1);
+	      
+	      Month month = currentTime.getMonth();
+	      int day = currentTime.getDayOfMonth();
+	      int seconds = currentTime.getSecond();
+			
+	      System.out.println("Month: " + month +"day: " + day +"seconds: " + seconds);
+	      
+
+	}
+
+}

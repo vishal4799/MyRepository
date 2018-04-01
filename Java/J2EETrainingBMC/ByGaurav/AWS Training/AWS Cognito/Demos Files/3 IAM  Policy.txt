@@ -1,0 +1,44 @@
+
+EC2adminpolicy  - usertwo 
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+            "Action": "ec2:*",
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}
+
+
+EC2supportpolicy  - userone
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "ec2:Describe*",
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}
+
+
+S3adminpolicy  - userthree	
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "s3:*",
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}
+
+

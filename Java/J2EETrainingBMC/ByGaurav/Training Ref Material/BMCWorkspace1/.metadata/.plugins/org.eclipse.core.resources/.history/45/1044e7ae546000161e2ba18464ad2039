@@ -1,0 +1,13 @@
+package com.bmc.collections;
+
+public class LinkedHashSetDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

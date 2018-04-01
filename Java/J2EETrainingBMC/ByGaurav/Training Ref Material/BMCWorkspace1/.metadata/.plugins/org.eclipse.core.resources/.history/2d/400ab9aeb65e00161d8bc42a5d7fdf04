@@ -1,0 +1,17 @@
+package com.bmc.demo;
+
+public class ResourceBundleDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//Utitlity class ResourceBundle is used to read
+		//properties file
+		
+		
+	}
+
+}

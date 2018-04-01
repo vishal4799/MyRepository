@@ -1,0 +1,17 @@
+package com.bmc.collections;
+
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		new LinkedHashSet();
+
+	}
+
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.bmc.entities.Box"/>
+<fullyQualifiedTypeName name="com.bmc.helper.ConnectionManager"/>
+<fullyQualifiedTypeName name="com.bmc.service.EmployeeService"/>
+<fullyQualifiedTypeName name="com.bmc.entities.Visitor"/>
+<fullyQualifiedTypeName name="com.bmc.entities.User"/>
+<fullyQualifiedTypeName name="com.bmc.entities.Figure"/>
+<fullyQualifiedTypeName name="com.bmc.entities.Rectangle"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Method"/>
+<fullyQualifiedTypeName name="com.bmc.service.Calculator"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="com.bmc.entities.Square"/>
+<fullyQualifiedTypeName name="java.util.ResourceBundle"/>
+<fullyQualifiedTypeName name="com.bmc.helper.FactoryAbstractEmployeeService"/>
+<fullyQualifiedTypeName name="com.bmc.service.AccountantService"/>
+<fullyQualifiedTypeName name="com.bmc.helper.UtilityAbstractEmployeeService"/>
+<fullyQualifiedTypeName name="com.bmc.entities.Accountant"/>
+<fullyQualifiedTypeName name="com.bmc.service.AbstractEmployeeService"/>
+<fullyQualifiedTypeName name="com.bmc.entities.Programmer"/>
+<fullyQualifiedTypeName name="com.bmc.service.ProgrammerService"/>
+<fullyQualifiedTypeName name="com.bmc.dao.JdbcEmployeeDAOImpl"/>
+<fullyQualifiedTypeName name="com.bmc.dao.MemoryEmployeeDAOImpl"/>
+<fullyQualifiedTypeName name="com.bmc.helper.FactoryEmployeeDAO"/>
+<fullyQualifiedTypeName name="com.bmc.dao.EmployeeDAO"/>
+<fullyQualifiedTypeName name="java.util.logging.Logger"/>
+<fullyQualifiedTypeName name="java.util.logging.Level"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.util.logging.FileHandler"/>
+<fullyQualifiedTypeName name="java.util.logging.SimpleFormatter"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.io.EOFException"/>
+<fullyQualifiedTypeName name="com.bmc.exceptions.BMCException"/>
+<fullyQualifiedTypeName name="com.bmc.exceptions.InvalidArgumentException"/>
+<fullyQualifiedTypeName name="com.bmc.helper.BMCFactory"/>
+<fullyQualifiedTypeName name="com.bmc.exceptions.BMCGenericException"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.util.StringTokenizer"/>
+<fullyQualifiedTypeName name="com.bmc.entities.Employee"/>
+<fullyQualifiedTypeName name="java.util.ListIterator"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+</qualifiedTypeNameHistroy>

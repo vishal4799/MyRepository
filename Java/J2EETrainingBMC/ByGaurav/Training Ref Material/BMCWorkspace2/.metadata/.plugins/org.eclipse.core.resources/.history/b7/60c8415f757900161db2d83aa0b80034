@@ -1,0 +1,16 @@
+package com.bmc.date;
+
+import java.time.LocalDateTime;
+
+public class LocaleDateDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// Get the current date and time
+	      LocalDateTime currentTime = LocalDateTime.now();
+	      System.out.println("Current DateTime: " + currentTime);
+
+	}
+
+}

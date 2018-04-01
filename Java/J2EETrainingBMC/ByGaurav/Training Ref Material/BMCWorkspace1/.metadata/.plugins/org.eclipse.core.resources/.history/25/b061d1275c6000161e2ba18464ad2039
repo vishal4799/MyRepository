@@ -1,0 +1,22 @@
+package com.bmc.io;
+
+import java.io.File;
+
+public class FileDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//File class represents FileSystem-Local,Remote
+		
+		File file=new File("D://IO//File1.txt");
+		
+		System.out.println("Exists or not ?"+file.exists());
+		System.out.println("Whether is directory ?"+file.isDirectory());
+		
+
+	}
+
+}

@@ -1,0 +1,28 @@
+package com.bmc.demo;
+
+public class StringDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//Entry made in String Pool
+		String str1="Hello";
+		//Hello already exist in String Pool i.e only one entry
+		String str2="Hello";
+		if(str1==str2){
+			//Both reference variable point to same memory location
+			//in String Pool
+			System.out.println("str1==str2");
+		}
+		
+		//Not Recommended
+		//Hello will be stored in Object Pool
+		String strObj1=new String("Hello");
+		String strObj2=new String("Hello");
+		
+
+	}
+
+}

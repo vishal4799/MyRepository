@@ -1,0 +1,13 @@
+package com.bmc.entities;
+//extends is keyword for specifying super class
+//User-SuperClass
+//Visitor-SubClass
+public class Visitor extends User {
+	
+	//apart from inheriting from Superclass, Subclass will have its own attributes
+	//and functionality independent of Superclass
+	private int VisitorId;
+	
+	
+
+}

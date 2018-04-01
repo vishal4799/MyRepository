@@ -1,0 +1,41 @@
+package com.bmc.collections;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//two different types of collections
+		//Homogenous
+		//Empty Array
+		List list1=new ArrayList();//unchecked and unsafe operation
+		//Array with size 3
+		List list2=new ArrayList(3);
+		
+		//will only contain string objects
+		List stringObject=new ArrayList();
+		stringObject.add("sabbir");
+		//stringObject.add(10);//unchecked
+		stringObject.add("amit");
+		stringObject.add("mohit");
+		
+		//Heterogenous
+		List differentTypeObject=new ArrayList();
+		differentTypeObject.add("sabbir");
+		differentTypeObject.add(12.4f);
+		differentTypeObject.add(450000);
+		//not recommended , error prone
+		for(int i=0;i<stringObject.size();i++){
+			
+		}
+		
+		
+	}
+
+}

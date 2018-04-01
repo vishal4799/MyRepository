@@ -1,0 +1,30 @@
+package com.bmc.helper;
+
+import com.bmc.entities.Accountant;
+import com.bmc.entities.Programmer;
+import com.bmc.service.AbstractEmployeeService;
+import com.bmc.service.AccountantService;
+import com.bmc.service.ProgrammerService;
+
+public abstract class UtilityAbstractEmployeeService extends AbstractEmployeeService {
+
+	
+	public  static void print(AbstractEmployeeService service){
+
+		
+		if(service instanceof ProgrammerService){
+			//downcasting
+			ProgrammerService programmerService=(ProgrammerService)service;
+			Programmer programmer=(Programmer)employee;
+			tax= programmerService.getSalary(programmer)*0.10;
+		}
+		if(service instanceof AccountantService){
+			//downcasting
+			AccountantService accountantService=(AccountantService)service;
+			Accountant accountant=(Accountant)employee;
+			tax= accountantService.getSalary(accountant)*0.20;
+		}	}
+
+	
+	
+}

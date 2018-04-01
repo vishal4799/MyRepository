@@ -1,0 +1,21 @@
+package com.bmc.demo;
+
+import com.bmc.entities.Box;
+
+public class BoxDemo1 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//Based on template i.e class instance can be created
+		//new- allocates memory in Object Pool
+		//default constructor is placed in class after
+		//successful compilation
+		new Box();
+		
+	}
+
+}

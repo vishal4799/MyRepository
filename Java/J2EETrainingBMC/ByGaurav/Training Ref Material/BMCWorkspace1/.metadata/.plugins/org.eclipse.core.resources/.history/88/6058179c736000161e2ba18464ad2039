@@ -1,0 +1,21 @@
+package com.bmc.io;
+
+import com.bmc.entities.Employee;
+
+public class SerializeDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Employee e=new Employee();
+		e.setEmpId(empId);
+		e.setEmpName(empName);
+		e.setEmpSalary(empSalary);
+		e.setEmpDesignation(empDesignation);
+
+	}
+
+}

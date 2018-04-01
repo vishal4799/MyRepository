@@ -1,0 +1,21 @@
+package com.bmc.demo;
+
+public class ArraysDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Declaration of Array
+		int n[];//array of type int
+		n=new int[5];//specifying size of array
+		n[0]=100;//initialization
+		n[1]='A';//stores ASCII value of A-65
+		n[2]=(int)14.5f;
+		
+
+	}
+
+}

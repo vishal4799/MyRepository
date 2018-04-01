@@ -1,0 +1,5 @@
+package com.bmc.exceptions;
+
+public class BMCException {
+
+}

@@ -1,0 +1,45 @@
+package com.bmc.demo;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class TryCatchDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Basic Logging utility classes-Logger,Level,FileHandler,SimpleFormatter
+		Logger logger=Logger.getLogger("TryCatchLogger");
+		
+		logger.log(Level.INFO,"--Application starts--");
+		//Assuming no1 and no2 entered by end user
+		try{
+			logger.log(Level.INFO,"in try block");
+        int no1=10,no2=20; 
+		int c=no1/no2;//Throws an exception of type ArithmeticException
+		int array[]={10,20};
+		logger.log(Level.INFO,"data at index 1:"+(array[1]));
+		String str=null;
+		str.toUpperCase();
+		}catch(ArithmeticException e){
+			//Handling
+			logger.log(Level.SEVERE,"no2 value cannot be zero "+e.getMessage());
+		
+			
+		}
+		catch(ArrayIndexOutOfBoundsException e){
+			System.out.println("index position does not exist");
+		}
+		catch(Exception e){
+			System.out.println("Unknown reason");
+			
+		}
+		//will not get executed
+		System.out.println("--Application terminates--");
+
+	}
+
+}

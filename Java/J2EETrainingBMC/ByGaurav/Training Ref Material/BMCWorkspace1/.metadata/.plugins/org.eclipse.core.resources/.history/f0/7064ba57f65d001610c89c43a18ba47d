@@ -1,0 +1,6 @@
+package com.bmc.service;
+//business logic for Domain class Employee
+
+public class EmployeeService {
+
+}

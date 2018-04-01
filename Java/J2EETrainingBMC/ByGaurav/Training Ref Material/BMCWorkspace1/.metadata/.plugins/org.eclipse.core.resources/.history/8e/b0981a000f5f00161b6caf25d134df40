@@ -1,0 +1,17 @@
+package com.bmc.demo;
+
+public class RuntimeDemo  {
+	
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+System.out.println("Before finalize");
+new RuntimeDemo().finalize();
+System.out.println("finalized");
+	}
+
+}

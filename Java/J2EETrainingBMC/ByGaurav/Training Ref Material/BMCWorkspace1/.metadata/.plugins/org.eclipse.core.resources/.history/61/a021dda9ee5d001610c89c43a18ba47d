@@ -1,0 +1,6 @@
+package com.bmc.helper;
+
+
+public class ConnectionManager {
+
+}

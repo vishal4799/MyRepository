@@ -1,0 +1,13 @@
+package com.bmc.exceptions;
+//instead of creating different exception handling classes for different business scenario
+//One class can suffice the need of handling exception
+public class BMCGenericException {
+	
+	String message;
+	//Throwable is super class of all exceptions
+	
+	public BMCGenericException(String message,Throwable t){
+		
+	}
+	
+}

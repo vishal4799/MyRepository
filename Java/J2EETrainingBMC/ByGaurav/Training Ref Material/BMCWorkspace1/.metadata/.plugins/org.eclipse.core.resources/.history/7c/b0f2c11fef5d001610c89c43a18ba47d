@@ -1,0 +1,10 @@
+package com.bmc.helper;
+//facilitates connection with database
+//Only one instance is required throughout life cycle of application
+
+public class ConnectionManager {
+	
+	private ConnectionManager(){}
+	
+
+}

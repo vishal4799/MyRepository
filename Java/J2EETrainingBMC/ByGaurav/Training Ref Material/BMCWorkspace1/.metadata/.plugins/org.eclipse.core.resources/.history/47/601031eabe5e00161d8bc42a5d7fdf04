@@ -1,0 +1,7 @@
+package com.bmc.service;
+
+//if subclass extends abstract class
+//each any every abstract method implementation must be provided
+public class ProgrammerService extends AbstractEmployeeService {
+
+}

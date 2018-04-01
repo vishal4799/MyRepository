@@ -1,0 +1,18 @@
+package com.bmc.entities;
+
+public class Box1 {
+	//No-arg constructor
+	//Used to create blank object
+	public Box1(){}
+	//Attribute or properties should be private
+	private double height;
+	private double width;
+	private double breadth;
+	
+	//to mutate values of attribute -setter() -Mutator
+	//to retrieve value of attribute -getter() -accessor
+	
+	
+	
+
+}

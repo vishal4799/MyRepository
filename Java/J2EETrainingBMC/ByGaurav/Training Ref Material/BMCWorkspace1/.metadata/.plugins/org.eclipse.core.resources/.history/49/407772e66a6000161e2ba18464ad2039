@@ -1,0 +1,16 @@
+package com.bmc.io;
+
+import java.io.File;
+
+public class ReadPropertiesFile {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		File dbinfo=new File("d:\\io\\DBInfo.properties");
+
+	}
+
+}

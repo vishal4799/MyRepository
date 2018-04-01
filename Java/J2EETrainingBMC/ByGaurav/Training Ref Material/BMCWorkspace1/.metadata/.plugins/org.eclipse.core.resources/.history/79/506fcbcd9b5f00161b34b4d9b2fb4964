@@ -1,0 +1,26 @@
+package com.bmc.demo;
+
+public class WrapperClassDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Before JSE 5.0
+		//Boxing
+		int i=20;
+		Integer o=new Integer(i);
+		//o++;//not allowed, Java do not support Operator Overloading
+		//UnBoxing
+		int j=o.intValue();
+		j++;//Arithmetic operator can work with primitive types
+		
+		//AutoBoxing
+		int k=23;
+		Integer intObj=k;
+
+	}
+
+}

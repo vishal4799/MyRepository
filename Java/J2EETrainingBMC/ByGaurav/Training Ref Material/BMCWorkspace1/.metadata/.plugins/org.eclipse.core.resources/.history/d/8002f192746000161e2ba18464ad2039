@@ -1,0 +1,18 @@
+package com.bmc.io;
+
+import java.io.File;
+
+public class DeserialzieDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		
+		File file=new File("D:\\IO\\employee.ser");
+		InputStream is=new FileInputStream(file);
+
+	}
+
+}

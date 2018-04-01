@@ -1,0 +1,25 @@
+package com.bmc.collections;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//two different types of collections
+		//Homogenous
+		//Empty Array
+		List list1=new ArrayList();//unchecked and unsafe operation
+		//Array with size 3
+		List list2=new ArrayList(3);
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,30 @@
+package com.bmc.io;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class ConsoleInputDemo {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		//Converts binary data to character data
+		//Bridge class between InputStream and Reader
+		InputStreamReader ir=new InputStreamReader(System.in);
+		BufferedReader buffer=new BufferedReader(ir);
+		System.out.print("Emp Id:");
+		//conversion required
+		int empId=Integer.parseInt(buffer.readLine());
+		
+		System.out.print("Emp Name:");
+		String empName=buffer.readLine();
+		
+		
+
+	}
+
+}

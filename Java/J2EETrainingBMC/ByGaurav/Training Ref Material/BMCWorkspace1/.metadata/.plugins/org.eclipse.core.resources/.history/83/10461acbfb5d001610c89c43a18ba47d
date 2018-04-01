@@ -1,0 +1,21 @@
+package com.bmc.demo;
+
+import com.bmc.helper.BMCFactory;
+
+public class BMCFactoryDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//Upcasting- object of subclass can be implictly casted(converted)
+		//into object of super class
+		//Downcasting-Object of superclass has to be explictly casted
+		//(converted) into object of subclass
+		BMCFactory.createInstance("com.bmc.service.EmployeeService");
+		
+	}
+
+}

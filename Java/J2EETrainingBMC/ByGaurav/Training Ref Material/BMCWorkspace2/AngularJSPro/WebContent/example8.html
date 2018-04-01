@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="angular.min.js"></script>
+</head>
+<body>
+<div ng-app="" ng-init="firstName='Sabbir';lastName='Poonawala'">
+
+<p>The name is {{ firstName + " " + lastName }}</p>
+
+</div>
+
+<div ng-app="" ng-init="first='John';last='Doe'">
+
+<p>The name is <span ng-bind="first + ' ' + last"></span></p>
+
+</div>
+
+<div ng-app="" ng-init="person={first:'John',last:'Doe'}">
+
+<p>The name is {{ person.last }}</p>
+
+</div>
+</body>
+</html>

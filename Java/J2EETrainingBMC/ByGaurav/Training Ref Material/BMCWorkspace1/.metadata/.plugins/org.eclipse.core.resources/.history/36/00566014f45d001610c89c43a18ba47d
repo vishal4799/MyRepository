@@ -1,0 +1,7 @@
+package com.bmc.entities;
+//Domain class representing real world entity -Employee
+public class Employee {
+	
+	
+
+}

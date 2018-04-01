@@ -1,0 +1,14 @@
+package com.bmc.demo;
+
+public class InheritanceDemo1 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		new Visitor(1,"sabbirp","sabbir123","sabbir","poonawala","sabbirpoonawala@hotmail.com");
+	}
+
+}

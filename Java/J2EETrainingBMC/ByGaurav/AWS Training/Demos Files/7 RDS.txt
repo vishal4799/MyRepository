@@ -1,0 +1,124 @@
+package com.rds;
+
+import java.util.List;
+
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.rds.AmazonRDSClient;
+import com.amazonaws.services.rds.model.CreateDBInstanceRequest;
+import com.amazonaws.services.rds.model.DBInstance;
+import com.amazonaws.services.rds.model.DeleteDBInstanceRequest;
+import com.amazonaws.services.rds.model.DescribeDBInstancesRequest;
+import com.amazonaws.services.rds.model.DescribeDBInstancesResult;
+
+public class CreateMySQLDBInstanceDemo {
+
+	private AmazonRDSClient amazonRDSClient;
+
+	public static void main(String[] args) {
+		
+		CreateMySQLDBInstanceDemo obj = new CreateMySQLDBInstanceDemo();
+		obj.init();
+		//obj.createMySqlDatabaseInstance();
+		//obj.describeMySqlDatabaseInstance();
+		obj.deleteMySqlDatabaseInstance();
+	}
+	
+	private void init() {
+
+		System.out.println("----------------------Connecting-------------------------------");
+
+		AWSCredentials credentials = new BasicAWSCredentials("",
+				"");
+
+		amazonRDSClient = new AmazonRDSClient();
+
+		amazonRDSClient.setEndpoint("ec2.us-east-1.amazonaws.com");
+		amazonRDSClient.setRegion(Region.getRegion(Regions.US_EAST_1));
+		System.out.println("----------------------Connected-------------------------------");
+	}
+
+	private void createMySqlDatabaseInstance() {
+		
+		CreateDBInstanceRequest createDBInstanceRequest = new CreateDBInstanceRequest()
+				.withDBInstanceIdentifier("vinsys")
+				.withDBName("vinsys")
+				.withEngine("mysql") 
+	            .withEngineVersion("5.6.27") 
+	            .withDBInstanceClass("db.t2.micro")
+	            .withMultiAZ(false)
+	            .withStorageType("standard")
+	            .withAllocatedStorage(5) 
+	            .withMasterUsername("vinsys") 
+	            .withMasterUserPassword("vinsys123")
+	            .withPort(3306)
+	            .withBackupRetentionPeriod(7) 
+	            .withLicenseModel("general-public-license");
+				
+		DBInstance dbInstance = amazonRDSClient.createDBInstance(createDBInstanceRequest);
+		System.out.println("Endpoint:" + dbInstance.getEndpoint());
+		System.out.println("Database Status:" + dbInstance.getDBInstanceStatus());
+	}
+
+	private void describeMySqlDatabaseInstance() {
+		
+		 DescribeDBInstancesRequest describeDbInstanceRequest = new DescribeDBInstancesRequest()
+		            .withDBInstanceIdentifier("vinsys");
+		 
+	     DescribeDBInstancesResult describeDBInstances = amazonRDSClient.describeDBInstances(describeDbInstanceRequest);
+	     List<DBInstance> dbInstances =  describeDBInstances.getDBInstances();
+	     
+	     for (DBInstance dbInstance : dbInstances) {
+			
+	 		System.out.println("Endpoint:" + dbInstance.getEndpoint());
+			System.out.println("Database Status:" + dbInstance.getDBInstanceStatus());
+		}
+	}
+	
+	private void deleteMySqlDatabaseInstance() {
+		
+		DeleteDBInstanceRequest deleteDBInstanceRequest = new DeleteDBInstanceRequest()
+				.withDBInstanceIdentifier("vinsys")
+				.withSkipFinalSnapshot(true);
+		
+		DBInstance dbInstance = amazonRDSClient.deleteDBInstance(deleteDBInstanceRequest);
+		
+		System.out.println("Database Status:" + dbInstance.getDBInstanceStatus());
+	}
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+AWS CLI:
+
+aws configure
+
+aws rds create-db-instance ^
+    --db-instance-identifier vinsys ^
+    --db-instance-class db.t2.micro ^
+    --engine MySQL ^
+    --allocated-storage 5 ^
+    --master-username vinsys ^
+    --master-user-password vinsys123 ^
+    --backup-retention-period 7
+
+
+aws rds describe-db-instances
+
+aws rds delete-db-instance --db-instance-identifier vinsys --skip-final-snapshot
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+

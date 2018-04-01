@@ -1,0 +1,14 @@
+package com.bmc.entities;
+
+public class Rectangle extends Figure {
+	private double length;
+	private double breadth;
+	
+	
+	
+	public double area(){
+		
+		return length*breadth;
+	}
+
+}

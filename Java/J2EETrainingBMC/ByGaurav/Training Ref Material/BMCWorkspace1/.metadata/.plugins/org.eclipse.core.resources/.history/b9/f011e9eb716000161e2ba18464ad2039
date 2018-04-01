@@ -1,0 +1,23 @@
+package com.bmc.io;
+
+import java.io.FileNotFoundException;
+import java.io.RandomAccessFile;
+
+public class RandomAccesssFileDemo {
+
+	/**
+	 * @param args
+	 * @throws FileNotFoundException 
+	 */
+	public static void main(String[] args) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		
+		String data="Java is object oriented";
+		
+		RandomAccessFile randomAccess=new RandomAccessFile("d:\\io\\Random.txt","rw");
+		randomAcess.seek(10);
+		
+
+	}
+
+}

@@ -1,0 +1,6 @@
+package com.bmc.demo;
+//Empty interfaces
+//no declaration of methods
+public interface Marker {
+
+}

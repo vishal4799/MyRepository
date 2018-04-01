@@ -1,0 +1,17 @@
+package com.bmc.demo;
+
+import com.bmc.entities.Square;
+
+public class DynamicMethodInvocationDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//dummy object
+		Square dummy=new Square();
+
+	}
+
+}

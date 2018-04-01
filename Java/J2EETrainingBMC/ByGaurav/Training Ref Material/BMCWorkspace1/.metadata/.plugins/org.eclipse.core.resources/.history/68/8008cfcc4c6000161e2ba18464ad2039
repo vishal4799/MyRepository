@@ -1,0 +1,28 @@
+package com.bmc.collections;
+
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+public class SortedSetDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Since String class implements Comparable interface
+		//logic for comparison is in compareTo(), String objects will be sorted
+		//in ascending order lexographically
+		SortedSet<String> sortedSet= new TreeSet<String>();
+		sortedSet.add("Chirag");
+		sortedSet.add("amit");
+		sortedSet.add("akash");
+		sortedSet.add("rohit");
+		//String representation of sortedSet
+		System.out.println(sortedSet);
+		
+
+	}
+
+}

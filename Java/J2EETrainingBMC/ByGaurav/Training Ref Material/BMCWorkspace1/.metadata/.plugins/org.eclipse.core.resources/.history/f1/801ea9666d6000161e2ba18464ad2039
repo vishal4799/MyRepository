@@ -1,0 +1,26 @@
+package com.bmc.io;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+
+public class CharacterStreamDemo {
+
+	/**
+	 * @param args
+	 * @throws FileNotFoundException 
+	 */
+	public static void main(String[] args) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		
+		File fileread=new File("D:\\io\\File3.txt");
+		File filewrite=new File("D:\\io\\File4.txt");
+		//wrapping
+		Reader reader=new FileReader(fileread);
+		
+		
+
+	}
+
+}

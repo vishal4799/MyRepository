@@ -1,0 +1,17 @@
+package com.bmc.demo;
+
+import com.bmc.helper.ConnectionManager;
+
+public class ConnectionManagerDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		ConnectionManager manager=ConnectionManager.createInstance();
+
+	}
+
+}

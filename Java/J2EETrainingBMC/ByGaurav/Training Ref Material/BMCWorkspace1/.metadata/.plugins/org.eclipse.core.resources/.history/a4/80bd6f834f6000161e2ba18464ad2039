@@ -1,0 +1,9 @@
+package com.bmc.service;
+
+import java.util.Comparator;
+
+import com.bmc.entities.Employee;
+
+public class EmployeeComparatorBySalary implements Comparator<Employee> {
+
+}

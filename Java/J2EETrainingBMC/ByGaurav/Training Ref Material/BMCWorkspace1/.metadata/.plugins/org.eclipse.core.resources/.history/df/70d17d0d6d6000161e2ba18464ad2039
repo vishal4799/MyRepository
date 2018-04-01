@@ -1,0 +1,18 @@
+package com.bmc.io;
+
+import java.io.File;
+
+public class CharacterStreamDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		File filread=new File("D:\\io\\File3.txt");
+		
+
+	}
+
+}

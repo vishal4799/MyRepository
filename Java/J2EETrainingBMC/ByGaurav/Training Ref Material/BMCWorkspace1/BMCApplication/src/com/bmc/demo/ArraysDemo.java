@@ -1,0 +1,92 @@
+package com.bmc.demo;
+
+import java.util.Arrays;
+
+import com.bmc.entities.Employee;
+import com.bmc.entities.Square;
+
+public class ArraysDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Declaration of Array
+		int n[];//array of type int
+		n=new int[5];//specifying size of array
+		n[0]=100;//initialization
+		n[1]='A';//stores ASCII value of A-65
+		n[2]=(int)14.5f;
+		byte b=12;
+		n[3]=b;//promotion byte promoted int
+		n[4]=12;
+		
+		//Declaration and initialization at same time
+		int array[]={10,20,30};//array size dependent no. of elements
+		for(int i=0;i<array.length;i++){
+			System.out.println(array[i]);
+		}
+		//enhanced for loop
+		for(int element:array){
+			System.out.println(element);
+		}
+		//based on elements size will be determined
+		int arrayInt[]=new int[]{10,20,30};
+		//copy one array from another
+		int arraySource[]=new int[]{100,200,300};
+		int arrayDestination[]=new int[3];
+		System.arraycopy(arraySource, 0, arrayDestination, 0, arraySource.length);
+		System.out.println(arrayDestination[0]);
+		
+		String strArray[]={"sabbir","amit","rakesh","Chirag","sachin"};
+		
+		Arrays.sort(strArray);//string will be sorted lexographically
+		
+		System.out.println(strArray[0]);
+		
+		//Array of reference type
+		Square squareArray[]=new Square[]{new Square(10),new Square(20),new Square(30)};
+		
+		//Upcasting
+		//only references of object are stored
+		//object[0]-->ref variable of square-->square object in object pool
+		Object object[]=new Object[]{new Square(100),new String("sabbir")};
+		
+		Square square1=new Square(30);
+		
+		Object squareRefArray[]=new Object[]{square1};
+		
+		square1.setLength(21);
+		
+		System.out.println(squareRefArray[0]);
+		
+		int multi[][]=new int[3][3];
+		multi[0][0]=10;
+		
+		//jagged arrays-Array within an array is called jagged array
+		Object outer[]=new Object[3];
+		
+		outer[0]=new int[]{10,20,30,40};
+		outer[1]=new int[]{20,30};
+		
+		int outerArrayData=0;
+		
+		for(int i=0;i<outer.length;i++){
+			int outer1Array[]=(int[])outer[1];
+			
+			for(int j=0;j<outer1Array.length;j++){
+				
+				outerArrayData=outer1Array[1];
+			}
+			
+		}
+		
+		System.out.println("data:"+outerArrayData);
+		
+		
+
+	}
+
+}

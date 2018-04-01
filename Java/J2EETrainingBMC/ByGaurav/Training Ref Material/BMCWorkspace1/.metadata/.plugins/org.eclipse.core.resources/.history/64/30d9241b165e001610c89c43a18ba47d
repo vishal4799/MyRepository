@@ -1,0 +1,7 @@
+package com.bmc.entities;
+
+public class Rectangle extends Figure {
+	
+	
+
+}

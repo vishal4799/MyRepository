@@ -1,0 +1,51 @@
+package com.bmc.entities;
+//Domain Object-Real world entity i.e noun
+//Domain Class-Template to create Domain Objects,Blue Print
+//Domain Object will have data from UI or Database
+public class Box {
+	//Attributes,properties,instance variable - they are called
+	//Used to store data
+	//data type determines data , variable will hold
+	//each instance i.e object will have private copy instance variable
+	
+	private double height;
+	private double width;
+	private double breadth;
+	
+	//explict no-arg constructor
+	//1.Constructor will not have return type
+	//2.Constructor will have same name as class
+	//3.Constructor returns class itself
+    public Box(){
+		
+	}
+	//Constructor can be overloaded
+	//Parameter name could be different than instance variable name
+	//By Convention parameter name should be same as instance var name
+	
+	public Box(double height,double width,double breadth){
+		//the object for which constructor will be called
+		//the current object which is under construction is referred
+		//as "this"
+		//first parameter is stored in instance variable i.e height
+		this.height=height;
+		this.width=width;
+		this.breadth=breadth;
+		
+	}
+	
+	//For every box object computation will be based on instance variable
+	
+	public double computeVolume(){
+		return height*width*breadth;
+		
+	}
+	
+	public  static double computeVolumeOfAllboxes(Box[] boxes){
+		
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,8 @@
+package com.bmc.io;
+
+import java.io.Serializable;
+
+public class B implements Serializable{
+
+	private int b;
+}

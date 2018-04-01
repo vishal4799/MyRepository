@@ -1,0 +1,28 @@
+package com.bmc.demo;
+
+import com.bmc.exceptions.BMCGenericException;
+
+public class GenericDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String str=null;//str value comes from DB
+		if(str==null){
+			
+			throw new BMCGenericException("Str is null",new NullPointerException());
+		}
+		
+		int array[]={10,20};
+		
+		
+		System.out.println(array[3]);
+		
+		
+		
+	}
+
+}

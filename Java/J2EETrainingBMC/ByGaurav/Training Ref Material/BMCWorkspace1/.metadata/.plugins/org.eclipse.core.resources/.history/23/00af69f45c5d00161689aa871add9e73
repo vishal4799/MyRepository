@@ -1,0 +1,18 @@
+package com.bmc.demo;
+
+import com.bmc.entities.Box;
+
+public class BoxDemo2 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Box box1=new Box(10,20,30);
+		
+		
+	}
+
+}

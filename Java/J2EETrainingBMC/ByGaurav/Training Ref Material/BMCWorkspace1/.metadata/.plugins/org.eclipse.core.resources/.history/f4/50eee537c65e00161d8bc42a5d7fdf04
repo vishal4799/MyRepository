@@ -1,0 +1,16 @@
+package com.bmc.helper;
+
+import com.bmc.service.AbstractEmployeeService;
+
+public class UtilityAbstractEmployeeService extends AbstractEmployeeService {
+
+	
+	public static void print(AbstractEmployeeService service){
+
+		service.print(service);
+	}
+
+	
+	
+	
+}

@@ -1,0 +1,243 @@
+package com.ec2;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.ec2.AmazonEC2Client;
+import com.amazonaws.services.ec2.model.AuthorizeSecurityGroupEgressRequest;
+import com.amazonaws.services.ec2.model.AuthorizeSecurityGroupEgressResult;
+import com.amazonaws.services.ec2.model.AuthorizeSecurityGroupIngressRequest;
+import com.amazonaws.services.ec2.model.AuthorizeSecurityGroupIngressResult;
+import com.amazonaws.services.ec2.model.CreateKeyPairRequest;
+import com.amazonaws.services.ec2.model.CreateKeyPairResult;
+import com.amazonaws.services.ec2.model.CreateSecurityGroupRequest;
+import com.amazonaws.services.ec2.model.CreateSecurityGroupResult;
+import com.amazonaws.services.ec2.model.CreateTagsRequest;
+import com.amazonaws.services.ec2.model.DescribeInstancesResult;
+import com.amazonaws.services.ec2.model.Instance;
+import com.amazonaws.services.ec2.model.InstanceType;
+import com.amazonaws.services.ec2.model.IpPermission;
+import com.amazonaws.services.ec2.model.KeyPair;
+import com.amazonaws.services.ec2.model.Reservation;
+import com.amazonaws.services.ec2.model.RunInstancesRequest;
+import com.amazonaws.services.ec2.model.RunInstancesResult;
+import com.amazonaws.services.ec2.model.Tag;
+
+public class CreateAmazonEC2Instance {
+
+	private AmazonEC2Client amazonEC2Client;
+
+	public static void main(String[] args) {
+
+		CreateAmazonEC2Instance obj = new CreateAmazonEC2Instance();
+		obj.init();
+		obj.createEC2SecurityGroup();
+		obj.createKeyPair();
+		obj.createEC2OnDemandInstance();
+	}
+
+	private void init() {
+
+		System.out.println("----------------------Connecting-------------------------------");
+
+		// Create and initialize an AWS Credentials instance
+		AWSCredentials credentials = new BasicAWSCredentials("","");
+
+		// Use the AWS Credentails object to create a new AmazonEC2Client
+		// instance
+		amazonEC2Client = new AmazonEC2Client(credentials);
+
+		// By default, the service endpoint is ec2.us-east-1.amazonaws.com
+		// refer http://docs.aws.amazon.com/general/latest/gr/rande.html for all
+		// endpoint
+		amazonEC2Client.setEndpoint("ec2.us-east-1.amazonaws.com");
+		amazonEC2Client.setRegion(Region.getRegion(Regions.US_EAST_1));
+		System.out.println("----------------------Connected-------------------------------");
+	}
+
+	private void createEC2SecurityGroup() {
+
+		System.out.println("----------------------createEC2SecurityGroup-------------------------------");
+
+		// To create a security group
+		CreateSecurityGroupRequest csgr = new CreateSecurityGroupRequest();
+		csgr.withGroupName("JavaSecurityGroup").withDescription("My Java Security Group");
+
+		CreateSecurityGroupResult createSecurityGroupResult = amazonEC2Client.createSecurityGroup(csgr);
+
+		System.out.println("Group Id:" + createSecurityGroupResult.getGroupId());
+
+		// To authorize security group ingress
+		Collection<IpPermission> ips = new ArrayList<IpPermission>();
+
+		// Permission for SSH only to your ip
+		IpPermission ipssh = new IpPermission();
+		ipssh.withIpProtocol("tcp").withFromPort(22).withToPort(22).withIpRanges("123.252.203.194/32");
+		ips.add(ipssh);
+
+		// Permission for HTTP, any one can access
+		IpPermission iphttp = new IpPermission();
+		iphttp.withIpProtocol("tcp").withFromPort(80).withToPort(80).withIpRanges("0.0.0.0/0");
+		ips.add(iphttp);
+
+		// Permission for HTTPS, any one can accesss
+		IpPermission iphttps = new IpPermission();
+		iphttps.withIpProtocol("tcp").withFromPort(443).withToPort(443).withIpRanges("0.0.0.0/0");
+		ips.add(iphttps);
+
+		// For Inbound
+		AuthorizeSecurityGroupIngressRequest authorizeSecurityGroupIngressRequest = new AuthorizeSecurityGroupIngressRequest();
+		authorizeSecurityGroupIngressRequest.withGroupName("JavaSecurityGroup").withIpPermissions(ips);
+
+		// To authorize the SecurityGroupIngress
+		AuthorizeSecurityGroupIngressResult authorizeSecurityGroupIngressResult = amazonEC2Client
+				.authorizeSecurityGroupIngress(authorizeSecurityGroupIngressRequest);
+
+		System.out.println(authorizeSecurityGroupIngressResult.getSdkResponseMetadata());
+		System.out.println(authorizeSecurityGroupIngressResult.getSdkHttpMetadata());
+
+		// To authorize security group Egress
+		Collection<IpPermission> ipsegress = new ArrayList<IpPermission>();
+
+		// Permission for MySQL, any one can accesss
+		IpPermission ipmysql = new IpPermission();
+		ipmysql.withIpProtocol("tcp").withFromPort(3306).withToPort(3306).withIpRanges("0.0.0.0/0");
+		ipsegress.add(ipmysql);
+
+		// For Outbound
+		AuthorizeSecurityGroupEgressRequest authorizeSecurityGroupEgressRequest = new AuthorizeSecurityGroupEgressRequest();
+		authorizeSecurityGroupEgressRequest.withGroupId(createSecurityGroupResult.getGroupId())
+				.withIpPermissions(ipsegress);
+
+		// To authorize the SecurityGroupEgress
+		AuthorizeSecurityGroupEgressResult authorizeSecurityGroupEgressResult = amazonEC2Client
+				.authorizeSecurityGroupEgress(authorizeSecurityGroupEgressRequest);
+
+		System.out.println(authorizeSecurityGroupEgressResult.getSdkResponseMetadata());
+		System.out.println(authorizeSecurityGroupEgressResult.getSdkHttpMetadata());
+
+		System.out.println("----------------------EC2SecurityGroup created-------------------------------");
+	}
+
+	private void createKeyPair() {
+
+		System.out.println("----------------------createKeyPair-------------------------------");
+
+		// Create a Key Pair
+		CreateKeyPairRequest ckpr = new CreateKeyPairRequest();
+		ckpr.withKeyName("JavaKeyPair");
+
+		// Pass the request to createKeyPair method. The method returns a
+		// CreateKeyPairResult instance
+		CreateKeyPairResult ckpresult = amazonEC2Client.createKeyPair(ckpr);
+		KeyPair keyPair = ckpresult.getKeyPair();
+
+		System.out.println(keyPair.getKeyName());
+		// obtain the unencrypted PEM-encoded private key
+		System.out.println(keyPair.getKeyMaterial());
+		// obtain the fingerprint
+		System.out.println(keyPair.getKeyFingerprint());
+
+		writePemFile(keyPair.getKeyMaterial());
+
+		System.out.println("----------------------KeyPair created-------------------------------");
+	}
+
+	private void writePemFile(String privateKey) {
+		try {
+			FileWriter fileWriter = new FileWriter(new File("c://abc/", "abc.pem"));
+			fileWriter.write(privateKey);
+			fileWriter.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	private void createEC2OnDemandInstance() {
+
+		try {
+			// request for new on demand instance
+			System.out.println("-------------------------createEC2OnDemandInstance----------------------------");
+			RunInstancesRequest rir = new RunInstancesRequest();
+			rir.withImageId("ami-b73b63a0");
+			rir.withInstanceType(InstanceType.T2Micro);
+			rir.withMinCount(1);
+			rir.withMaxCount(1);
+			rir.withKeyName("JavaKeyPair");
+			rir.withSecurityGroups("JavaSecurityGroup");
+
+			RunInstancesResult riresult = amazonEC2Client.runInstances(rir);
+			System.out.println("Reservation Id:" + riresult.getReservation().getReservationId());
+
+			// Find a newly created instance id
+			String instanceId = null;
+
+			DescribeInstancesResult describeInstancesResult = amazonEC2Client.describeInstances();
+			List<Reservation> reservations = describeInstancesResult.getReservations();
+			for (Reservation reservation : reservations) {
+
+				List<Instance> instances = reservation.getInstances();
+
+				for (Instance instance : instances) {
+
+					System.out.println(instance.getImageId() + "\t" + instance.getInstanceId() + "\t"
+							+ instance.getState().getName() + "\t" + instance.getPrivateDnsName());
+					if (instance.getState().getName().equals("pending")) {
+						instanceId = instance.getInstanceId();
+					}
+				}
+			}
+
+			System.out.println("New Instance ID :" + instanceId);
+
+			// Waiting for Instance Running
+			boolean isWaiting = true;
+			while (isWaiting) {
+				System.out.println("*** Waiting ***");
+				Thread.sleep(1000);
+				describeInstancesResult = amazonEC2Client.describeInstances();
+				reservations = describeInstancesResult.getReservations();
+				for (Reservation reservation : reservations) {
+
+					List<Instance> instances = reservation.getInstances();
+
+					for (Instance instance : instances) {
+
+						System.out.println(instance.getImageId() + "\t" + instance.getInstanceId() + "\t"
+								+ instance.getState().getName() + "\t" + instance.getPrivateDnsName());
+						if (instance.getState().getName().equals("running")) {
+
+							instanceId = instance.getInstanceId();
+							isWaiting = false;
+						}
+					}
+				}
+			}
+
+			/// Creating Tag for New Instance ////
+			System.out.println("Creating Tags for New Instance");
+			CreateTagsRequest crt = new CreateTagsRequest();
+
+			ArrayList<Tag> arrTag = new ArrayList<Tag>();
+			arrTag.add(new Tag().withKey("Name").withValue("Linux"));
+			crt.setTags(arrTag);
+
+			ArrayList<String> arrInstances = new ArrayList<String>();
+			arrInstances.add(instanceId);
+			crt.setResources(arrInstances);
+
+			amazonEC2Client.createTags(crt);
+		} catch (Exception exception) {
+			System.out.println(exception.getMessage());
+		}
+
+		System.out.println("------------------------EC2 Instance Created-------------------------");
+	}
+}

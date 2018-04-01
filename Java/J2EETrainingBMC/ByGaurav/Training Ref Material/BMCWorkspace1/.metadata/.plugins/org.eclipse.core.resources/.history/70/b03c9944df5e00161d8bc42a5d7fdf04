@@ -1,0 +1,16 @@
+package com.bmc.demo;
+
+public class MyMarker {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//before performing operation
+		
+		
+		
+	}
+
+}

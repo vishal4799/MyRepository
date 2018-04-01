@@ -1,0 +1,21 @@
+package com.bmc.demo;
+
+public class GenericDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String str=null;//str value comes from DB
+		if(str==null){
+			
+			
+		}
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.bmc.io;
+
+public class SerializeB {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		B b=new B(10,20);
+		
+
+	}
+
+}

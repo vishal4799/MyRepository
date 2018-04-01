@@ -1,0 +1,13 @@
+package com.bmc.entities;
+
+public class Figure {
+	
+	public Figure(){}
+	
+	public double area(){
+		System.out.println("--undefined--");
+		return 0.0;
+		
+	}
+
+}

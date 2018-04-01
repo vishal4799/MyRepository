@@ -1,0 +1,34 @@
+package com.bmc.helper;
+
+public class BMCFactory {
+	
+	//create instance of class based on class name passed
+	
+	//Dynamic initialization
+	//Object will be created during runtime based on class name
+	public static Object createInstance(String className) {
+		
+		//JRE ClassLoader
+		//ClassLoader is predefined class in java.lang
+		Object object=null;
+	try{
+		ClassLoader classLoader=ClassLoader.getSystemClassLoader();
+
+		//1.Load class in Method Area
+		
+			Class classData=classLoader.loadClass(className);
+			
+				object=classData.newInstance();
+	}catch(Exception e){
+		throw new BMCGenericException("BMC Exception",e);
+		
+	}
+			
+		
+		return object;
+		
+		
+		
+	}
+
+}

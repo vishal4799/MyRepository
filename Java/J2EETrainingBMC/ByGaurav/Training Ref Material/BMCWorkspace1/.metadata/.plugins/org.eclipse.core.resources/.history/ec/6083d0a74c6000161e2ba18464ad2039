@@ -1,0 +1,23 @@
+package com.bmc.collections;
+
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+public class SortedSetDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		SortedSet<String> sortedSet= new TreeSet<String>();
+		sortedSet.add("Chirag");
+		sortedSet.add("amit");
+		sortedSet.add("akash");
+		sortedSet.add("rohit");
+
+	}
+
+}

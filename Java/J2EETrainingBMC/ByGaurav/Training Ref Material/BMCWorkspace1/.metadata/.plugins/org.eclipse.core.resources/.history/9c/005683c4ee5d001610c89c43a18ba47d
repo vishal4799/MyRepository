@@ -1,0 +1,6 @@
+package com.bmc.helper;
+//facilitates connection with database
+
+public class ConnectionManager {
+
+}

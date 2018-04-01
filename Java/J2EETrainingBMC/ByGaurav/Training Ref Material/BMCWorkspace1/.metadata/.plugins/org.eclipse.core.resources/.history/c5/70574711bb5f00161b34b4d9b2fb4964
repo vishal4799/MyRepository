@@ -1,0 +1,20 @@
+package com.bmc.collections;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GenericDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		List<String> strList=new ArrayList<String>();
+		strList.add("sabbir");//allowed
+		strList.add(10);//not allowed, checked operation
+		
+	}
+
+}

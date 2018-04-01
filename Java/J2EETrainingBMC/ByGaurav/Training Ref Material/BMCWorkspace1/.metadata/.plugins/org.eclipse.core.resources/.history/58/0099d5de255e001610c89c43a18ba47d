@@ -1,0 +1,51 @@
+package com.bmc.demo;
+
+import java.util.Arrays;
+
+public class ArraysDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Declaration of Array
+		int n[];//array of type int
+		n=new int[5];//specifying size of array
+		n[0]=100;//initialization
+		n[1]='A';//stores ASCII value of A-65
+		n[2]=(int)14.5f;
+		byte b=12;
+		n[3]=b;//promotion byte promoted int
+		n[4]=12;
+		
+		//Declaration and initialization at same time
+		int array[]={10,20,30};//array size dependent no. of elements
+		for(int i=0;i<array.length;i++){
+			System.out.println(array[i]);
+		}
+		//enhanced for loop
+		for(int element:array){
+			System.out.println(element);
+		}
+		//based on elements size will be determined
+		int arrayInt[]=new int[]{10,20,30};
+		//copy one array from another
+		int arraySource[]=new int[]{100,200,300};
+		int arrayDestination[]=new int[3];
+		System.arraycopy(arraySource, 0, arrayDestination, 0, arraySource.length);
+		System.out.println(arrayDestination[0]);
+		
+		String strArray[]={"sabbir","amit","rakesh","Chirag"};
+		
+		Arrays.sort(strArray);
+		
+		System.out.println(strArray[0]);
+		
+		
+		
+
+	}
+
+}

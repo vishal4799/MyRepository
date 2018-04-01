@@ -1,0 +1,16 @@
+package com.bmc.io;
+
+public class FileDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//File class represents FileSystem-Local,Remote
+		
+		File file=new File("//IO");
+
+	}
+
+}

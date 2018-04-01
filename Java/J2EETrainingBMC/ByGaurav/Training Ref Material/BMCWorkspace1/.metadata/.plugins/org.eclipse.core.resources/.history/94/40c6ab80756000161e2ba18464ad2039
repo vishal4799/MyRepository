@@ -1,0 +1,5 @@
+package com.bmc.io;
+
+public class B implements Serializable{
+
+}

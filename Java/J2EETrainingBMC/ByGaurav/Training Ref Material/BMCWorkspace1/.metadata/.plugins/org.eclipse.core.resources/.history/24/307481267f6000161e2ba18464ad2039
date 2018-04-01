@@ -1,0 +1,28 @@
+package com.bmc.multithreaded;
+
+public class MultithreadedApplication {
+
+	/**
+	 * @param args
+	 */
+	
+	//Named Inner class
+	
+	class SumTask extends Thread{
+		
+		
+		
+		@Override
+		public void run(){
+			
+		}
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

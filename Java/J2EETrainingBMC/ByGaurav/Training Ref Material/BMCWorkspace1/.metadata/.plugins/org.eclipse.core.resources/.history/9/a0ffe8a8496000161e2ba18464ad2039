@@ -1,0 +1,24 @@
+package com.bmc.collections;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//1.Map do not allow duplicate keys
+		//2. one null key is allowed
+		
+		Map<Integer,String> map=new HashMap<Integer,String>();
+		System.out.println(map.put(1, "Sabbir"));//since key is not present,puts key-value
+		//returns null
+		
+		
+		
+	}
+
+}

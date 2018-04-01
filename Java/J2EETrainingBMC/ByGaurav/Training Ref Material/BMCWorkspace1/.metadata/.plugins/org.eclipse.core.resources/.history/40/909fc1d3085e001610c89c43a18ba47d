@@ -1,0 +1,24 @@
+package com.bmc.demo;
+
+public class MyClass {
+	
+	static int i=0;
+	@Override
+	public void finalize(){
+		MyClass.i=10;
+		System.out.println("Finalize called");
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		{
+		MyClass mc=new MyClass();
+		}
+		
+		System.gc();
+	}
+
+}

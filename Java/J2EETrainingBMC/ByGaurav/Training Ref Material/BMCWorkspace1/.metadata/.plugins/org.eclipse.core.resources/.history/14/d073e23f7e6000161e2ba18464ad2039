@@ -1,0 +1,36 @@
+package com.bmc.multithreaded;
+
+public class SingleThreadedApplication {
+
+	/**
+	 * @param args
+	 */
+	
+	public double sum(){
+		double sum=0;
+		
+		for(int i=1;i<=10;i++){
+			sum+=i;
+			System.out.println("Sum done so far:"+sum);
+		}
+		
+		return sum;
+	}
+	
+	public double product(){
+		double product=1;
+		
+		for(int i=1;i<=10;i++){
+			product*=i;
+			System.out.println("Product done so far:"+product);
+		}
+		
+		return product;
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

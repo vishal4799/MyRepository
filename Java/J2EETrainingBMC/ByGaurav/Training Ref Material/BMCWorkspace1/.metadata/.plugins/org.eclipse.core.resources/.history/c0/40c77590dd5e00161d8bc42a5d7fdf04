@@ -1,0 +1,28 @@
+package com.bmc.demo;
+
+public class ClassImpl implements C{
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void a() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void b() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void c() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

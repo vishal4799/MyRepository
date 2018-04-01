@@ -1,0 +1,25 @@
+package com.bmc.io;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.Properties;
+
+public class ReadPropertiesFile {
+
+	/**
+	 * @param args
+	 * @throws FileNotFoundException 
+	 */
+	public static void main(String[] args) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		File dbinfo=new File("d:\\io\\DBInfo.properties");
+		//Blank properties object
+		Properties properties=new Properties();
+		InputStream binaryStream=new FileInputStream(dbinfo);
+		properties.load(binaryStream);
+
+	}
+
+}

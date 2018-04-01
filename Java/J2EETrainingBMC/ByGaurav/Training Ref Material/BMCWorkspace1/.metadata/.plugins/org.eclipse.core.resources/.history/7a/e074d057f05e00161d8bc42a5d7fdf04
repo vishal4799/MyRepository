@@ -1,0 +1,27 @@
+package com.bmc.demo;
+
+public class ThrowsDemo {
+
+	
+	public void x()throws Exception{
+		
+		//xxxx
+	}
+	
+	public void y()throws Exception{
+		x();
+	}
+	
+	/**
+	 * @param args
+	 * 
+	 */
+	public static void main(String[] args)throws Exception {
+		// TODO Auto-generated method stub
+		ThrowsDemo td=new ThrowsDemo();
+		
+		td.y();
+
+	}
+
+}

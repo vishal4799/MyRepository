@@ -1,0 +1,6 @@
+package com.bmc.demo;
+
+public class MyClass extends XAdapter {
+	
+
+}

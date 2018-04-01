@@ -1,0 +1,70 @@
+package com.bmc.entities;
+//Domain class representing real world entity -Employee
+public class Employee {
+	
+	private int empId;
+	private String empName;
+	private double empSalary;
+	private String empDesignation;
+	
+	public Employee(){}
+
+	public int getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(int empId) {
+		this.empId = empId;
+	}
+
+	public String getEmpName() {
+		return empName;
+	}
+
+	public void setEmpName(String empName) {
+		this.empName = empName;
+	}
+
+	public double getEmpSalary() {
+		return empSalary;
+	}
+
+	public void setEmpSalary(double empSalary) {
+		this.empSalary = empSalary;
+	}
+
+	public String getEmpDesignation() {
+		return empDesignation;
+	}
+
+	public void setEmpDesignation(String empDesignation) {
+		this.empDesignation = empDesignation;
+	}
+	@Override
+	public String toString(){
+		StringBuilder builder=new StringBuilder();
+		builder.append("Emp Id:"+empId+"\n");
+		builder.append("Emp Name:"+empName+"\n");
+		builder.append("Emp Salary:"+empSalary+"\n");
+		builder.append("Emp Designation:"+empDesignation+"\n");
+		return builder.toString();
+		
+	}
+	//e1.equals(e2)
+	//e1--this
+	@Override
+	public boolean equals(Object o){
+		//check if o can be casted to Employee & o is not null
+		if(o instanceof Employee && o!=null){
+			Employee e=(Employee)o;//downcasting
+			if(this.empId==e.empId && this.empName.equals(e.empName) && this.empSalary==e.empSalary && this.empDesignation.equals(e.empDesignation)){
+				return true;
+			}
+			
+			
+		}
+		return false;
+		
+	}
+
+}

@@ -1,0 +1,26 @@
+package com.bmc.service;
+
+import java.util.Comparator;
+
+import com.bmc.entities.Employee;
+
+public class EmployeeComparatorByName implements Comparator<Employee>{
+
+	public int compare(Employee o1, Employee o2) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		
+		return 0;
+	}
+	
+	
+	public int countChar(String name){
+		
+		char ch=name.trim().charAt(0);
+		return ch;
+		
+	}
+
+}

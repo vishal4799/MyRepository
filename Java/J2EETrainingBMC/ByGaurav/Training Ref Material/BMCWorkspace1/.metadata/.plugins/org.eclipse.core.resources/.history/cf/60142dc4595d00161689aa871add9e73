@@ -1,0 +1,46 @@
+package com.bmc.demo;
+
+import com.bmc.entities.Box;
+
+public class BoxDemo1 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//Based on template i.e class instance can be created
+		//new- allocates memory in Object Pool
+		//default constructor is placed in class after
+		//successful compilation
+		Box box1=new Box();//box1 is reference variable of type Box
+		//box1 is allocated memory in handler pool
+		//instance variable will have default values initially
+		System.out.println(box1.height);
+		System.out.println(box1.width);
+		System.out.println(box1.breadth);
+		
+		//initialzing instance variable
+		box1.breadth=10;
+		box1.width=20;
+		box1.height=10;
+		
+		System.out.println(box1.height);
+		System.out.println(box1.width);
+		System.out.println(box1.breadth);
+		
+		Box box2=new Box();
+		//initialzing instance variable
+		box2.breadth=90;
+		box2.width=20;
+		box2.height=60;
+		System.out.println(box2.height);
+		System.out.println(box2.width);
+		System.out.println(box2.breadth);
+		
+		
+		
+	}
+
+}

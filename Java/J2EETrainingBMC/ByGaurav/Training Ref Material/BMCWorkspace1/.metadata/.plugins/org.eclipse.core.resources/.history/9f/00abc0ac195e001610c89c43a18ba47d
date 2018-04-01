@@ -1,0 +1,31 @@
+package com.bmc.demo;
+
+import java.lang.reflect.Method;
+
+import com.bmc.entities.Square;
+
+public class DynamicMethodInvocationDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//dummy object
+		Square dummy=new Square();
+		Class squareClassData=dummy.getClass();//getClass() method of Object class returns Class Ref
+		try {
+			Method areaMethod=squareClassData.getMethod("area",null);
+			
+			
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

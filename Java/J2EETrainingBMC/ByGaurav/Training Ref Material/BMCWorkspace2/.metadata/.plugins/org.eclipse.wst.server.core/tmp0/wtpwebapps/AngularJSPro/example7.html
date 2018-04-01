@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="angular.min.js"></script>
+
+</head>
+<body>
+<div ng-app="" ng-init="quantity=1;cost=5">
+
+<p>Total in dollar: {{ quantity * cost }}</p>
+</div>
+
+<div ng-app="" ng-init="quantity=1;cost=5">
+
+<p>Total in dollar: <span ng-bind="quantity * cost"></span></p>
+
+</div>
+
+</body>
+</html>

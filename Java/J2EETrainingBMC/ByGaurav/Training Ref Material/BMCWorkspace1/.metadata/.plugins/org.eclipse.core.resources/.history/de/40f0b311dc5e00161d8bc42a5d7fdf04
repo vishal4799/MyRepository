@@ -1,0 +1,24 @@
+package com.bmc.demo;
+
+import com.bmc.dao.JdbcEmployeeDAOImpl;
+
+public class InterfaceDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//client of dao layer
+		//Implementation details are revealed
+		JdbcEmployeeDAOImpl impl=new JdbcEmployeeDAOImpl();
+		impl.findEmployeeById(101);
+		//Internal method of dao layer also gets exposed
+		impl.internalToDAOLayer();
+		
+		
+
+	}
+
+}

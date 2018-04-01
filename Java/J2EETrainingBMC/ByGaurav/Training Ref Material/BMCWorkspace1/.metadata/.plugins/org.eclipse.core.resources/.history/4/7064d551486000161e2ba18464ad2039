@@ -1,0 +1,24 @@
+package com.bmc.collections;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class SetDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//1.Set is unordered
+		//2.Set do not allow duplicate objects
+		//3.Internally Set uses Map to determine duplicate objects
+		//Map<String> map=new HashMap<String>();
+		Set<String> set=new HashSet<String>();
+		
+		System.out.println(set.add("sabbir"));//add returns boolean
+		
+	}
+
+}

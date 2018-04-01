@@ -1,0 +1,18 @@
+package com.bmc.exceptions;
+//1.Checked exception - if customized exception handling class
+//extends java.lang.Exception, becomes checked exception
+//2.Unchecked exception -if customized exception handling class
+//extends java.lang.RuntimeExceptin,becomes unchecked exception
+
+//Object of User defined exception handling class must be thrown explictly
+
+public class BMCException extends Exception {
+	
+	String message;
+	
+	public BMCException(String message){
+		this.message=message;
+	}
+	
+
+}

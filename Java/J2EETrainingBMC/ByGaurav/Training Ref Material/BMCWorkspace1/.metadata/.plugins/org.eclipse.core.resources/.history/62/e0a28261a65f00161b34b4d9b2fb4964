@@ -1,0 +1,29 @@
+package com.bmc.demo;
+
+import java.util.Scanner;
+
+public class ScannerDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		// TODO Auto-generated method stub
+		String data="2.5,7.9,11.2,4.5";
+		//Utitlity class introduced in Java 5
+		//parses data into actual primitive type
+		Scanner scanner=new Scanner(data);
+		float sum=0.0f;
+		while(scanner.hasNextFloat()){
+			
+			float value=scanner.nextFloat();
+			sum+=value;
+			
+			
+		}
+
+		System.out.println("Sum is:"+sum);
+	}
+
+}

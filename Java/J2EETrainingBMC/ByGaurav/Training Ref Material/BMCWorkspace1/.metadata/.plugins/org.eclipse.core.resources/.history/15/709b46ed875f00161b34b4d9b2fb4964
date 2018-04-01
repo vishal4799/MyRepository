@@ -1,0 +1,17 @@
+package com.bmc.demo;
+
+import com.bmc.helper.BMCFactory;
+
+public class WrappingExceptionDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		BMCFactory.createInstance("bmc.xyz.MyClass");
+		
+	}
+
+}

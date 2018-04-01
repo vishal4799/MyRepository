@@ -1,0 +1,27 @@
+package com.bmc.collections;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class DeckDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Combination of LIFO and FIFO
+		//LIFO-Stack, FIFO-Queue
+		//can work as both stack as well as queue
+		//pronounced as deck
+		Deque deckStack=new ArrayDeque();//stack implementation 
+		deckStack.push(10);
+		deckStack.push(30);
+		deckStack.push(45);
+		
+		
+
+	}
+
+}

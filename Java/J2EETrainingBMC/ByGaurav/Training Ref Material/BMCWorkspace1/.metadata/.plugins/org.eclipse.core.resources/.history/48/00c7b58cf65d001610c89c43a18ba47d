@@ -1,0 +1,14 @@
+package com.bmc.service;
+
+import com.bmc.entities.Employee;
+
+//business logic for Domain class Employee
+
+public class EmployeeService {
+	
+	public double computeTax(Employee employee){
+		return employee.getEmpSalary()*0.10;
+		
+	}
+
+}

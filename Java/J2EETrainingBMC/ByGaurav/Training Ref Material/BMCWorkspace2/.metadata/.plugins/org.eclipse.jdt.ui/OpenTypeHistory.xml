@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=BMCApplication/src&lt;com.bmc.test{Calculator.java[Calculator" modifiers="1" timestamp="1471930305125"/>
+<typeInfo handle="=RMIServerApplication/src&lt;com.bmc.dao{EmployeeDAO.java[EmployeeDAO" modifiers="513" timestamp="1472194905172"/>
+<typeInfo handle="=RMIServerApplication/src&lt;com.bmc.service{EmployeeService.java[EmployeeService" modifiers="513" timestamp="1472131598423"/>
+<typeInfo handle="=RMIServerApplication/src&lt;com.bmc.controller{EmployeeControllerInterface.java[EmployeeControllerInterface" modifiers="513" timestamp="1472131822945"/>
+</typeInfoHistroy>

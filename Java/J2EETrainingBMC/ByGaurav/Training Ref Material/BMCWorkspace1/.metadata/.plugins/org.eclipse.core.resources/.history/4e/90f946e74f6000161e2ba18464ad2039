@@ -1,0 +1,19 @@
+package com.bmc.service;
+
+import java.util.Comparator;
+
+import com.bmc.entities.Employee;
+
+public class EmployeeComparatorBySalary implements Comparator<Employee> {
+
+	public int compare(Employee o1, Employee o2) {
+		// TODO Auto-generated method stub
+		
+		//call business logic and do computation on employee salary
+		//after computation, comparison will be performed
+		double e1Salary=o1.getEmpSalary();
+		
+		return 0;
+	}
+
+}

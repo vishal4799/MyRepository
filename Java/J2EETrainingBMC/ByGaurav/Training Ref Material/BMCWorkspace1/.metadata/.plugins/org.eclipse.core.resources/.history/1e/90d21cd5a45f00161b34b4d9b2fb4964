@@ -1,0 +1,23 @@
+package com.bmc.demo;
+
+public class StringBuilderDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//Blank Object
+		StringBuilder builder=new StringBuilder();
+		builder.append(" is independence day of India.");
+		builder.insert(0, "15th Aug");
+		builder.append("We have celebrated independence day [");
+		for(int i=1;i<71;i++){
+			builder.append(i);
+		}
+		builder.append("]");
+		builder.append("times");
+
+	}
+
+}

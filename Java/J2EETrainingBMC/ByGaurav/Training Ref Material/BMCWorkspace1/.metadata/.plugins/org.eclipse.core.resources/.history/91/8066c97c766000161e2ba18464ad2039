@@ -1,0 +1,20 @@
+package com.bmc.io;
+
+import java.io.Serializable;
+
+public class B extends A implements Externizable{
+
+	private int b;
+	
+	public B(int a,int b){
+		super(a);
+		this.b=b;
+	}
+
+	@Override
+	public String toString() {
+		return "B [b=" + b + "]";
+	}
+	
+	
+}

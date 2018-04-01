@@ -1,0 +1,14 @@
+package com.bmc.io;
+
+public class ReadPropertiesFile {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+
+	}
+
+}

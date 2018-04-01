@@ -1,0 +1,5 @@
+package com.bmc.entities;
+//extends is keyword
+public class Visitor extends User {
+
+}

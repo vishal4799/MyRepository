@@ -1,0 +1,19 @@
+package com.bmc.service;
+
+//Abstract classes are used to enforce rules-Business Rules
+//Abstract class cannot be instantiated
+//Abstract can have abstract as well as concrete method
+
+public abstract class AbstractEmployeeService {
+	
+	//Method which do not have body should be marked abstract
+	//if one of method is marked as abstract, class must be marked abstract
+	//Business Rule-Each and every employee should have implementation of empCode()
+	//i.e every subclass must provide implementation of abstract method
+	public abstract String empCode();
+	protected double tax=10;
+	
+
+	
+
+}

@@ -1,0 +1,12 @@
+package com.bmc.demo;
+
+public class SubClass  extends SuperClass{
+	
+	//1.subclass can choose not to include throws
+	
+	@Override
+	public void x(){
+		
+	}
+
+}

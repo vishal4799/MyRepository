@@ -1,0 +1,55 @@
+package com.bmc.demo;
+
+import java.io.IOException;
+import java.util.Date;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
+public class TryCatchDemo {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 * @throws SecurityException 
+	 */
+	public static void main(String[] args) throws SecurityException, IOException {
+		// TODO Auto-generated method stub
+		
+		//Basic Logging utility classes-Logger,Level,FileHandler,SimpleFormatter
+		Logger logger=Logger.getLogger("TryCatchLogger");
+		
+		FileHandler fileHandler=new FileHandler("C:\\BMC\\log.txt");
+		SimpleFormatter formatter=new SimpleFormatter();//format log messages
+		fileHandler.setFormatter(formatter);
+		logger.addHandler(fileHandler);
+		
+		logger.log(Level.INFO,"--Application starts--"+" at "+new Date());
+		//Assuming no1 and no2 entered by end user
+		try{
+			logger.log(Level.INFO,"in try block"+" at "+new Date());
+        int no1=10,no2=20; 
+		int c=no1/no2;//Throws an exception of type ArithmeticException
+		int array[]={10,20};
+		logger.log(Level.INFO,"data at index 1:"+(array[1])+" at "+new Date());
+		String str=null;
+		str.toUpperCase();
+		}catch(ArithmeticException e){
+			//Handling
+			logger.log(Level.SEVERE,"no2 value cannot be zero "+e.getMessage()+" at "+new Date());
+		
+			
+		}
+		catch(ArrayIndexOutOfBoundsException e){
+			logger.log(Level.SEVERE,"index invalid "+e.getMessage()+"at "+new Date());
+		}
+		catch(Exception e){
+			logger.log(Level.SEVERE,"Unknown reason"+" at "+new Date());
+			
+		}
+		//will not get executed
+		logger.log(Level.INFO,"--Application terminates--");
+	}
+
+}

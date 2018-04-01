@@ -1,0 +1,254 @@
+package com.s3;
+
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import org.apache.http.Header;
+
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.ec2.AmazonEC2Client;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.AccessControlList;
+import com.amazonaws.services.s3.model.Bucket;
+import com.amazonaws.services.s3.model.BucketWebsiteConfiguration;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.CreateBucketRequest;
+import com.amazonaws.services.s3.model.DeleteObjectsRequest;
+import com.amazonaws.services.s3.model.DeleteObjectsRequest.KeyVersion;
+import com.amazonaws.services.s3.model.DeleteObjectsResult;
+import com.amazonaws.services.s3.model.GetBucketLocationRequest;
+import com.amazonaws.services.s3.model.GetObjectRequest;
+import com.amazonaws.services.s3.model.MultiObjectDeleteException;
+import com.amazonaws.services.s3.model.ObjectListing;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.PutObjectResult;
+import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
+import com.amazonaws.services.s3.model.SetBucketAclRequest;
+
+public class CreateBucketDemo {
+
+	private AmazonS3 amazonS3Client;
+
+	public static void main(String[] args) {
+
+		CreateBucketDemo obj = new CreateBucketDemo();
+		obj.init();
+		// obj.createBucket("vinsys-manpreet2");
+		// obj.uploadObject("vinsys-manpreet2", "KOALA",
+		// "C:\\Users\\Public\\Pictures\\Sample Pictures\\Koala.jpg");
+		// obj.downloadObject("vinsys-manpreet2", "KOALA");
+		// obj.listBuckets();
+		// obj.staticWebsiteHosting("vinsys-manpreet2");
+		obj.deleteBucketAndObjects("vinsys-manpreet2");
+	}
+
+	private void init() {
+
+		System.out.println("----------------------Connecting-------------------------------");
+
+		AWSCredentials credentials = new BasicAWSCredentials("",
+				"");
+
+		amazonS3Client = new AmazonS3Client(credentials);
+
+		amazonS3Client.setEndpoint("ec2.us-east-1.amazonaws.com");
+		amazonS3Client.setRegion(Region.getRegion(Regions.US_EAST_1));
+		System.out.println("----------------------Connected-------------------------------");
+	}
+
+	private void createBucket(String bucketName) {
+
+		try {
+
+			if (!(amazonS3Client.doesBucketExist(bucketName))) {
+
+				amazonS3Client.createBucket(new CreateBucketRequest(bucketName));
+			} else {
+				System.out.println("Already exist...");
+			}
+
+			String bucketLocation = amazonS3Client.getBucketLocation(new GetBucketLocationRequest(bucketName));
+			System.out.println("Bucket Location = " + bucketLocation);
+
+		} catch (AmazonServiceException ase) {
+			System.out.println("Caught an AmazonServiceException, which " + "means your request made it "
+					+ "to Amazon S3, but was rejected with an error response" + " for some reason.");
+			System.out.println("Error Message:    " + ase.getMessage());
+			System.out.println("HTTP Status Code: " + ase.getStatusCode());
+			System.out.println("AWS Error Code:   " + ase.getErrorCode());
+			System.out.println("Error Type:       " + ase.getErrorType());
+			System.out.println("Request ID:       " + ase.getRequestId());
+		} catch (AmazonClientException ace) {
+			System.out.println("Caught an AmazonClientException, which " + "means the client encountered "
+					+ "an internal error while trying to " + "communicate with S3, "
+					+ "such as not being able to access the network.");
+			System.out.println("Error Message: " + ace.getMessage());
+		}
+	}
+
+	private void uploadObject(String bucketName, String keyName, String uploadFileName) {
+
+		File file = new File(uploadFileName);
+
+		// Create the object of PutObjectRequest
+		PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, keyName, file);
+
+		// assign public read via per-defined ACL
+		putObjectRequest.setCannedAcl(CannedAccessControlList.PublicRead);
+
+		// Pass the putObjectRequest object to putObject method
+		amazonS3Client.putObject(putObjectRequest);
+
+		System.out.println("File Uploaded........");
+	}
+
+	private void downloadObject(String bucketName, String keyName) {
+
+		try (FileOutputStream fos = new FileOutputStream(keyName);
+				BufferedOutputStream bos = new BufferedOutputStream(fos);) {
+
+			S3Object s3Object = amazonS3Client.getObject(new GetObjectRequest(bucketName, keyName));
+			System.out.println("Content-Type:" + s3Object.getObjectMetadata().getContentType());
+
+			S3ObjectInputStream inputStream = s3Object.getObjectContent();
+
+			int num = 0;
+			while ((num = inputStream.read()) != -1) {
+
+				bos.write(num);
+			}
+
+			bos.flush();
+
+			inputStream.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		System.out.println("Downloaded Successfully......");
+	}
+
+	private void listBuckets() {
+
+		List<Bucket> buckets = amazonS3Client.listBuckets();
+		for (Bucket bucket : buckets) {
+
+			System.out.println("Bucket Name:" + bucket.getName());
+			System.out.println("Bucket Owner:" + bucket.getOwner().getDisplayName() + "\t" + bucket.getOwner().getId());
+
+			ObjectListing objectListing = amazonS3Client.listObjects(bucket.getName());
+			List<S3ObjectSummary> summaries = objectListing.getObjectSummaries();
+
+			for (S3ObjectSummary summary : summaries) {
+
+				System.out.println(summary.getKey() + "\t" + amazonS3Client.getUrl(bucket.getName(), summary.getKey()));
+				/* Retrieve object */
+				/* Process it */
+			}
+		}
+	}
+
+	private void staticWebsiteHosting(String bucketName) {
+
+		amazonS3Client.setBucketAcl(bucketName, CannedAccessControlList.PublicRead);
+		amazonS3Client.setBucketWebsiteConfiguration(bucketName, new BucketWebsiteConfiguration("index.html"));
+	}
+
+	private void deleteBucketAndObjects(String bucketName) {
+
+		// You have to add Key & Version using KeyVersion class before deleting
+		// multiple objects using DeleteObjectsRequest
+
+		List<KeyVersion> keys = new ArrayList<>();
+		keys.add(new KeyVersion("KOALA"));
+
+		DeleteObjectsRequest multiObjectDeleteRequest = new DeleteObjectsRequest(bucketName).withKeys(keys);
+
+		try {
+
+			DeleteObjectsResult deleteObjectsResult = amazonS3Client.deleteObjects(multiObjectDeleteRequest);
+			System.out.format("Successfully deleted all the %s items.\n", deleteObjectsResult.getDeletedObjects());
+		} catch (MultiObjectDeleteException e) {
+
+			System.out.println(e.getMessage());
+		}
+
+		amazonS3Client.deleteBucket(bucketName);
+
+		System.out.println("Bucket and objects are deleted......");
+	}
+}
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+aws configure
+aws s3 help
+
+Creating Buckets:
+aws s3 mb s3://vinsys-manpreet
+
+List Buckets:
+aws s3 ls s3://vinsys-manpreet
+
+Remove Bucket:
+aws s3 rb s3://vinsys-manpreet
+
+Remove Objects:
+aws s3 rm s3://vinsys-manpreet/Koala.jpg
+aws s3 rm s3://vinsys-manpreet --recursive
+
+Managing Objects:
+aws s3 cp Koala.jpg s3://vinsys-manpreet
+aws s3 sync . s3://vinsys-manpreet
+aws s3 sync . s3://vinsys-manpreet --delete
+aws s3 sync s3://vinsys-manpreet . --delete
+aws s3 sync s3://vinsys-manpreet s3://vinsys-manpreet2 --source-region us-west-1 --region us-west-2
+
+aws s3 sync . s3://vinsys-manpreet --acl public-read
+
+Enable website hosting:
+aws s3 website s3://vinsys-manpreet --index-document index.html --error-document error.html
+
+List the sizes of an S3 bucket and its contents:
+aws s3api list-objects --bucket s3://vinsys-manpreet --output json --query "[sum(Contents[].Size), length(Contents[])]"
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+http://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/s3-examples.html
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+

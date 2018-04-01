@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd ">
+	
+	<bean id="mybean" class="com.kpit.beans.MyBean"  lazy-init="true" init-method="init" destroy-method="destroy">
+	
+	</bean>
+	
+	<!-- dependency injection using constructor -->
+	<bean id="datasource" class="com.kpit.helper.DataSource">
+	<constructor-arg index="0" value="oracle.jdbc.OracleDriver"></constructor-arg>
+	<constructor-arg index="1" value="jdbc:oracle:thin:@localhost:1521:orcl"></constructor-arg>
+	<constructor-arg index="2" value="sabbir"></constructor-arg>
+	<constructor-arg index="3" value="password"></constructor-arg>
+	</bean>
+	
+	<!-- dependency injection using setter methods -->
+	
+	<bean id="datasource1" class="com.kpit.helper.DataSource1">
+	<property name="driver" value="oracle.jdbc.OracleDriver"></property>
+	<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"></property>
+	<property name="username" value="sabbir"></property>
+	<property name="password" value="sabbir"></property>
+	</bean>
+	
+	<!-- factory method -->
+	<bean id="mybean1" class="com.kpit.beans.MyBean1" factory-method="createInstance"></bean>
+	
+	<bean id="factorybean" class="com.kpit.beans.FactoryBean"></bean>
+	
+	<!-- factory bean -->
+	
+	<bean id="mybean11" class="com.kpit.beans.MyBean1" factory-bean="factorybean"  factory-method="createInstanceBean1"></bean>
+	<!-- Manual wiring using constructor -->
+	
+	<bean id="mybean5" class="com.kpit.beans.MyBean5">
+	</bean>
+	
+	<bean id="mybean4" class="com.kpit.beans.MyBean4">
+	<constructor-arg index="0" ref="mybean5"></constructor-arg>
+	</bean>
+	<!-- Manual wiring using setter method -->
+	<bean id="mybean7" class="com.kpit.beans.MyBean7"></bean>
+	
+	<bean id="mybean6" class="com.kpit.beans.MyBean6">
+	<property name="mybean7" ref="mybean7"></property>
+	</bean>
+	<!-- Auto wiring using constructor -->
+	<bean id="mybean9" class="com.kpit.beans.MyBean9">
+	
+	</bean>
+	
+		<bean id="mybean91" class="com.kpit.beans.MyBean9">
+	
+	</bean>
+	
+	<bean id="mybean8" class="com.kpit.beans.MyBean8" autowire="byName">
+	</bean>
+	
+	<bean id="myintf" class="com.kpit.beans.MyInterfaceImpl1"></bean>
+	<bean id="impl2" class="com.kpit.beans.MyInterfaceImpl2"></bean>
+	
+	<bean id="mybean10" class="com.kpit.beans.MyBean10" autowire="byName"></bean>
+</beans>
