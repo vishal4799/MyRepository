@@ -31,15 +31,17 @@ public class Main
 {
     public static void main(String[] args) throws Exception
     {
-    	System.out.println("authToken _c801337d-c192-46d3-9a95-b46bda395228");
-    	Object[] arg =Stream.of("authToken _c801337d-c192-46d3-9a95-b46bda395228").toArray();
-    	for (Object object : arg) {
-			System.out.println(object+"::");
-		}
-    	System.out.println(Stream.of("authToken _c801337d-c192-46d3-9a95-b46bda395228").toArray().toString());
-    	System.out.println(args.toString());
-    	System.out.println("authToken _c801337d-c192-46d3-9a95-b46bda395228".substring(10));
-    	System.out.println((1215%1134)%(513%(1215%1134)));
+    	String REGEX_SPECIAL_CHAR = "[a-zA-Z0-9]*";
+    	System.out.println("RegEX::"+ "SMALl vishal23432".matches(REGEX_SPECIAL_CHAR));
+//    	System.out.println("authToken _c801337d-c192-46d3-9a95-b46bda395228");
+//    	Object[] arg =Stream.of("authToken _c801337d-c192-46d3-9a95-b46bda395228").toArray();
+//    	for (Object object : arg) {
+//			System.out.println(object+"::");
+//		}
+//    	System.out.println(Stream.of("authToken _c801337d-c192-46d3-9a95-b46bda395228").toArray().toString());
+//    	System.out.println(args.toString());
+//    	System.out.println("authToken _c801337d-c192-46d3-9a95-b46bda395228".substring(10));
+//    	System.out.println((1215%1134)%(513%(1215%1134)));
     	System.exit(0);
     	String [] st = " GMT+00:00 Africa/Abidjan, GMT-01:00 Africa/Accra, GMT+03:00 Africa/Addis_Ababa, GMT-02:00 Africa/Algiers, GMT+03:00 Africa/Asmara, GMT 00:00 Africa/Asmera, GMT+00:00 Africa/Bamako, GMT+01:00 Africa/Bangui, GMT+00:00 Africa/Banjul, GMT+00:00 Africa/Bissau, GMT 00:30 Africa/Blantyre, GMT+01:00 Africa/Brazzaville, GMT+02:00 Africa/Bujumbura, GMT+02:00 Africa/Cairo, GMT-00:30 Africa/Casablanca".split(",");
     	List<String> timezoneList = Arrays.asList(st);
