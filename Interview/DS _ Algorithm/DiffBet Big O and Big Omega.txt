@@ -1,0 +1,98 @@
+Perhaps this will clear things up.
+
+"O(n) represents upper bound. Θ(n) means tight bound. Ω(n) represents lower bound."
+
+A GAME
+Suppose the following:
+You are trapped in a prison and the warden of the prison will only let you go after you play his game.
+
+He shows you two identical looking boxes and tells you:
+- One box has between 10 and 20 bugs in it (we'll call this Box A)
+- One box has between 30 and 40 bugs in it (we'll call this Box B)
+You have to pick one of the boxes and eat the bugs inside the box. 
+You don't know which box is Box A or which box is Box B.
+
+The warden knows, but doesn't tell you, that Box A actually has 17 bugs in it, and Box B actually has 32 bugs in it.
+
+WHAT WE MEAN BY UPPER AND LOWER BOUND
+Let's clarify what we mean by upper bound and lower bound by using Box A as an example.
+
+A lower bound for X is a value that X can not be below.
+
+So, knowing that Box A has between 10 and 20 bugs we can say that:
+-Box A can not have less than 5 bugs (this should be obvious, since it is less than 10)
+This means that we can say that 5 is a lower bound on the number of bugs in Box A.
+
+We can also say that:
+-Box A can not have less than 10 bugs (this should be obvious, since it is equal to 10)
+This means that we can say that 10 is a lower bound on the number of bugs in Box A.
+
+Both 5 and 10 are valid lower bounds for the number of bugs in Box A.
+
+However, the lower bound of 10 is much more useful than the lower bound of 5, because it is closer to the actual number of bugs in the box.
+We tend to only mention the lower bound that is closest to the actual value, because it is the most useful.
+
+
+Similarly, an upper bound for X is a value that X can not be above.
+
+We can say that:
+-Box A can not have more than 50 bugs (this should be obvious, since it is more than 20)
+This means that we can say that 50 is an upper bound on the number of bugs in Box A.
+
+We can also say that:
+-Box A can not have more than 20 bugs (this should be obvious, since it is equal to 20)
+This means that we can say that 20 is an upper bound on the number of bugs in Box A.
+
+Both 20 and 50 are valid upper bounds for the number of bugs in Box A.
+
+However, the upper bound of 20 is much more useful than the upper bound of 50, because it is closer to the actual number of bugs in the box.
+We tend to only mention the upper bound that is closest to the actual value, because it is the most useful.
+
+The actual value of X must always be between the lower bound of X and the upper bound of X.
+For Box A the actual number of bugs in Box A must be between our lower and upper bounds for the number of bug in Box A. (This is true since 17 is between 10 and 20)
+
+ANALYZING UPPER AND LOWER BOUNDS IN THE BEST AND WORST CASE
+You decide to analyze the upper and lower bounds on the number of bugs you have to eat in the best and worst case scenarios.
+(Let's assume that eating less bugs is better than eating more bugs)
+
+The best case scenario: you pick Box A
+Since Box A has between 10 and 20 bugs in it:
+The lower bound on the number of bugs you have to eat, in the best case scenario, is 10
+The upper bound on the number of bugs you have to eat, in the best case scenario, is 20
+(In the best case, the actual number of bugs you have to eat is 17, but you don't know this.)
+
+The worst case scenario: you pick Box B
+Since Box B has between 30 and 40 bugs in it:
+The lower bound on the number of bugs you have to eat, in the worst case scenario, is 30
+The upper bound on the number of bugs you have to eat, in the worst case scenario, is 40
+(In the worst case, the actual number of bugs you have to eat is 32, but you don't know this.)
+
+So we can see from the above that:
+-the best case scenario has both lower and upper bounds
+-the worst case scenario has both lower and upper bounds
+
+What we can say (and what often causes people to confuse lower and upper bounds with best case and worse case) is that:
+-the upper bound, in the worst case, is as bad as it can possibly get
+(the upper bound in the worst case is the absolute upper bound for ALL cases)
+-the lower bound, in the best case, is as good as it can possibly get
+(the lower bound in the best case is the absolute lower bound for ALL cases)
+
+APPLYING THIS TO BINARY SEARCH
+So how does this apply to binary search ?
+
+Let's analyze the best case and worst case for binary search.
+
+In the best case binary search finds its target on the first guess.
+Analysis shows that the running time, f(n), will be constant in this scenario.
+i.e. f(n) = c1 (where c1 is a constant)
+The lower bound on the running time, f(n), in the best case scenario, is Ω(1)
+The upper bound on the running time, f(n), in the best case scenario, is O(1)
+
+In the worst case binary search doesn't find its target.
+Analysis shows that this will require ~ log(n) guesses.
+The running time, f(n), in this scenario, will be:
+i.e. f(n) = c1 * log(n) + c2 ( where c1 and c2 are constants)
+The lower bound on the running time, f(n), in the worst case scenario, is Ω(log (n) )
+The upper bound on the running time, f(n), in the worst case scenario, is O(log (n) )
+
+It should be mentioned that, often, for complex algorithms, we don't know what f(n) is in each of the scenarios (similar to how we didn't know the actual number of bugs we would eat inc each scenario). However, we can often make simplifying assumptions that let us figure out the upper and lower bounds for f(n) in each scenario (similar to how we could figure out upper and lower bounds for the number of bugs we would have to eat for each scenario). 

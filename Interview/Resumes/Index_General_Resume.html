@@ -1,0 +1,49 @@
+<HTML>
+<META name="topic-id" content="ctxwpolicyresumegenpage">
+
+<HEAD>
+<!-- $MVD$:fontset("Courier New","Courier New") -->
+ <LINK rel="StyleSheet" href="../smphelp.css">
+ <TITLE>Index: General tab for Resume Operations</TITLE>
+ <SCRIPT LANGUAGE="JavaScript" TITLE="BSSC Special Effects" SRC="../BSSCDHTM.js">
+ </SCRIPT>
+</HEAD>
+<BODY onLoad="BSSCOnLoad();" onClick="BSSCOnClick();" onUnLoad="BSSCOnUnload();">
+<H1>Index: General (for Resume Operations)</H1>
+
+<P><B>Name</B>: Name of the index.</P>
+<P><B>Schema</B>: Schema that owns the index.</P>
+
+<P><B>Index On</B>:</P>
+<UL>
+ <P>
+ <LI CLASS="mvd-P"><B>Schema</B>: Schema that owns the table containing the column on which this index is created.<BR></LI>
+ <LI CLASS="mvd-P"><B>Table</B>: Table containing the column on which this index is created.<BR></LI>
+ <LI CLASS="mvd-P"><B>Text Column</B>: Column on which this index is created. This column contains the text of the document (row) to be processed. Can be a single-column text key or an encoded specification for a composite (multiple-column) text key.<BR></LI></P>
+</UL>
+
+<P><B>Resume</B>: Causes the CREATE INDEX operation to be resumed.</P>
+<P><B>Memory</B>:</P>
+<UL>
+ <P>
+ <LI CLASS="mvd-P"><B>Use Default Memory (12 M)</B>: Use the default amount of memory for indexing (if creating the index) or for the synchronize operation (if synchronizing the index).<BR></LI>
+ <LI CLASS="mvd-P"><B>Set Memory Use</B>: Amount of run-time memory to use for or indexing (if creating the index) or for the synchronize operation (if synchronizing the index). Specify a number and the unit of measurement (Megabytes or Gigabytes).<BR></LI></P>
+</UL>
+<P style="margin-left:23.75pt;text-indent:-18.00pt;"><I>Set Memory Use</I> must be between 1 megabyte and the value specified for <I>max_index_memory</I> in CTX_PARAMETERS. The default is the value specified for <I>default_index_memory</I> in CTX_PARAMETERS. If you are editing an index, memory size is the amount of memory used for the ALTER INDEX operation before flushing the index to disk.</P>
+<P style="margin-left:23.75pt;text-indent:-18.00pt;">Specifying a large amount memory improves indexing performance because there is less I/O, and it improves query performance and maintenance because there is less fragmentation. Specifying smaller amounts of memory increases disk I/O and index fragmentation, but might be useful if you want to track indexing progress or when runtime memory is scarce.</P>
+
+<P><B><I>Note</B></I>: If you encounter any error or warning messages, you can view the details by starting SQL*Plus Worksheet and entering the following statement: <font  face='Courier'>select * from dr$index_error;</font></P>
+
+<P><B><I>Note</B></I>: To perform any of the following operations on an index, you must use the <A href="Object_menu.html">Object</A> menu or the right-mouse menu:</P>
+<UL>
+ <P>
+ <LI CLASS="mvd-P">Resume an index creation operation that had been stopped<BR></LI>
+ <LI CLASS="mvd-P">Synchronize the index to reflect rows that have been updated, inserted, and deleted in the table<BR></LI>
+ <LI CLASS="mvd-P">Optimize the index (compact fragmented rows in the index and, for full optimization, remove old data)<BR></LI></P>
+</UL>
+
+<P><A href="buttons_apply_revert_show_hide.html"><B>Buttons</B></A> (Apply, Revert, Show SQL/Hide SQL)</P>
+
+<P><B><I>See also:</B></I> <A href="intro_topic.html">Main topics (outline)</A> </P>
+</BODY>
+</HTML>

@@ -1,0 +1,2341 @@
+{
+    "controls": [
+        {
+            "id": "dc_id",
+            "key": "dc_id",
+            "label": "fbt_id",
+            "type": "HIDDEN",
+            "mandatory": false,
+            "path": "."
+        },
+        {
+            "id": "dc_name",
+            "key": "dc_name",
+            "label": "fbt_name",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": true,
+            "maxlength": 100,
+            "path": ".",
+            "errorMessages": {
+                "REQUIRED_ERROR": "fbt_REQUIRED_ERROR_instance_name"
+            }
+        },
+        {
+            "id": "dc_type",
+            "key": "dc_type",
+            "label": "fbt_type",
+            "type": "CONTAINERSELECT",
+            "disabled": false,
+            "immutable": ["update","clone"],
+            "clearAll": true,
+            "selectorControl": {
+                "defaultValue": "LOCAL_FILE",
+                "options": {
+                    "LOCAL_FILE": "fbt_option_local_file",
+                    "PULL": "fbt_option_pull",
+                    "SMBPULL": "fbt_option_smbpull",
+                    "SCRIPTPULL": "fbt_option_scriptpull",
+                    "LOCAL_SCRIPTPULL": "fbt_option_local_scriptpull",
+                    "WBEM_PULL": "fbt_option_wbem_pull",
+                    "LOCAL_WINDOWS_EVENTS": "fbt_option_local_windows_events",
+                    "INTEGRATION": "fbt_option_integration",
+                    "PORT_PUSH": "fbt_option_port_push",
+                    "REST_END_POINT": "fbt_option_rest_end_point",
+                    "FILE_UPLOAD": "fbt_option_file_upload"
+                }
+            },
+            "mandatory": true,
+            "path": "."
+        },
+        {
+            "id": "dc_local_collector_label",
+            "key": "dc_local_collector_label",
+            "label": "fbt_local_collector_label",
+            "type": "LABEL",
+            "disabled": false,
+            "mandatory": false
+        },
+        {
+            "id": "dc_collector_wineventlog_note",
+            "key": "dc_collector_wineventlog_note",
+            "label": "fbt_collector_wineventlog_note",
+            "css":"form-field-note-right-column-align",
+            "type": "LABEL",
+            "disabled": false,
+            "mandatory": false,
+            "subscribeTo": [{"id": "dc_agent_id", "action": {"render_new_options": false}}],
+            "dependentRender": true
+        },
+
+        {
+            "id": "dc_collector_wineventlog_note2",
+            "key": "dc_collector_wineventlog_note2",
+            "label": "fbt_collector_wineventlog_note2",
+            "css":"form-field-note-right-column-align",
+            "type": "LABEL",
+            "disabled": false,
+            "mandatory": false,
+            "subscribeTo": [{"id": "dc_agent_id", "action": {"render_new_options": false}}],
+            "dependentRender": true
+        },
+
+        {
+            "id": "dc_agent_id",
+            "key": "dc_agent_id",
+            "label": "fbt_agent_id",
+            "type": "DYNAMICSELECT_WITH_FORMATTER",
+            "dataSource": "/olaengine/rest/olaapi/agents?associationGroup=USABLE&fetchOnlyStation=false",
+            "initdataSource": "/olaengine/rest/olaapi/agents?associationGroup=USABLE&fetchOnlyStation=false",
+            "initParams": {
+                "hostId" : "dc_host_id"
+            },
+            "uniqueIdentifier": "udcId",
+            "fetchDataOnInit": true,
+            "allowClear": true,
+            "dataKey": "agents",
+            "disabled": false,
+            "selectorControl": {},
+            "mandatory": true,
+            "path": ".",
+            "subscribeTo": [{"id": "dc_host_id", "action": {"render_new_options": true}}],
+            "publishEvent": true
+        },
+        {
+            "id": "dc_source_location",
+            "key": "dc_source_location",
+            "label": "fbt_source_location",
+            "placeholder":"fbt_placeholder_dc_directive_path",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": true,
+            "path": ".|propertiesMap",
+            "errorMessages": {
+                "REQUIRED_ERROR": "fbt_REQUIRED_ERROR_file_location"
+            },
+            "subscribeTo": [{"id": "dc_host_id"}],
+            "doNotEmptyOnExternalDependentField": true
+        },
+        {
+            "id": "dc_source",
+            "key": "dc_source",
+            "label": "fbt_source",
+            "type": "TEXT",
+            "placeholder": "fbt_placeholder_dc_source",
+            "disabled": false,
+            "mandatory": true,
+            "path": ".|propertiesMap",
+            "errorMessages": {
+                "REQUIRED_ERROR": "fbt_REQUIRED_ERROR_filename"
+            }
+        },
+        {
+            "id": "dc_timezone",
+            "key": "dc_timezone",
+            "label": "fbt_timezone",
+            "type": "SELECT",
+            "disabled": false,
+            "placeholder": "fbt_placeholder_dc_timezone",
+            "selectorControl": {},
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "dataSource": "/olaengine/rest/olaapi/admin/manage/alltimezones",
+            "dataKey": "timezones",
+            "dependentRender": true
+        },
+        {
+            "id": "dc_eventStartSignature",
+            "key": "dc_eventStartSignature",
+            "label": "fbt_event_delimiter",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "dc_json_timestamp_field",
+            "key": "dc_json_timestamp_field",
+            "label": "fbt_json_timestamp_field",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "dc_locale",
+            "key": "dc_locale",
+            "label": "fbt_locale",
+            "type": "SELECT",
+            "disabled": false,
+            "selectorControl": {
+                "defaultValue": "en"
+            },
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "dataSource": "/olaengine/rest/olaapi/locales",
+            "dataKey": "locales",
+            "subscribeTo": [{"id": "dc_data_pattern"}],
+            "cacheit": false
+            
+        },
+        {
+            "id": "dc_data_pattern_label",
+            "key": "dc_data_pattern_label",
+            "label": "fbt_data_pattern_label",
+            "type": "LABEL",
+            "disabled": false,
+            "mandatory": false
+        },
+        {
+            "id": "dc_data_pattern_label_pp",
+            "key": "dc_data_pattern_label_pp",
+            "label": "fbt_data_pattern_label_pp",
+            "type": "LABEL",
+            "disabled": false,
+            "mandatory": false
+        },
+        {
+            "id": "dc_access_token_label",
+            "key": "dc_access_token_label",
+            "label": "fbt_access_token_label",
+            "type": "LABEL",
+            "disabled": false,
+            "mandatory": false
+        },
+        {
+            "id": "dc_data_pattern",
+            "key": "dc_data_pattern",
+            "label": "fbt_data_pattern",
+            "type": "SELECT",
+            "disabled": false,
+            "placeholder": "fbt_placeholder_dc_data_pattern",
+            "selectorControl": {},
+            "mandatory": true,
+            "path": ".|propertiesMap",
+            "dataSource": "/olaengine/rest/olaapi/admin/manage/minlogtypes?pageSize=0&pageNumber=1&order=asc&sortOn=&sText=",
+            "dataKey": "logTypeList",
+            "optionGroup": true,
+            "ignoreCategoryGroup": "ignoreGroup",
+            "optionsAtLastGroup": "appendOptionsGroup",
+            "publishEvent": true,
+            "errorMessages": {
+                "REQUIRED_ERROR": "fbt_REQUIRED_ERROR_pattern"
+            },
+            "subscribeTo": [{"id": "dc_date_format"}],
+            "cacheit": false
+        },
+        {
+            "id": "dc_date_format",
+            "key": "dc_date_format",
+            "label": "fbt_date_format",
+            "type": "SELECT2_WITH_BUTTON",
+            "disabled": false,
+            "placeholder": "fbt_placeholder_dc_date_format",
+            "allowClear": true,
+            "addOption": true,
+            "selectorControl": {},
+            "mandatory": false,
+            "dataSource": "/olaengine/rest/olaapi/admin/manage/dateformats",
+            "dataKey": "dateFormats",
+            "subscribeTo": [{"id": "dc_data_pattern"}],
+            "button_id": "data-format-preview",
+            "button_click_dataSource": "/olaengine/rest/olaapi/admin/manage/collector/getlogTypes",
+            "path": ".|propertiesMap",
+            "publishEvent": true,
+            "display_button": true
+        },
+        {
+            "id": "dc_poll_interval",
+            "key": "dc_poll_interval",
+            "label": "fbt_poll_interval",
+            "type": "NUMBER",
+            "defaultValue": 1,
+            "disabled": false,
+            "mandatory": true,
+            "path": ".|propertiesMap",
+            "errorMessages": {
+                "REGEX_ERROR": "fbt_NON_ZERO_ERROR_poll_interval",
+                "REQUIRED_ERROR": "fbt_REQUIRED_ERROR_poll_interval"
+            }
+        },
+        {
+            "id": "dc_ismonitoring_enabled",
+            "key": "dc_ismonitoring_enabled",
+            "label": "fbt_ismonitoring_enabled",
+            "type": "CHECKBOX",
+            "disabled": false,
+            "mandatory": false,
+            "defaultValue": true,
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "dc_charset_encoding",
+            "key": "dc_charset_encoding",
+            "label": "fbt_charset_encoding",
+            "type": "SELECT_WITH_IMAGE_BUTTON",
+            "disabled": false,
+            "selectorControl": {
+                "defaultValue": "UTF-8"
+            },
+            "mandatory": true,
+            "path": ".|propertiesMap",
+            "dataSource": "/olaengine/rest/olaapi/admin/manage/systemsettings",
+            "display_button": true,
+            "button": {
+                "id": "data_fetch_encoding",
+                "key": "data_fetch_encoding",
+                "type": "INPUT",
+                "disabled": false,
+                "mandatory": true,
+                "attributes":  {
+                    "type": "image",
+                    "src": "images/Filter-16.png",
+                    "alt": "fbt_filter_encoding",
+                    "title": "fbt_filter_encoding"
+                }
+            }
+        },
+        {
+            "id": "dc_filter",
+            "key": "dc_filter",
+            "label": "fbt_filter",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "dc_data_retention_limit",
+            "key": "dc_data_retention_limit",
+            "label": "fbt_data_retention",
+            "type": "NUMBER",
+            "disabled": false,
+            "mandatory": true,
+            "path": ".|propertiesMap",
+            "help_text": "fbt_help_text_dc_data_retention_limit",
+            "set_value_help": true
+        },
+        {
+            "id": "dc_collect_all",
+            "key": "dc_collect_all",
+            "label": "fbt_collect_all",
+            "type": "CHECKBOX",
+            "disabled": false,
+            "mandatory": false,
+            "defaultValue": true,
+            "path": ".|propertiesMap",
+            "help_text": "fbt_help_text_dc_collect_all"
+        },
+        {
+            "id": "dc_is_host_tag_inherited",
+            "key": "dc_is_host_tag_inherited",
+            "label": "fbt_is_host_tag_inherited",
+            "type": "CHECKBOX",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "dataSources": {
+                "dc_agent_id": {
+                    "url": "/olaengine/rest/olaapi/agents?associationGroup=USABLE",
+                    "dataKey": "agents"
+                },
+                "dc_host_id": {
+                    "url": "/olaengine/rest/olaapi/hosts",
+                    "dataKey": "hosts"
+                }
+            },
+            "dependsOn": "dc_host_id",
+            "publishEvent": true,
+            "invertedRender": true
+        },
+        {
+            "id": "dc_tags",
+            "key": "dc_tags",
+            "type": "TAG_SELECT",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "placeholder": "fbt_placeholder_select",
+            "selectorControl": {},
+            "dataSource": "/olaengine/rest/olaapi/admin/manage/tags",
+            "dependencyDataSource": "/olaengine/rest/olaapi/admin/manage/tagvalues",
+            "dataKey": "",
+            "errorMessages": {
+                "DUPLICATE_ERROR": "fbt_DUPLICATE_ERROR_tags"
+            },
+            "subscribeTo": [{"id": "dc_is_host_tag_inherited"}, {"id": "dc_host_id"}, {"id": "dc_agent_id"}],
+            "help_text": "fbt_help_text_dc_tags"
+        },
+        {
+            "id": "dc_is_access_group_inherited",
+            "key": "dc_is_access_group_inherited",
+            "label": "fbt_is_access_group_inherited",
+            "type": "CHECKBOX",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "dataSources": {
+                "dc_agent_id": {
+                    "url": "/olaengine/rest/olaapi/agents?associationGroup=USABLE",
+                    "dataKey": "agents"
+                },
+                "dc_host_id": {
+                    "url": "/olaengine/rest/olaapi/hosts",
+                    "dataKey": "hosts"
+                }
+            },
+            "dependsOn": "dc_host_id",
+            "publishEvent": true,
+            "invertedRender": true
+        },
+        {
+            "id": "dc_is_remote",
+            "key": "dc_is_remote",
+            "label": "fbt_is_remote",
+            "type": "CHECKBOX",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "dc_usergroups",
+            "key": "dc_usergroups",
+            "type": "MULTISELECT_COMPOSITE",
+            "compositeId": "dc_select_all_groups",
+            "display_label": "fbt_select_all_group_label",
+            "selectorControl": {},
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "dataSource": "/olaengine/rest/olaapi/admin/manage/ids/usergroup?fetchall=true",
+            "subscribeTo": [{"id": "dc_is_access_group_inherited"}, {"id": "dc_host_id"}, {"id": "dc_agent_id"}],
+            "help_text": "fbt_help_text_dc_usergroups",
+            "addOptionToListIfAbsent" : true
+        },
+        {
+            "id": "dc_file_upload_collector_label",
+            "key": "dc_file_upload_collector_label",
+            "label": "fbt_file_upload_collector_label",
+            "type": "LABEL",
+            "disabled": false,
+            "mandatory": false
+        },
+        {
+            "id": "dc_file_upload_host_collector_label",
+            "key": "dc_file_upload_host_collector_label",
+            "label": "fbt_file_upload_host_collector_label",
+            "type": "LABEL",
+            "disabled": false,
+            "mandatory": false
+        },
+        {
+            "id": "dc_remote_collector_label",
+            "key": "dc_remote_collector_label",
+            "label": "fbt_remote_collector_label",
+            "type": "LABEL",
+            "disabled": false,
+            "mandatory": false
+        },
+        {
+            "id": "dc_host_agent_label",
+            "key": "dc_host_agent_label",
+            "label": "fbt_host_agent_label",
+            "type": "LABEL",
+            "disabled": false,
+            "mandatory": false
+        },
+        {
+            "id": "dc_host_id",
+            "key": "dc_host_id",
+            "label": "fbt_host_id",            
+            "placeholder": "fbt_placeholder_select",
+            "type": "DYNAMICSELECT_WITH_FORMATTER",
+            "disabled": false,
+            "allowClear": true,
+            "selectorControl": {},
+            "mandatory": false,
+            "path": ".",
+            "dataSource": "/olaengine/rest/olaapi/hosts",
+            "initdataSource": "/olaengine/rest/olaapi/host",
+            "dataKey": "hosts",
+            "publishEvent": true
+        },
+        {
+            "id": "dc_server_name",
+            "key": "dc_server_name",
+            "label": "fbt_server_name",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": true,
+            "path": ".|propertiesMap",
+            "subscribeTo": [{"id": "dc_host_id", "action": {"disabled": true}}],
+            "disabilityBasedOn": ["dc_host_id"],
+            "doNotEmptyOnExternalDependentField": true
+        },
+        {
+            "id": "dc_crendetials_type",
+            "key": "dc_crendetials_type",
+            "label": "fbt_crendetials_type",
+            "type": "CONTAINERSELECT",
+            "disabled": false,
+            "selectorControl": {
+                "defaultValue": "provide_explicitly",
+                "options": {
+                    "provide_explicitly": "fbt_option_provide_creds",
+                    "existing_profile": "fbt_option_apply_creds"
+                }
+            },
+            "mandatory": false,
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "dc_user",
+            "key": "dc_user",
+            "label": "fbt_user",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": true,
+            "path": ".|propertiesMap",
+            "subscribeTo": [{"id": "dc_profile_id"}]
+        },
+        {
+            "id": "dc_enc_pwd",
+            "key": "dc_enc_pwd",
+            "label": "fbt_enc_pwd",
+            "type": "TEXT_WITH_BUTTONS",
+            "password": true,
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "subscribeTo": [{"id": "dc_profile_id"}],
+            "inputClass": "domain-input-box",
+            "changeInButtons": null,
+            "buttons": [
+                {
+                    "id": "add_credential",
+                    "key": "add_credential",
+                    "type": "INPUT",
+                    "disabled": false,
+                    "mandatory": true,
+                    "attributes":  {
+                        "type": "image",
+                        "src": "images/Add-16.png",
+                        "disable_src": "images/Add-16-d.png",
+                        "alt": "fbt_add_credential_text",
+                        "title": "fbt_add_credential_text",
+                        "class": "add-credential-button",
+                        "disabled": "disabled"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "dc_profile_id",
+            "key": "dc_profile_id",
+            "label": "fbt_available_credentials",
+            "type": "SELECT",
+            "disabled": false,
+            "placeholder": "fbt_placeholder_available_credentials",
+            "selectorControl": {},
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "dataSource": "/olaengine/rest/olaapi/admin/manage/profiles?pageSize=all&pageNumber=1&order=asc&sortOn=profileName",
+            "dataKey": "profileList",
+            "cacheit": false,
+            "publishEvent": true
+        },
+        {
+            "id": "dc_host_key",
+            "key": "dc_host_key",
+            "label": "fbt_host_key",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "dc_domain",
+            "key": "dc_domain",
+            "label": "fbt_domain",
+            "type": "TEXT_WITH_BUTTONS",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "inputClass": "domain-input-box",
+            "changeInButtons": null,
+            "subscribeTo": [{"id": "dc_profile_id"}],
+            "buttons": [
+                {
+                    "id": "test_connection",
+                    "key": "test_connection",
+                    "type": "INPUT",
+                    "disabled": false,
+                    "mandatory": true,
+                    "attributes":  {
+                        "type": "image",
+                        "src": "images/Network-16.png",
+                        "alt": "fbt_test_connection_text",
+                        "title": "fbt_test_connection_text",
+                        "class": "test-connection-button"
+                    }
+                },
+                {
+                    "id": "add_credential",
+                    "key": "add_credential",
+                    "type": "INPUT",
+                    "disabled": false,
+                    "mandatory": true,
+                    "attributes":  {
+                        "type": "image",
+                        "src": "images/Add-16.png",
+                        "disable_src": "images/Add-16-d.png",
+                        "alt": "fbt_add_credential_text",
+                        "title": "fbt_add_credential_text",
+                        "class": "add-credential-button",
+                        "disabled": "disabled"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "dc_script_timeout",
+            "key": "dc_script_timeout",
+            "label": "fbt_script_timeout",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": true,
+            "path": ".|propertiesMap",
+            "defaultValue": 1,
+            "errorMessages": {
+                "REGEX_ERROR": "fbt_NON_ZERO_ERROR_script_timeout"
+            }
+        },
+        {
+            "id": "dc_config_as_script_arg",
+            "key": "dc_config_as_script_arg",
+            "label": "fbt_pass_poll_interval_script",
+            "type": "CHECKBOX",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "values": {"true":"rerun","false":"none"}
+        },
+        {
+            "id": "dc_script_execution_mode",
+            "key": "dc_script_execution_mode",
+            "label": "fbt_execute_script",
+            "type": "CHECKBOX",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "values": {"true":"executable","false":"script"}
+        },
+        {
+            "id": "dc_win_logtype",
+            "key": "dc_win_logtype",
+            "label": "fbt_win_logtype",
+            "type": "DYNAMICSELECT2",
+            "placeholder":"fbt_placeholder_click_to_select",
+            "disabled": false,
+            "multiple":true,
+            "selectorControl": {
+            },
+            "dataSourceTemplate": "/olaengine/rest/olaapi/admin/manage/agent/{dc_agent_id}/wineventlog",
+            "initdataSource" : "/olaengine/rest/olaapi/admin/manage/agent/default/wineventlog",
+            "dsUrlKeys":["dc_agent_id"],
+            "initParams" : {},
+            "validResponseStatusKey":"statusCode",
+            "validResponseStatusValue":"200",
+            "responseErrorMsgKey":"statusMessage",
+            "subscribeTo": [],
+            "cacheit":true,
+            "cacheKey":"dataSource",
+            "dataKey": "entries",
+            "mandatory": true,
+            "path": ".|propertiesMap",
+            "errorMessages": {
+                "REQUIRED_ERROR": "fbt_REQUIRED_ERROR_logtype"
+            }
+        },
+        {
+            "id": "dc_read_from_past_days",
+            "key": "dc_read_from_past_days",
+            "label": "fbt_read_from_past_days",
+            "type": "NUMBER",
+            "disabled": false,
+            "mandatory": true,
+            "defaultValue": "0",
+            "path": ".|propertiesMap",
+            "help_text": "fbt_help_text_dc_read_from_past_days",
+            "set_value_help": true
+        },
+        {
+            "id": "dc_connection_profile_id",
+            "key": "dc_connection_profile_id",
+            "label": "fbt_connection_profile_id",
+            "type": "SELECT",
+            "selectorControl": {},
+            "placeholder": "fbt_placeholder_dc_connection_profile_id",
+            "disabled": false,
+            "mandatory": true,
+            "path": ".|propertiesMap",
+            "dataSource": "/olaengine/rest/olaapi/connectionProfileReader",
+            "errorMessages": {
+                "REQUIRED_ERROR": "fbt_REQUIRED_ERROR_conn_profile_id"
+            }
+        },
+        {
+            "id": "dc_protocol",
+            "key": "dc_protocol",
+            "label": "fbt_protocol",
+            "type": "SELECT",
+            "disabled": false,
+            "selectorControl": {
+                "options": {
+                    "UDP": "fbt_option_UDP",
+                    "TCP": "fbt_option_TCP"
+                }
+            },
+            "mandatory": true,
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "dc_application_protocol",
+            "key": "dc_application_protocol",
+            "label": "fbt_protocol",
+            "type": "CONTAINERSELECT",
+            "disabled": false,
+            "selectorControl": {
+                "defaultValue":"HTTP",
+                "options": {
+                    "HTTP": "HTTP",
+                    "HTTPS": "HTTPS"
+                }
+            },
+            "mandatory": true,
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "dc_bind_address",
+            "key": "dc_bind_address",
+            "label": "fbt_bind_address",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": true,
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "dc_port",
+            "key": "dc_port",
+            "label": "fbt_port",
+            "type": "NUMBER",
+            "disabled": false,
+            "mandatory": true,
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "dc_file_location",
+            "key": "dc_file_location",
+            "label": "fbt_file_location",
+            "type": "FILEUPLOAD",
+            "disabled": false,
+            "mandatory": true,
+            "path": ".|propertiesMap",
+            "fileElementId": "log_source_file"
+        },
+        {
+            "id": "readerClass",
+            "key": "readerClass",
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "validatorClass",
+            "key": "validatorClass",
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "integration_prefix",
+            "key": "integration_prefix",
+            "path": ".|propertiesMap"
+        },
+        {
+            "id": "dc_fileHeaderExcluded",
+            "key": "dc_fileHeaderExcluded",
+            "label": "fbt_exclude_header",
+            "type": "TEXTAREA",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "placeholder": "fbt_exclude_header_placeholder"
+        },
+        {
+            "id": "dc_fileFooterExcluded",
+            "key": "dc_fileFooterExcluded",
+            "label": "fbt_exclude_footer",
+            "type": "TEXTAREA",
+            "disabled": false,
+            "mandatory": false,
+            "path": ".|propertiesMap",
+            "placeholder": "fbt_exclude_footer_placeholder"
+        },
+        {
+            "id": "dc_access_token",
+            "key": "dc_access_token",
+            "label": "fbt_access_token",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": false,
+			"password" : true,
+            "path": ".|propertiesMap"
+        },
+		{
+            "id": "dc_keystore_path",
+            "key": "dc_keystore_path",
+            "label": "fbt_keystore_path",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": true,
+			"password" : false,
+            "path": ".|propertiesMap"
+        },
+		{
+            "id": "dc_keystore_password",
+            "key": "dc_keystore_password",
+            "label": "fbt_keystore_password",
+            "type": "PASSWORD",
+            "disabled": false,
+            "mandatory": true,
+			"password" : true,
+			"encrypt" : true,
+            "path": ".|propertiesMap"
+        },
+		{
+            "id": "dc_keystore_type",
+            "key": "dc_keystore_type",
+            "label": "fbt_keystore_type",
+            "defaultValue": "JKS",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": true,
+			"password" : false,
+            "path": ".|propertiesMap"
+        },
+		{
+            "id": "dc_keymanager_algorithm",
+            "key": "dc_keymanager_algorithm",
+            "label": "fbt_keymanager_algorithm",
+            "defaultValue": "sunx509",
+            "type": "TEXT",
+            "disabled": false,
+            "mandatory": true,
+			"password" : false,
+            "path": ".|propertiesMap"
+        }
+    ],
+    "containers": [
+        {
+            "key": "dc_create_data_collector",
+            "type": "SECTION",
+            "controllist": [
+                {
+                    "key": "dc_id",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_name",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_type",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "key": "dc_LOCAL_FILE",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_LOCAL_FILE",
+            "type": "SELECT_SECTION",
+            "selectkey": "LOCAL_FILE",
+            "controllist": [
+                {
+                    "key": "dc_read_from_past_days",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": "0"
+                },
+                {
+                    "key": "dc_target_collection_host_section_lf",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_collector_inputs_section_lf",
+                    "type": "section"
+                },
+                {
+                      "key": "dc_advanced_options_section_file",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_tags_section_inherit",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_group_access_section_inherit",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "key": "dc_REMOTE_LOGS_SSH",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_REMOTE_LOGS_SSH",
+            "type": "SELECT_SECTION",
+            "selectkey": "PULL",
+            "controllist": [
+                {
+                    "key": "dc_read_from_past_days",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": "0"
+                },
+                {
+                    "key": "dc_is_remote",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": true
+                },
+                {
+                    "key": "dc_target_collection_host_section_ssh",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_collector_inputs_section_ssh",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_advanced_options_section_ssh",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_tags_section",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_group_access_section",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "key": "dc_REMOTE_LOGS_SMB",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_REMOTE_LOGS_SMB",
+            "type": "SELECT_SECTION",
+            "selectkey": "SMBPULL",
+            "controllist": [
+                {
+                    "key": "dc_read_from_past_days",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": "0"
+                },
+                {
+                    "key": "dc_is_remote",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": true
+                },
+                {
+                    "key": "dc_target_collection_host_section_ssh",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_collector_inputs_section_smb",
+                    "type": "section"
+                },
+                {
+                      "key": "dc_advanced_options_section_file",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_tags_section",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_group_access_section",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "key": "dc_SCRIPT_SOURCE",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_SCRIPT_SOURCE",
+            "type": "SELECT_SECTION",
+            "selectkey": "SCRIPTPULL",
+            "controllist": [
+                {
+                    "key": "dc_read_from_past_days",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": "0"
+                },
+                {
+                    "key": "dc_is_remote",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": true
+                },
+                {
+                    "key": "dc_target_collection_host_section_ssh",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_collector_inputs_section_ss",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_advanced_options_section_ss",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_tags_section",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_group_access_section",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "key": "dc_SCRIPT_SOURCE_LOCAL",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_SCRIPT_SOURCE_LOCAL",
+            "type": "SELECT_SECTION",
+            "selectkey": "LOCAL_SCRIPTPULL",
+            "controllist": [
+                {
+                    "key": "dc_read_from_past_days",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": "0"
+                },
+                {
+                    "key": "dc_target_collection_host_section_lf",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_collector_inputs_section_ssl",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_advanced_options_section_ssl",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_tags_section_inherit",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_group_access_section_inherit",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "key": "dc_WINDOWS_EVENT_LOGS",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_WINDOWS_EVENT_LOGS",
+            "type": "SELECT_SECTION",
+            "selectkey": "WBEM_PULL",
+            "controllist": [
+                {
+                    "key": "dc_is_remote",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": true
+                },
+
+                {
+                    "key": "dc_collector_wineventlog_note2",
+                    "type": "field"
+                },
+
+                {
+                    "key": "dc_target_collection_host_section_ssh",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_collector_inputs_section_wel",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_advanced_options_section_wel",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_tags_section",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_group_access_section",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "key": "dc_LOCAL_WINDOWS_EVENTS",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_LOCAL_WINDOWS_EVENTS",
+            "type": "SELECT_SECTION",
+            "selectkey": "LOCAL_WINDOWS_EVENTS",
+            "controllist": [
+                {
+                    "key": "dc_data_pattern",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "dc_target_collection_host_section_lf",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_collector_inputs_section_lwe",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_advanced_options_section_wel",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_tags_section_inherit",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_group_access_section_inherit",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "key": "dc_INTEGRATION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_INTEGRATION",
+            "type": "SELECT_SECTION",
+            "selectkey": "INTEGRATION",
+            "controllist": [
+                {
+                    "key": "dc_target_collection_host_section_int",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_collector_inputs_section_int",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_advanced_options_section_wel",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_tags_section_noinherit",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_group_access_section_noinherit",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "key": "dc_PORT_PUSH",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_PORT_PUSH",
+            "type": "SELECT_SECTION",
+            "selectkey": "PORT_PUSH",
+            "controllist": [
+                {
+                    "key": "dc_read_from_past_days",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": "0"
+                },
+                {
+                    "key": "dc_poll_interval",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": -1
+                },
+                {
+                    "key": "dc_target_collection_host_section_int",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_collector_inputs_section_pp",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_advanced_options_section",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_tags_section_noinherit",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_group_access_section_noinherit",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "key": "dc_REST_END_POINT",
+            "collapseStyle": "EXPANDED",
+            "label": "Rest End point",
+            "type": "SELECT_SECTION",
+            "selectkey": "REST_END_POINT",
+            "controllist": [
+                {
+                    "key": "dc_read_from_past_days",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": "0"
+                },
+                {
+                    "key": "readerClass",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": "com.bmc.ola.collection.source.RESTReader"
+                },
+                {
+                    "key": "validatorClass",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": "com.bmc.ola.utils.rest.HttpCollectorConfigurationValidator"
+                },
+                {
+                    "key": "dc_poll_interval",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "HIDDEN",
+                    "defaultValue": -1
+                },
+                {
+                    "key": "dc_target_collection_host_section_int",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_collector_inputs_section_rep",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_advanced_options_section_rep",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_tags_section_noinherit",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_group_access_section_noinherit",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "key": "dc_LOCAL_FILE_UPLOAD",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_LOCAL_FILE_UPLOAD",
+            "type": "SELECT_SECTION",
+            "selectkey": "FILE_UPLOAD",
+            "controllist": [
+                {
+                    "key": "dc_target_collection_host_section_lfu",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_collector_inputs_section_lfu",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_advanced_options_section",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_tags_section",
+                    "type": "section"
+                },
+                {
+                    "key": "dc_group_access_section",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "id": "dc_target_collection_host_section",
+            "key": "dc_target_collection_host_section_lf",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_target_collection_host_section",
+            "controllist": [
+                {
+                    "key": "dc_local_collector_label",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_agent_id",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_collector_inputs_section",
+            "key": "dc_collector_inputs_section_lf",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_collector_inputs_section",
+            "controllist": [
+                {
+                    "key": "dc_source_location",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_source",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_timezone",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern_section",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "id": "dc_data_pattern_section",
+            "key": "dc_data_pattern_section",
+            "type": "SUB_SECTION",
+            "label": "fbt_data_pattern_section",
+            "controllist": [
+                {
+                    "key": "dc_data_pattern_label",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_date_format",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_json_timestamp_field",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_locale",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_charset_encoding",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_eventStartSignature",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_poll_interval",
+                    "type": "field",
+                    "override": "true",
+                    "regex": "[1-9][0-9]*"
+                },
+                {
+                    "key": "dc_ismonitoring_enabled",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_tags_section",
+            "key": "dc_tags_section",
+            "type": "SUB_SECTION",
+            "collapseStyle": "COLLAPSED",
+            "label": "fbt_tags_section",
+            "controllist": [
+                {
+                    "key": "dc_is_host_tag_inherited",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_tags",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_group_access_section",
+            "key": "dc_group_access_section",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_group_access_section",
+            "label_help_text": "fbt_group_access_help_text",
+            "controllist": [
+                {
+                    "key": "dc_is_access_group_inherited",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_usergroups",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_tags_section",
+            "key": "dc_tags_section_noinherit",
+            "type": "SUB_SECTION",
+            "collapseStyle": "COLLAPSED",
+            "label": "fbt_tags_section",
+            "controllist": [
+                {
+                    "key": "dc_tags",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_tags_section",
+            "key": "dc_tags_section_inherit",
+            "type": "SUB_SECTION",
+            "collapseStyle": "COLLAPSED",
+            "label": "fbt_tags_section",
+            "controllist": [
+                {
+                    "key": "dc_is_host_tag_inherited",
+                    "type": "field",
+                    "override": true,
+                    "dependsOn": "dc_agent_id"
+                },
+                {
+                    "key": "dc_tags",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_group_access_section",
+            "key": "dc_group_access_section_noinherit",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_group_access_section",
+            "controllist": [
+                {
+                    "key": "dc_usergroups",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_group_access_section",
+            "key": "dc_group_access_section_inherit",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_group_access_section",
+            "controllist": [
+                {
+                    "key": "dc_is_access_group_inherited",
+                    "type": "field",
+                    "override": true,
+                    "dependsOn": "dc_agent_id"
+                },
+                {
+                    "key": "dc_usergroups",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_advanced_options_section",
+            "key": "dc_advanced_options_section",
+            "type": "SUB_SECTION",
+            "collapseStyle": "COLLAPSED",
+            "label": "fbt_advanced_options_section",
+            "controllist": [
+                {
+                    "key": "dc_filter",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_retention_limit",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_collect_all",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_target_collection_host_section",
+            "key": "dc_target_collection_host_section_ssh",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_target_collection_host_section",
+            "controllist": [
+                {
+                    "key": "dc_remote_collector_label",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_host_agent_label",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_host_id",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_agent_id",
+                    "type": "field"
+                }
+            ]
+        },
+       	{
+            "id": "dc_advanced_options_section",
+            "key": "dc_advanced_options_section_file",
+            "type": "SUB_SECTION",
+            "collapseStyle": "COLLAPSED",
+            "label": "fbt_advanced_options_section",
+            "controllist": [
+                {
+                    "key": "dc_filter",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_retention_limit",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_collect_all",
+                    "type": "field"
+                },
+				{
+                    "key": "dc_fileHeaderExcluded",
+                    "type": "field"
+                },
+				{
+                    "key": "dc_fileFooterExcluded",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_collector_inputs_section",
+            "key": "dc_collector_inputs_section_ssh",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_collector_inputs_section",
+            "controllist": [
+                {
+                    "key": "dc_server_name",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_crendetials_type",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_source_location",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_source",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_timezone",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern_section",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "id": "dc_advanced_options_section",
+            "key": "dc_advanced_options_section_ssh",
+            "type": "SUB_SECTION",
+            "collapseStyle": "COLLAPSED",
+            "label": "fbt_advanced_options_section",
+            "controllist": [
+                {
+                    "key": "dc_filter",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_retention_limit",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_collect_all",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_host_key",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_fileHeaderExcluded",
+                    "type": "field"
+                },
+				{
+                    "key": "dc_fileFooterExcluded",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_collector_inputs_section",
+            "key": "dc_collector_inputs_section_smb",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_collector_inputs_section",
+            "controllist": [
+                {
+                    "key": "dc_server_name",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_crendetials_type",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_source_location",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_source",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_timezone",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern_section",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "id": "dc_collector_inputs_section",
+            "key": "dc_collector_inputs_section_ss",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_collector_inputs_section",
+            "controllist": [
+                {
+                    "key": "dc_server_name",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_crendetials_type",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_source_location",
+                    "type": "field",
+                    "override": true,
+                    "label": "fbt_source_location_ss",
+                    "errorMessages": {
+                        "REQUIRED_ERROR": "fbt_REQUIRED_ERROR_file_location_ss"
+                    }
+                },
+                {
+                    "key": "dc_timezone",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern_section_ss",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "id": "dc_data_pattern_section",
+            "key": "dc_data_pattern_section_ss",
+            "type": "SUB_SECTION",
+            "label": "fbt_data_pattern_section",
+            "controllist": [
+                {
+                    "key": "dc_data_pattern_label",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_date_format",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_json_timestamp_field",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_locale",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_charset_encoding",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_eventStartSignature",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_script_timeout",
+                    "type": "field",
+                    "override": "true",
+                    "regex": "[1-9][0-9]*"
+                },
+                {
+                    "key": "dc_poll_interval",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_ismonitoring_enabled",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_advanced_options_section",
+            "key": "dc_advanced_options_section_ss",
+            "type": "SUB_SECTION",
+            "collapseStyle": "COLLAPSED",
+            "label": "fbt_advanced_options_section",
+            "controllist": [
+                {
+                    "key": "dc_filter",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_retention_limit",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_collect_all",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_config_as_script_arg",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_script_execution_mode",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_host_key",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_collector_inputs_section",
+            "key": "dc_collector_inputs_section_ssl",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_collector_inputs_section",
+            "controllist": [
+                {
+                    "key": "dc_source_location",
+                    "type": "field",
+                    "override": true,
+                    "label": "fbt_source_location_ss",
+                    "errorMessages": {
+                        "REQUIRED_ERROR": "fbt_REQUIRED_ERROR_file_location_ss"
+                    }
+                },
+                {
+                    "key": "dc_timezone",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern_section_ss",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "id": "dc_advanced_options_section",
+            "key": "dc_advanced_options_section_ssl",
+            "type": "SUB_SECTION",
+            "collapseStyle": "COLLAPSED",
+            "label": "fbt_advanced_options_section",
+            "controllist": [
+                {
+                    "key": "dc_filter",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_retention_limit",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_collect_all",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_config_as_script_arg",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_collector_inputs_section",
+            "key": "dc_collector_inputs_section_wel",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_collector_inputs_section",
+            "controllist": [
+                {
+                    "key": "dc_server_name",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_crendetials_type",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_win_logtype",
+                    "type": "field",
+                    "override": true,
+                    "fieldtype": "DYNAMICSELECT2",
+                    "multiple" : true,
+                    "dataSourceTemplate": "/olaengine/rest/olaapi/admin/manage/agent/{dc_agent_id}/wineventlogrequest/{dc_server_name}",
+                    "dsUrlKeys":["dc_agent_id","dc_server_name"],
+                    "method":"POST",
+                    "initParams" : {
+                        "dc_is_remote" : "dc_is_remote",
+                        "dc_server_name" : "dc_server_name",
+                        "dc_user" : "dc_user",
+                        "dc_enc_pwd" : "dc_enc_pwd",
+                        "dc_domain" : "dc_domain",
+                        "dc_profile_id" : "dc_profile_id",
+                        "dc_id" : "dc_id"
+                    },
+                    "selectorControl": {
+                       "options": {
+                           "Application": "fbt_option_app",
+                           "Security": "fbt_option_sec",
+                           "System": "fbt_option_sys"
+                       }
+                   }
+                },                
+                {
+                    "key": "dc_collector_wineventlog_note",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_read_from_past_days",
+                    "type": "field",
+                    "override": true,
+                    "immutable": ["update"]
+                },
+                {
+                    "key": "dc_poll_interval",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_ismonitoring_enabled",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_advanced_options_section",
+            "key": "dc_advanced_options_section_wel",
+            "type": "SUB_SECTION",
+            "collapseStyle": "COLLAPSED",
+            "label": "fbt_advanced_options_section",
+            "controllist": [
+                {
+                    "key": "dc_filter",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_retention_limit",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_collector_inputs_section",
+            "key": "dc_collector_inputs_section_lwe",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_collector_inputs_section",
+            "controllist": [               
+                {
+                    "key": "dc_win_logtype",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_collector_wineventlog_note",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_read_from_past_days",
+                    "type": "field",
+                    "override": true,
+                    "immutable": ["update"]
+                },
+                {
+                    "key": "dc_poll_interval",
+                    "type": "field",
+                    "override": "true",
+                    "regex": "[1-9][0-9]*"
+                },
+                {
+                    "key": "dc_ismonitoring_enabled",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_collector_inputs_section",
+            "key": "dc_collector_inputs_section_int",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_collector_inputs_section",
+            "controllist": [
+                {
+                    "key": "dc_read_from_past_days",
+                    "type": "field",
+                    "override": true,
+                    "immutable": ["update"]
+                },
+                {
+                    "key": "dc_connection_profile_id",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_poll_interval",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_ismonitoring_enabled",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_target_collection_host_section",
+            "key": "dc_target_collection_host_section_int",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_target_collection_host_section",
+            "controllist": [
+                {
+                    "key": "dc_remote_collector_label",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_agent_id",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_data_pattern_section",
+            "key": "dc_data_pattern_section_pp",
+            "type": "SUB_SECTION",
+            "label": "fbt_data_pattern_section",
+            "controllist": [
+                {
+                    "key": "dc_data_pattern_label_pp",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern",
+                    "type": "field",
+                    "override": true,
+                    "defaultValue": "Free Text without Timestamp"
+                },
+                {
+                    "key": "dc_date_format",
+                    "type": "field",
+                    "override": true,
+                    "display_button": false
+                },
+                {
+                    "key": "dc_json_timestamp_field",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_locale",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_charset_encoding",
+                    "type": "field",
+                    "override": true,
+                    "display_button": false
+                },
+                {
+                    "key": "dc_eventStartSignature",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_ismonitoring_enabled",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_data_pattern_section",
+            "key": "dc_data_pattern_section_rep",
+            "type": "SUB_SECTION",
+            "label": "fbt_data_pattern_section",
+            "controllist": [
+                {
+                    "key": "dc_data_pattern_label_pp",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern",
+                    "type": "field",
+                    "override": true,
+                    "defaultValue": "Free Text without Timestamp"
+                },
+                {
+                    "key": "dc_date_format",
+                    "type": "field",
+                    "override": true,
+                    "display_button": false
+                },
+                {
+                    "key": "dc_locale",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_eventStartSignature",
+                    "type": "field"
+                },
+				{
+                    "key": "dc_json_timestamp_field",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_ismonitoring_enabled",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_advanced_options_section",
+            "key": "dc_advanced_options_section_rep",
+            "type": "SUB_SECTION",
+            "collapseStyle": "COLLAPSED",
+            "label": "fbt_advanced_options_section",
+            "controllist": [
+                {
+                    "key": "dc_filter",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_retention_limit",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_collect_all",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_key_store_section",
+            "key": "dc_key_store_section_http",
+            "type": "SELECT_SECTION",
+            "collapseStyle": "EXPANDED",
+            "selectkey":"HTTP",
+            "label": "KeyStore Properties",
+            "controllist": []
+        },
+        {
+            "id": "dc_key_store_section",
+            "key": "dc_key_store_section_https",
+            "type": "SELECT_SECTION",
+            "collapseStyle": "EXPANDED",
+            "selectkey":"HTTPS",
+            "label": "KeyStore Properties",
+            "controllist": [
+                {
+                    "key": "dc_keystore_type",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_keystore_path",
+                    "type": "field",
+                    "override": true
+                },
+                {
+                    "key": "dc_keystore_password",
+                    "type": "field",
+                    "password" : true,
+                    "encrypt" : true
+                },
+                {
+                    "key": "dc_keymanager_algorithm",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "id": "dc_collector_inputs_section",
+            "key": "dc_collector_inputs_section_pp",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_collector_inputs_section",
+            "controllist": [
+                {
+                    "key": "dc_protocol",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_bind_address",
+                    "type": "field",
+                    "override": true,
+                    "defaultValue": "0.0.0.0"
+                },
+                {
+                    "key": "dc_port",
+                    "type": "field",
+                    "override": true,
+                    "defaultValue": 514,
+                    "uniqueEntityName" : "Port",
+                    "uniquenessContext" : "agent",
+                    "uniquenessCondition" : "if my dc_protocol is TCP then their dc_protocol should be UDP;if my dc_protocol is UDP then their dc_protocol should be in TCP,_NULL_"
+                },
+                {
+                    "key": "dc_timezone", 
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern_section_pp",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "id": "dc_collector_inputs_section",
+            "key": "dc_collector_inputs_section_rep",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_collector_inputs_section",
+            "controllist": [
+                {
+                    "key": "dc_application_protocol",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_bind_address",
+                    "type": "field",
+                    "override": true,
+                    "defaultValue": "0.0.0.0"
+                },
+                {
+                    "key": "dc_port",
+                    "type": "field",
+                    "override": true,
+                    "defaultValue": 8888,
+                    "uniqueEntityName" : "Port",
+                    "uniquenessContext" : "agent",
+                    "uniquenessCondition" : "if my dc_protocol is _NULL_ then their dc_protocol should be UDP"
+                    
+                },
+                {
+                    "key": "dc_access_token",
+                    "type": "field",
+                    "override": true,
+                    "password" : true
+                },
+                {
+                    "key": "dc_access_token_label",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_timezone", 
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern_section_rep",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "id": "dc_target_collection_host_section",
+            "key": "dc_target_collection_host_section_lfu",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_target_collection_host_section",
+            "controllist": [
+                {
+                    "key": "dc_file_upload_collector_label",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_file_upload_host_collector_label",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_host_id",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_agent_id",
+                    "type": "field",
+                    "override": true,
+                    "dataSource": "/olaengine/rest/olaapi/agents?associationGroup=USABLE&fetchOnlyStation=true",
+                    "initdataSource": "/olaengine/rest/olaapi/agents?associationGroup=USABLE&fetchOnlyStation=true"
+                }
+            ]
+        },
+        {
+            "id": "dc_collector_inputs_section",
+            "key": "dc_collector_inputs_section_lfu",
+            "type": "SUB_SECTION",
+            "collapseStyle": "EXPANDED",
+            "label": "fbt_collector_inputs_section",
+            "controllist": [
+                {
+                    "key": "dc_server_name",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_file_location",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_timezone",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern_section_lfu",
+                    "type": "section"
+                }
+            ]
+        },
+        {
+            "id": "dc_data_pattern_section",
+            "key": "dc_data_pattern_section_lfu",
+            "type": "SUB_SECTION",
+            "label": "fbt_data_pattern_section",
+            "controllist": [
+                {
+                    "key": "dc_data_pattern_label",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_data_pattern",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_date_format",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_json_timestamp_field",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_locale",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_charset_encoding",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_eventStartSignature",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_read_from_past_days",
+                    "type": "field",
+                    "override": true,
+                    "disabled": true
+                }
+            ]
+        },
+        {
+            "key": "dc_PROVIDE_EXPLICITLY",
+            "collapseStyle": "EXPANDED",
+            "label": "PROVIDE_EXPLICITLY",
+            "type": "SELECT_SECTION",
+            "selectkey": "provide_explicitly",
+            "controllist": [
+                {
+                    "key": "dc_user",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_enc_pwd",
+                    "type": "field"
+                }
+            ]
+        },
+        {
+            "key": "dc_EXISTING_PROFILE",
+            "collapseStyle": "EXPANDED",
+            "label": "EXISTING_PROFILE",
+            "type": "SELECT_SECTION",
+            "selectkey": "existing_profile",
+            "controllist": [
+                {
+                    "key": "dc_profile_id",
+                    "type": "field"
+                },
+                {
+                    "key": "dc_user",
+                    "type": "field",
+                    "override": true,
+                    "disabled": true
+                },
+                {
+                    "key": "dc_enc_pwd",
+                    "type": "field",
+                    "override": true,
+                    "disabled": true
+                }
+            ]
+        }
+    ]
+}
