@@ -74,7 +74,10 @@
     // used for merge. (o1,o2,o3,..) it will return o1 reference with merge of all.
     // used for clone. ({},o1,o2,..) it will return new object with merge of all object starting from 2nd arugment.   
     var assignObj = Object.assign(employee, temp, {sa:5});
-    console.log(assignObj);
+    console.log("assignObj:"+assignObj);
+    console.log("employee:"+employee);
+    console.log("employee === assignObj:"+(employee === assignObj));
+    console.log("employee == assignObj:"+(employee == assignObj));
     var cloneObj = Object.assign({}, temp, {ac:2});
     console.log(assignObj);
 console.log("End");
