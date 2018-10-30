@@ -1,11 +1,24 @@
 {
     "version": "0.2.0",
     "configurations": [
+        
     {
         "type": "node",
         "request": "launch",
         "name": "ObjectCreationInJS.js",
         "program": "${workspaceFolder}/JavaScript/ObjectCreationInJS.js"
+    },
+    {
+        "type": "node",
+        "request": "launch",
+        "name": "Main.js",
+        "program": "${workspaceFolder}/JavaScript/TestRequireAndSingletonObj/Main.js"
+    },
+    {
+        "type": "node",
+        "request": "launch",
+        "name": "docker_web_app",
+        "program": "${workspaceFolder}/JavaScript/docker_web_app/server.js"
     },
     {
         "type": "node",
