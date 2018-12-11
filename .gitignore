@@ -332,3 +332,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/git,node,java,windows,angular,reactnative
+/.metadata/

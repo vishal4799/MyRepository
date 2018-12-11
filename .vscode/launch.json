@@ -1,50 +1,59 @@
 {
     "version": "0.2.0",
     "configurations": [
-        
-    {
-        "type": "node",
-        "request": "launch",
-        "name": "ObjectCreationInJS.js",
-        "program": "${workspaceFolder}/JavaScript/ObjectCreationInJS.js"
-    },
-    {
-        "type": "node",
-        "request": "launch",
-        "name": "Main.js",
-        "program": "${workspaceFolder}/JavaScript/TestRequireAndSingletonObj/Main.js"
-    },
-    {
-        "type": "node",
-        "request": "launch",
-        "name": "docker_web_app",
-        "program": "${workspaceFolder}/JavaScript/docker_web_app/server.js"
-    },
-    {
-        "type": "node",
-        "request": "launch",
-        "name": "BadooHackerRankTest.js",
-        "program": "${workspaceFolder}/JavaScript/BadooHackerRankTest.js"
-    },
-    {
-        "type": "node",
-        "request": "launch",
-        "name": "MongoDBCloudConnectivityTest.js",
-        "program": "${workspaceFolder}/JavaScript/MongoDBCloudConnectivityTest.js"
-    },
-    {
-        "type": "chrome",
-        "request": "launch",
-        "name": "Launch Chrome against localhost",
-        "url": "http://localhost:3020",
-        "webRoot": "${workspaceFolder}\\JavaScript\\my-react-app"
-    },
-    {
-        "type": "chrome",
-        "request": "attach",
-        "name": "Attach to Chrome",
-        "port": 9222,
-        "webRoot": "${workspaceFolder}\\JavaScript\\my-react-app"
-    }
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - RenameWindowFileNFolder",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "RenameWindowFileNFolder",
+            "args": ""
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "ObjectCreationInJS.js",
+            "program": "${workspaceFolder}/JavaScript/ObjectCreationInJS.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Main.js",
+            "program": "${workspaceFolder}/JavaScript/TestRequireAndSingletonObj/Main.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "docker_web_app",
+            "program": "${workspaceFolder}/JavaScript/docker_web_app/server.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "BadooHackerRankTest.js",
+            "program": "${workspaceFolder}/JavaScript/BadooHackerRankTest.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "MongoDBCloudConnectivityTest.js",
+            "program": "${workspaceFolder}/JavaScript/MongoDBCloudConnectivityTest.js"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:3020",
+            "webRoot": "${workspaceFolder}\\JavaScript\\my-react-app"
+        },
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}\\JavaScript\\my-react-app"
+        }
     ]
 }

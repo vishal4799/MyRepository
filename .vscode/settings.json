@@ -1,4 +1,5 @@
 {
     "java.configuration.updateBuildConfiguration": "disabled",
-    "git.enabled": false
+    "git.enabled": true,
+    "python.pythonPath": "C:\\Users\\vmakwana\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe"
 }
