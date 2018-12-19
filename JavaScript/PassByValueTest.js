@@ -5,7 +5,7 @@
     //so cannot change the reference of it(using new and assigning new obj to it). change made inside function(new assignment to passed reference) will not reflect outside function
     //but you can change the attribute/property of it and it will reflect outside the function. 
 
-    function passbyValue(obj1, obj2, b, arr1, arr2){
+function passbyValue(obj1, obj2, b, arr1, arr2){
     obj1.x = 2; //will reflect
     obj2={}; //will not reflect
     b = b+1; //will not reflect

@@ -18,8 +18,8 @@ process.stdin.on("end", function(data){
 });
 
 process.on("exit", function(){
-	process.stdout.write("Go for "+answers[1]+" "+answers[0]+", you can do "+answers[2]+" later.\n");	
-	process.stdout.write(`Go for ${answers[1]} ${answers[0]}, you can do ${answers[2]} later.\n`);	
+	process.stdout.write("Go for "+answers[1]+" "+answers[0]+", you can speak "+answers[2]+" later.\n");	
+	process.stdout.write(`Go for ${answers[1]} ${answers[0]}, you can speak ${answers[2]} later.\n`);	
 });
 askQuestion(0);
 

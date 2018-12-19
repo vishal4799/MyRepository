@@ -4,7 +4,7 @@ function ConstructorClass(){
     this.a = 0;
 }
 ConstructorClass.prototype.init = ()=>{
-    this.b = 1;
+    this.b = 2;
 }
 
 module.exports = ConstructorClass;

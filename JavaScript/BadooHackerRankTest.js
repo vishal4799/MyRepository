@@ -9,7 +9,7 @@ function CaPiTaLiZe(str) {
     return result;
 }
 
-//console.log(CaPiTaLiZe("Hello world"));  
+console.log(CaPiTaLiZe("Hello world"));  
 
 
 
@@ -23,7 +23,7 @@ function add(x) {
     }
 }
 
-//console.log(add(5)(2)(4)(1));
+console.log(add(5)(2)(4)(1));
 console.log(add(5)(2).result());
 
 function a(){

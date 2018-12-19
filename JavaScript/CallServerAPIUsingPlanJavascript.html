@@ -5,8 +5,8 @@
     <title>Test</title>
     <script>
       window.addEventListener('load',function(){
-        document. querySelector('form').addEventListener('submit', function(e){
-          e.preventDefault();
+        document.querySelector('form').addEventListener('submit', function(e){
+        //   e.preventDefault();
           console.log("form has been submited by native javascript");
           callAPI();
         });
@@ -58,9 +58,10 @@
           <input type="text" name="firstname" value="Mickey"><br>
           Last name:<br>
           <input type="text" name="lastname" value="Mouse"><br>
-          <input type="submit" value="Submit"> <!--onclick="callAPI();"-->
+          <input type="submit" value="Submit">
       </form>
       <br>
-      <input type="text" id="result" style="height: 200px;width:400px">
+      <iframe name="iframeTest" style="color:red"></iframe>
+      <input id="result" type="text" placeholder="Result by custom form event(call API6)" style="height: 200px;width:400px">
   </body>
 </html>

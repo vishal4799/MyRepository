@@ -32,16 +32,16 @@ console.log("first:"+var1);//not in any function. so undefined or uncomment firs
 (function() {
     //const constVar1; //Can’t be hoisted, because you can’t re-assign a const
     const constVar1 = 'const variable 1 value in parent scope';
-    //const constVar1 = 'redclare in same scope'; //'constVar1' has already been declared
+    //const constVar1 = 'redeclare in same scope'; //'constVar1' has already been declared
     //constVar1 = 'modified in same scope'; // Assignment to constant variable.
-    console.log('scope parent1: ', constVar1); 
+    console.log('scope parent 1: ', constVar1); 
     (function() {
         // Scope 1
         //console.log('scope 1: ', constVar1); //Error : constVar1 is not defined
-        //constVar1 = 'reclare in other scope : const variable 1 value in scope 1'; // Assignment to constant variable.
+        //constVar1 = 'reassign in other scope : const variable 1 value in scope 1'; // Assignment to constant variable.
         
-        const constVar1 = 'reclare in other scope : const variable 1 value in scope 1';
+        const constVar1 = 'redeclare in other scope : const variable 1 value in scope 1';
         console.log('scope 1: ', constVar1);    
     }());
-    console.log('scope parent2: ', constVar1); 
+    console.log('scope parent 2: ', constVar1); 
 }());

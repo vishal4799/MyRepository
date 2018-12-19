@@ -15,9 +15,9 @@ import com.mpatric.mp3agic.Mp3File;
 import com.mpatric.mp3agic.UnsupportedTagException;
 
 
-//bhumi account API key: AIzaSyDKak7gwe4TU71AhYRv16I22JDXXu3Ysr4 
+
 public class RenameWindowFileNFolder {
-	com.google.cloud.translate.Translate translate = TranslateOptions.newBuilder().setApiKey("AIzaSyDKak7gwe4TU71AhYRv16I22JDXXu3Ysr4").build().getService();
+	com.google.cloud.translate.Translate translate = TranslateOptions.newBuilder().setApiKey("<google api key>").build().getService();
 	String currentPath = "";
 	public static void main(String[] args) {
 		String sPath = "C://Song";

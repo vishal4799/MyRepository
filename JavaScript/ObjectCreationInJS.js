@@ -12,7 +12,7 @@
     console.log(objNumber === primitiveNumber1);// false
 
 // Same goes for Strings =====================================================================================
-    var primitiveString1 = "vishal"; var primitiveString2 = new String("vishal");
+    var primitiveString1 = "vishal"; var primitiveString2 = String("vishal");
     console.log(typeof primitiveString1);// string
     console.log(typeof primitiveString2);// string
     // This one creates Object
@@ -25,7 +25,7 @@
     var temp = {a:1};
     // below all statement will create same object, there is no difference. it doesnt clone, it uses temp reference
     var obj1 = {a:1}; var obj2 = temp; var obj3 = Object(temp);  var obj4 = new Object(temp);
-    // if you change any thing in temp like below it will reflecton all obj? except obj1.
+    // if you change any thing in temp like below it will reflect in all obj, except obj1.
     temp.a = 2;
     console.log(obj1+":"+obj2+":"+obj3+":"+obj4);
 

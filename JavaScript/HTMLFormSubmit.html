@@ -5,6 +5,8 @@
     <title>Startup Genius</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
+      // Two different way to handle custom form submit.
+      // e.preventDefault() will prevent defualt form action get mothod execution which we mentioned in form html.
       window.addEventListener('load',function(){
         document. querySelector('form').addEventListener('submit', function(e){
           e.preventDefault();
