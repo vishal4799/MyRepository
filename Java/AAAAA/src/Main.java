@@ -1,6 +1,7 @@
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.stream.Stream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,8 +15,19 @@ import java.util.List;
 import java.util.Map;
 class MyUtilities
 {
-    public static String mimicObjectToString(Object o)
+    public static String mimicObjectToString(Object o) throws Exception
     {
+    	double d = 10.0 / -0;
+    	if(d == Double.POSITIVE_INFINITY) {
+    		System.out.println("TURE");
+    	}
+    	try {
+    		throw new IOException("..");
+    	}catch (RuntimeException e) {
+    		System.out.println("RE");
+		}finally {
+			System.out.println("finall");
+		}
         //prevent a NullPointerException by returning null if o is null
     	String result = null;
         if (o !=null)
@@ -29,8 +41,20 @@ class MyUtilities
   
 public class Main
 {
-    public static void main(String[] args) throws Exception
+    public static int main(String[] args) throws Exception
     {
+    	double d = 10.0 / -0;
+    	if(d == Double.POSITIVE_INFINITY) {
+    		System.out.println("TURE");
+    	}
+    	try {
+    		throw new IOException("..");
+    	}catch (RuntimeException e) {
+    		System.out.println("RE");
+		}finally {
+			return -1;
+		}
+    	
     	String REGEX_SPECIAL_CHAR = "[a-zA-Z0-9]*";
     	System.out.println("RegEX::"+ "SMALl vishal23432".matches(REGEX_SPECIAL_CHAR));
 //    	System.out.println("authToken _c801337d-c192-46d3-9a95-b46bda395228");
