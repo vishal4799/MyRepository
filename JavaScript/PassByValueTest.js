@@ -1,5 +1,5 @@
 //var means it can be object, array and primitive data
-//java script is pass by value only in all above cases.
+//java script is pass by value for all above cases.
 //when you pass "primitive data", change made inside function will not reflect outside function
 //when you pass "object or array", you are passing reference value of it not the actual value.
     //so cannot change the reference of it(using new and assigning new obj to it). change made inside function(new assignment to passed reference) will not reflect outside function

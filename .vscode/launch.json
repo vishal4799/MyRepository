@@ -50,6 +50,18 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "InheritanceAndPrototypeByConstructorMethod.js",
+            "program": "${workspaceFolder}/JavaScript/InheritanceAndPrototypeByConstructorMethod.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "InheritanceAndPrototypeByObject.create.js",
+            "program": "${workspaceFolder}/JavaScript/InheritanceAndPrototypeByObject.create.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Main.js",
             "program": "${workspaceFolder}/JavaScript/TestRequireAndSingletonObj/Main.js"
         },

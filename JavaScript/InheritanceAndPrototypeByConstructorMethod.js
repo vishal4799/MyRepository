@@ -35,7 +35,7 @@ console.log("SampleObject.constructor:"+SampleObject.constructor);
 console.log("SampleObject.constructor.prototype:"+SampleObject.constructor.prototype);
 console.log("SampleObject.constructor.__proto__:"+SampleObject.constructor.__proto__);
 console.log("== : "+SampleObject.constructor.prototype == SampleObject.constructor.__proto__);
-console.log("== : "+SampleObject.constructor.prototype ==- SampleObject.constructor.__proto__);
+console.log("== : "+SampleObject.prototype == SampleObject.constructor.__proto__);
 
 //lets try to test SampleObject calling it as a normal method instead of constructiveMethod
 var test = SampleObject(0,1);
@@ -58,4 +58,6 @@ sampleObj.setPublicProp1(1000);
 console.log("PublicProp1 : "+sampleObj.getPublicProp1());
 sampleObj.setPublicProp2("thousands");
 console.log("PublicProp2 : "+sampleObj.getPublicProp2());
+
+
 

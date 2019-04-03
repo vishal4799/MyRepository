@@ -4,7 +4,7 @@ var var1 = 1;
 	var1 = 'variable 1 value in parent scope';
 	var abc = function() {
         // Scope 1
-        var1 = 'variable 1 value in scope 1';
+        var var1 = 'variable 1 value in scope 1'; // re-declared
         console.log('scope 1: ', var1); // Is 'variable 1 value in scope 1'
     };
 
@@ -14,7 +14,7 @@ var var1 = 1;
         console.log('scope 2: ', var1); // Is 'variable 1 value in scope 2'
     }());
 	abc();
-	console.log('Parent scope: ', var1); // Is 'variable 1 value in parent scope'
+	console.log('Parent scope: ', var1); // Is not 'variable 1 value in parent scope' as overriden by scope 2
 	if(true){
 		let letTest;
         var varTest = 2;
@@ -37,8 +37,8 @@ console.log("first:"+var1);//not in any function. so undefined or uncomment firs
     console.log('scope parent 1: ', constVar1); 
     (function() {
         // Scope 1
-        //console.log('scope 1: ', constVar1); //Error : constVar1 is not defined
-        //constVar1 = 'reassign in other scope : const variable 1 value in scope 1'; // Assignment to constant variable.
+        // console.log('scope 1: ', constVar1); //Error : constVar1 is not defined
+        // constVar1 = 'reassign in other scope : const variable 1 value in scope 1'; // Error : constVar1 is not defined
         
         const constVar1 = 'redeclare in other scope : const variable 1 value in scope 1';
         console.log('scope 1: ', constVar1);    
