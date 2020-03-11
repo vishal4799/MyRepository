@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+    
         {
             "type": "node",
             "request": "launch",
@@ -46,6 +47,12 @@
             "request": "launch",
             "name": "ObjectCreationInJS.js",
             "program": "${workspaceFolder}/JavaScript/ObjectCreationInJS.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "RateApiInterviewProblem",
+            "program": "${workspaceFolder}/JavaScript/RateApiInterviewProblem/getAPIRunner.js"
         },
         {
             "type": "node",
